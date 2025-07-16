@@ -1,6 +1,6 @@
 export const contactsData = {
     email: 'ahmed.abulkhair@email.com', // Update with your email
-    phone: '+1234567890', // Update with your phone
+    phone: '+01002130308',
     address: 'Your Location', // Update with your location
     github: 'https://github.com/aaabulkhair',
     facebook: '', // Add if you have Facebook
