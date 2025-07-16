@@ -11,76 +11,58 @@ import two from '../assets/svg/projects/two.svg'
 export const projectsData = [
     {
         id: 1,
-        projectName: 'Ayla Networks',
-        projectDesc: 'This project about Simplifying the Development of Smart Home & IoT Solutions.',
-        tags: ['React', 'SAAS', 'React Bootstrap'],
+        projectName: 'Large Language Model Fine-tuning',
+        projectDesc: 'Developed and fine-tuned LLMs for domain-specific tasks using transformer architectures and advanced NLP techniques.',
+        tags: ['Python', 'PyTorch', 'Transformers', 'BERT', 'GPT'],
         code: '',
-        demo: 'https://www.aylanetworks.com/',
-        image: six
+        demo: '',
+        image: one
     },
     {
         id: 2,
-        projectName: 'Jewelry Niche',
-        projectDesc: 'This project is a Jewelry shop, Customer can be buy product and manage them and make payment.',
-        tags: ['React', 'Express', 'Material Ui'],
-        code: 'https://github.com/said7388/jewelry-niche',
-        demo: 'https://pandora-web.netlify.app/',
-        image: seven
+        projectName: 'Predictive Analytics Platform',
+        projectDesc: 'Built end-to-end machine learning pipeline for predictive analytics with real-time data processing and model deployment.',
+        tags: ['Python', 'Scikit-learn', 'FastAPI', 'Docker', 'MLOps'],
+        code: '',
+        demo: '',
+        image: two
     },
     {
         id: 3,
-        projectName: 'Travel Agency',
-        projectDesc: 'This project about travel agency management.',
-        tags: ['React', 'CSS', 'Material Ui'],
-        code: 'https://github.com/said7388/Travel-Agency-client',
-        demo: 'https://travel-agency-fc58b.web.app/',
-        image: eight
+        projectName: 'NLP Text Classification System',
+        projectDesc: 'Implemented advanced text classification system using deep learning for automated content categorization and sentiment analysis.',
+        tags: ['Python', 'TensorFlow', 'NLP', 'Deep Learning', 'API'],
+        code: '',
+        demo: '',
+        image: three
     },
     {
         id: 4,
-        projectName: 'Android Patient Tracker',
-        projectDesc: 'This project involves the development of an Android application for viewing and managing patient data.',
-        tags: ['Flutter', 'Firebase'],
-        code: 'https://github.com/hhhrrrttt222111/developer-portfolio',
-        demo: 'https://github.com/hhhrrrttt222111/developer-portfolio',
+        projectName: 'Computer Vision Object Detection',
+        projectDesc: 'Developed real-time object detection system using convolutional neural networks for automated image analysis.',
+        tags: ['Python', 'OpenCV', 'CNN', 'Computer Vision', 'TensorFlow'],
+        code: '',
+        demo: '',
         image: four
     },
     {
         id: 5,
-        projectName: 'E-Commerce App',
-        projectDesc: 'A Simple E-commerce application',
-        tags: ['React Native', 'Firebase'],
-        code: 'https://github.com/hhhrrrttt222111/developer-portfolio',
-        demo: 'https://github.com/hhhrrrttt222111/developer-portfolio',
+        projectName: 'Data Analytics Dashboard',
+        projectDesc: 'Created interactive data visualization dashboard for business intelligence and statistical analysis.',
+        tags: ['Python', 'Pandas', 'Plotly', 'Streamlit', 'Data Analysis'],
+        code: '',
+        demo: '',
         image: five
     },
     {
         id: 6,
-        projectName: 'Uber Lite',
-        projectDesc: 'Uber clone',
-        tags: ['Flutter'],
-        code: 'https://github.com/hhhrrrttt222111/developer-portfolio',
-        demo: 'https://github.com/hhhrrrttt222111/developer-portfolio',
-        image: one
-    },
-    {
-        id: 7,
-        projectName: 'Stock Market App',
-        projectDesc: 'A simple stock market API app',
-        tags: ['React', 'Redux', 'Bootstrap'],
-        code: 'https://github.com/hhhrrrttt222111/developer-portfolio',
-        demo: 'https://github.com/hhhrrrttt222111/developer-portfolio',
-        image: two
-    },
-    {
-        id: 8,
-        projectName: 'Car Pooling System',
-        projectDesc: 'The carpooling system merges multiple people in a car which leads to meet new people, reduces pollution',
-        tags: ['Flutter', 'React'],
-        code: 'https://github.com/hhhrrrttt222111/developer-portfolio',
-        demo: 'https://github.com/hhhrrrttt222111/developer-portfolio',
-        image: three
-    },
+        projectName: 'AI Chatbot Development',
+        projectDesc: 'Built intelligent conversational AI system using natural language processing and machine learning techniques.',
+        tags: ['Python', 'NLP', 'Dialogflow', 'Machine Learning', 'API'],
+        code: '',
+        demo: '',
+        image: six
+    }
 ]
 
 
