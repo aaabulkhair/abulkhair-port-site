@@ -1,4 +1,4 @@
-import { Container } from '@material-ui/core';
+import { Container } from '@mui/material';
 import React, { useContext } from 'react';
 import experience from '../../assets/lottie/development.json';
 import { ThemeContext } from '../../contexts/theme-context';

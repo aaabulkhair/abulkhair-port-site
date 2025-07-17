@@ -1,6 +1,6 @@
 import emailjs from '@emailjs/browser';
-import { IconButton, Snackbar, SnackbarContent } from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
+import { IconButton, Snackbar, SnackbarContent } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 import Image from 'next/image';
 import React, { useContext, useRef, useState } from 'react';
 import { AiOutlineCheckCircle, AiOutlineSend } from 'react-icons/ai';
