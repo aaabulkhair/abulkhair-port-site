@@ -1,6 +1,6 @@
 import { Container } from '@mui/material';
 import React, { useContext } from 'react';
-import aiMachineLearning from '../../assets/lottie/ai-machine-learning.json';
+import neuralNetwork from '../../assets/lottie/neural-network.json';
 import { ThemeContext } from '../../contexts/theme-context';
 import { experienceData } from '../../data/experience-data';
 import styles from '../../styles/experience.module.css';
@@ -15,7 +15,7 @@ function Experience() {
             <Container className={styles.experience} id="experience">
                 <div className={styles.experienceBody}>
                     <div className={styles.experienceImage}>
-                        <AnimationLottie animationPath={aiMachineLearning} />
+                        <AnimationLottie animationPath={neuralNetwork} />
                     </div>
                     <div className={styles.experienceDescription}>
                         <h1 style={{ color: theme.primary }}>Experience</h1>
