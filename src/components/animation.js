@@ -6,7 +6,7 @@ const Lottie = dynamic(() => import('lottie-react'), {
   ssr: false,
 });
 
-const AnimationLottie = ({ animationPath, width }) => {
+const AnimationLottie = ({ animationPath, width, speed = 1 }) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -19,7 +19,8 @@ const AnimationLottie = ({ animationPath, width }) => {
     animationData: animationPath,
     style: {
       width: '95%',
-    }
+    },
+    speed: 1 // Change this: 0.5 = slower, 2 = faster
   };
 
   if (!isMounted) {
