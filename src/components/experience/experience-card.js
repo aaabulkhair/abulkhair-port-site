@@ -7,11 +7,17 @@ import { ThemeContext } from '../../contexts/theme-context';
 import styles from '../../styles/experience.module.css';
 
 
-function ExperienceCard({ id, company, jobtitle, startYear, endYear }) {
+function ExperienceCard({ id, company, jobtitle, startYear, endYear, description, companyUrl }) {
 
     const { theme } = useContext(ThemeContext);
 
-
+    const CompanyComponent = companyUrl ? 'a' : 'h5';
+    const companyProps = companyUrl ? { 
+        href: companyUrl, 
+        target: '_blank', 
+        rel: 'noopener noreferrer',
+        className: 'hover:underline cursor-pointer transition-colors'
+    } : {};
 
     return (
         <Fade bottom>
@@ -21,8 +27,21 @@ function ExperienceCard({ id, company, jobtitle, startYear, endYear }) {
                 </div>
                 <div className={styles.experienceDetails}>
                     <h6 style={{ color: theme.primary }}>{startYear}-{endYear}</h6>
+                    <CompanyComponent 
+                        {...companyProps}
+                        style={{ color: theme.tertiary, fontSize: '1.15rem', fontWeight: 600, margin: 0 }}
+                    >
+                        {company}
+                    </CompanyComponent>
                     <h4 style={{ color: theme.tertiary }}>{jobtitle}</h4>
-                    <h5 style={{ color: theme.tertiary }}>{company}</h5>
+                    {description && (
+                        <p 
+                            className="mt-2 text-sm leading-relaxed opacity-90"
+                            style={{ color: theme.tertiary }}
+                        >
+                            {description}
+                        </p>
+                    )}
                 </div>
             </div>
         </Fade>
