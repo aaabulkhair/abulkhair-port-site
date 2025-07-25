@@ -1,23 +1,23 @@
 export const experienceData = [
     {
         id: 1,
-        company: 'Senior Data Scientist',
-        jobtitle: 'Data Science & AI/ML',
-        startYear: '2020',
+        company: 'LLM Applications Developer',
+        jobtitle: 'ALX Africa',
+        startYear: '2022',
         endYear: 'Present'
     },
     {
         id: 2,
-        company: 'Machine Learning Engineer',
-        jobtitle: 'LLM & NLP Specialist',
-        startYear: '2018',
-        endYear: '2020'
+        company: 'AI Education Specialist',
+        jobtitle: 'Educational Technology',
+        startYear: '2021',
+        endYear: '2022'
     },
     {
         id: 3,
-        company: 'Continuous Learning',
-        jobtitle: 'AI Research & Development',
-        startYear: '2016',
-        endYear: 'Present'
+        company: 'Machine Learning Engineer',
+        jobtitle: 'NLP & Adaptive Learning',
+        startYear: '2020',
+        endYear: '2021'
     },
 ]
