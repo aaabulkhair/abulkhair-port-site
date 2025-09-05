@@ -1,0 +1,323 @@
+Contact
+
++2 01090112694 (Mobile)
+ahmed.abulkhair@hotmail.com
+
+www.linkedin.com/in/aaabulkhair
+(LinkedIn)
+aaabulkhair.github.io/Analixa/
+(Personal)
+
+Top Skills
+
+GenAI
+
+Coaching
+
+Statistical Modeling
+
+Certifications
+
+Python for Everybody Specialization
+
+Sequence Models
+
+Using Databases with Python
+
+Convolutional Neural Networks in
+TensorFlow
+
+Ahmed Abulkhair
+
+Senior Data Scientist @ ALX Africa | Data Science Mentor | Kaggle
+Expert
+Cairo, Egypt
+
+Summary
+
+As a Senior Data Scientist at ALX Africa, I apply my expertise in
+
+machine learning, Python, deep learning, and time series analysis
+
+to deliver data-driven solutions that solve complex problems and
+
+generate actionable insights from vast amounts of data. I have
+
+implemented several projects that enhance the performance,
+
+scalability, and reliability of the company's web scraping and
+
+price comparison platform, such as optimizing the data pipeline,
+
+developing a dynamic pricing model, and creating a recommendation
+
+system.
+
+I have a strong educational background in data science and
+
+Artificial Intelligence
+
+engineering, with a diploma from the Information Technology
+
+Honors-Awards
+
+Engineering, Menoufiya University, Egypt. I have also completed
+
+Institute (ITI) and a bachelor's degree from the Faculty of
+
+Transporter Robot Competition
+organized by FEE ROBOTICS
+CLUB.
+
+two nanodegrees from Udacity in Deep Learning and Data Analysis,
+
+where I learned and applied the latest techniques and tools in
+
+the field. Additionally, I share my knowledge and passion for data
+
+science by mentoring early-career data scientists as part of the
+
+KaggleX BIPOC Mentorship Program and teaching data science
+
+courses as a teaching assistant at ITI. My goal is to positively impact
+
+the world by leveraging data and innovation.
+
+Experience
+
+alx_africa 
+Senior Data Scientist
+November 2024 - Present (9 months)
+
+Arab ShipBroker
+Consultant Data Scientist 
+July 2025 - Present (1 month)
+Remote
+
+Page 1 of 5
+
+ 
+ 
+ 
+ShopBrain
+2 years 5 months
+
+Lead Data Scientist
+February 2024 - Present (1 year 6 months)
+
+Senior Data Scientist
+March 2023 - February 2024 (1 year)
+
+Information Technology Institute (ITI)
+Teaching Assistant
+July 2020 - July 2024 (4 years 1 month)
+Cairo, Egypt
+
+Data Science track supervisor with the following responsibilities:
+
+• Design and teach some data science courses.
+
+• Mentoring the students of the track.
+
+• Design the full curriculum for the track. 
+
+• Continually enrich the content with the state of the art technologies.
+
+• Mentoring the graduation projects in cooperation with business partners.
+
+Kaggle
+KaggleX BIPOC Mentor
+July 2023 - January 2024 (7 months)
+
+As a Mentor, my responsibilities include:
+
+- Guiding early-career data scientists in their professional development.
+
+- Sharing expertise gained from 5+ years of experience in Data Science,
+
+Artificial Intelligence, or Machine Learning.
+
+- Assisting mentees in setting goals and working on projects to enhance their
+
+skills and portfolios.
+
+- Participating in weekly check-ins with mentees.
+
+- Engaging with the KaggleX community and contributing to discussions
+
+Jumia Group
+Senior Data Scientist
+March 2022 - March 2023 (1 year 1 month)
+
+Udacity
+Deep Learning Session Lead
+September 2021 - March 2022 (7 months)
+
+Upwork
+
+Page 2 of 5
+
+ 
+ 
+ 
+Data Scientist
+June 2020 - March 2022 (1 year 10 months)
+Egypt
+
+Top-Rated Data Scientist and Machine Learning Engineer with 100% of Job
+
+Success Score (JSS) and achievements in the following areas:
+
+• Customer Segmentation for telecom and retail companies.
+
+• Face Authentication, GANs, and Object detection.
+
+• Anomaly Detection for medical data.
+
+• Explainable Machine Learning models for existing systems.
+
+• Creating and Designing data science and machine learning courses.
+
+• Training and consultation.
+
+BBI
+Data Scientist
+July 2019 - July 2020 (1 year 1 month)
+
+In BBI I participate in many projects such as: 
+
+• Building chatbots for many industries such as telecom and banking.
+
+• Using machine learning-based recommendations models for grouping the
+
+telecom subscribers; hence, recommend the appropriate offers. 
+
+• Object detection, text mining and OCR. 
+
+• Develop an AI-driven analytics tool that serves many domains and
+
+industries. 
+
+• Audience targeting for telecom offers (use clustering, analysis with
+
+segmentation, user-based recommendation, and prediction models).
+
+• Campaign optimization (use NN, autonomous AI).
+
+Information Technology Institute (ITI)
+Instructor
+March 2020 - March 2020 (1 month)
+Smart Village, Egypt
+
+I worked as a Python Instructor for Data Management track, Information
+
+Technology Institute, Smart Village. Throughout the course, I tried to deliver
+
+some important Python concepts like:
+
+• Introduction to Python, variables, data containers and data transformation
+
+using pandas.
+
+• Data Importing, CSV, Excel, JSON, XML and APIs.
+
+• Working with Databases ( ORM ).
+
+Page 3 of 5
+
+ 
+ 
+ 
+• Object-oriented programming in Python.
+
+• Command Line Automation and Scripting in Python.
+
+• Code profiling and Pythonic code.
+
+Noon Academy
+Freelance Physics Teacher
+January 2017 - September 2018 (1 year 9 months)
+
+Noon Academy is an E-learning company that directs its effort to secondary
+
+stage students especially. I work as a Freelance Physics Teacher for Saudi-
+
+Arabian students at secondary stage and as a science teacher for middle
+
+stage students.
+
+Masrfandy Newspaper
+Editor 
+May 2017 - December 2017 (8 months)
+
+Masrfandy is a starting online newspaper. Now I'm working as an Editor at
+
+Technology and Science Page and cover all news related to Technology and
+
+Science.
+
+Arab Electric for Modern Techniques.
+Trainee
+August 2016 - September 2016 (2 months)
+Portsaid Governorate, Egypt.
+
+The company is dealing with implementing Electric Constructions on
+
+the industrial scale. My training period was in Persil factory in Portsaid for
+
+constructing a new Production Line.
+
+● One of the most useful outcomes of that training is that "Safety
+
+standards come first".
+
+●Project Management
+
+Ministry Of Housing, Utilities & Urban Development.
+Trainee
+July 2016 - August 2016 (2 months)
+Cairo Governorate, Egypt
+
+Ministry of Housing and Construction is in charge of building new urban
+
+communities, constructing infrastructure and housing.
+
+● Learn how to carefully read an Electric Design for a specific facility
+
+and extract all data required for implementing that design.
+
+● Supervise a group of electricians to implement a design and how to
+
+deal with site problems that may face implementation of design.
+
+Page 4 of 5
+
+ 
+ 
+ 
+Education
+
+Information Technology Institute (ITI)
+
+Diploma, Data Science and Big Data Analytics · (2018 - 2019)
+
+Faculty of Engineering, Menoufiya University, Egypt
+
+Bachelor's degree, Electrical Power Engineering and Electric
+
+Machines · (2012 - 2017)
+
+Udacity
+
+Deep Learning Nanodegree, Deep Learning · (2021 - 2021)
+
+Udacity
+
+Data Analyst for Enterprise Nanodegree, Data Analysis · (2018 - 2019)
+
+Page 5 of 5
+
+ 
+ 
+ 
+

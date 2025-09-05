@@ -23,6 +23,29 @@
   box-sizing: border-box;
 }
 
+html, body, #__next {
+  height: 100%;
+  width: 100%;
+  min-width: 320px;
+}
+
+/* Ensure main content container takes full width */
+body {
+  font-size: 16px;
+}
+
+/* Ensure proper viewport sizing for all devices */
+@media screen and (min-width: 1024px) {
+  html, body {
+    min-width: 1024px;
+  }
+}
+
+/* Prevent page-level horizontal scrolling; individual sections manage their own overflow */
+html, body {
+  overflow-x: hidden;
+}
+
 a {
   text-decoration: none;
 }

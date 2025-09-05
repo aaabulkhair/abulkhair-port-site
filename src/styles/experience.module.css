@@ -1,4 +1,8 @@
 .experience {
+  --track-pad: 24px;
+  --track-gap: 16px;
+}
+.experience {
   min-height: fit-content;
 }
 
@@ -8,6 +12,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  overflow-x: hidden; /* prevent the layout container from scrolling */
 }
 
 .experienceDescription {
@@ -19,6 +24,7 @@
   align-items: flex-start;
   justify-content: center;
   margin-right: 2rem;
+  min-width: 0; /* Allow flex item to shrink */
 }
 
 .experienceDescription > h1 {
@@ -32,13 +38,13 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: flex-start;
-  width: 90%;
-  min-height: 140px;
-  height: auto;
+  width: 100%;
+  height: 280px; /* Fixed height for uniformity */
   padding: 1.5rem;
   border-radius: 20px;
   margin-bottom: 1.5rem;
   transition: background-color 200ms ease-in-out;
+  overflow: hidden; /* Hide overflow for consistent sizing */
 }
 
 .expcardImg {
@@ -77,6 +83,36 @@
   font-family: var(--primaryFont);
   font-size: 1.15rem;
   font-weight: 600;
+}
+
+/* Horizontal scroller helpers */
+.horizontalScroller {
+  display: flex;
+  gap: var(--track-gap);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: var(--track-pad);
+  scroll-padding-right: var(--track-pad);
+  -webkit-overflow-scrolling: touch;
+  padding: 0 var(--track-pad) 1rem var(--track-pad);
+  overscroll-behavior-x: contain;
+  scrollbar-gutter: stable both-edges;
+  min-width: 0; /* Critical fix for flexbox scrolling */
+  width: 800px !important; /* Fixed width to force scrolling */
+  max-width: 800px !important; /* Enforce maximum width */
+}
+
+.snapItem {
+  scroll-snap-align: start;
+  flex: 0 0 auto;
+  width: 400px; /* Fixed width for proper scrolling behavior */
+  min-width: 350px; /* Minimum width for smaller screens */
+  max-width: 450px; /* Maximum width to maintain layout */
+}
+
+.snapSpacer {
+  flex: 0 0 var(--track-pad); /* must match scroll-padding and padding inline */
 }
 
 .experienceImage {

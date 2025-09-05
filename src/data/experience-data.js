@@ -5,28 +5,131 @@ export const experienceData = [
         jobtitle: 'Senior Data Scientist',
         startYear: 'Nov 2024',
         endYear: 'Present',
-        description: 'Developing and deploying Large Language Model (LLM)-based applications to revolutionize educational processes within the ALX initiative. Creating scalable solutions to make education more affordable and accessible by leveraging state-of-the-art AI technologies. Collaborating with interdisciplinary teams to ensure alignment with educational goals and optimize system performance. Integrating advanced natural language processing capabilities to enhance learning engagement and efficiency. Researching and implementing innovative strategies for adaptive learning using AI-driven tools.',
+        location: 'Cairo, Egypt',
+        employmentType: 'Full-time',
+        description: 'Delivering LLM-powered solutions to enhance educational processes and learner outcomes across the ALX ecosystem.',
+        achievements: [
+            'Optimized data and inference pipelines to improve reliability and scalability for AI features',
+            'Prototyped adaptive learning use-cases leveraging transformers for content understanding',
+            'Collaborated cross-functionally to align model behavior with pedagogical goals'
+        ],
+        tech: ['Python','PyTorch','Transformers','NLP','LLMs','Docker','AWS'],
         companyUrl: 'https://www.alxafrica.com/',
-        logo: 'alx-africa' // We'll add this logo
+        logo: 'alx-africa'
     },
     {
         id: 2,
-        company: 'Educational Technology',
-        jobtitle: 'AI Education Specialist',
-        startYear: '2021',
-        endYear: '2022',
-        description: 'Specialized in developing AI-driven educational technologies and implementing machine learning solutions for enhanced learning experiences.',
-        companyUrl: null,
-        logo: null
+        company: 'Arab ShipBroker',
+        jobtitle: 'Consultant Data Scientist',
+        startYear: 'Jul 2025',
+        endYear: 'Present',
+        location: 'Remote',
+        employmentType: 'Consultant',
+        description: 'Advising on analytics and ML initiatives for maritime brokerage use-cases.',
+        achievements: [
+            'Introduced opportunities for predictive analytics and data quality monitoring',
+            'Scoped MVPs for price intelligence and automation'
+        ],
+        tech: ['Python','Pandas','Scikit-learn','Dashboards']
     },
     {
         id: 3,
-        company: 'NLP & Adaptive Learning',
-        jobtitle: 'Machine Learning Engineer',
-        startYear: '2020',
-        endYear: '2021',
-        description: 'Focused on natural language processing and adaptive learning systems, developing intelligent algorithms for personalized education.',
-        companyUrl: null,
-        logo: null
+        company: 'ShopBrain',
+        jobtitle: 'Lead Data Scientist',
+        startYear: 'Feb 2024',
+        endYear: 'Present',
+        description: 'Leading data science for a price comparison platform; previously Senior DS (Mar 2023–Feb 2024).',
+        achievements: [
+            'Optimized web scraping and data pipelines improving throughput and stability',
+            'Built dynamic pricing and recommendation components',
+        ],
+        tech: ['Python','Airflow','ETL','Recommenders','Time Series']
+    },
+    {
+        id: 4,
+        company: 'Information Technology Institute (ITI)',
+        jobtitle: 'Teaching Assistant',
+        startYear: 'Jul 2020',
+        endYear: 'Jul 2024',
+        location: 'Cairo, Egypt',
+        employmentType: 'Part-time',
+        description: 'Data Science track supervisor: curriculum design, course delivery, and mentoring.',
+        achievements: [
+            'Designed and taught data science courses and labs',
+            'Mentored graduation projects with industry partners',
+            'Continuously updated content with state-of-the-art techniques'
+        ],
+        tech: ['Python','Pandas','SQL','ML','DL']
+    },
+    {
+        id: 5,
+        company: 'Kaggle',
+        jobtitle: 'KaggleX BIPOC Mentor',
+        startYear: 'Jul 2023',
+        endYear: 'Jan 2024',
+        description: 'Mentored early-career data scientists, with weekly check-ins and project guidance.',
+        achievements: [
+            'Provided 1:1 mentoring for BIPOC data scientists entering the field',
+            'Guided career development and technical skill building',
+            'Facilitated networking and community connections'
+        ],
+        tech: ['Python', 'Data Science', 'Mentoring', 'Community Building']
+    },
+    {
+        id: 6,
+        company: 'Jumia Group',
+        jobtitle: 'Senior Data Scientist',
+        startYear: 'Mar 2022',
+        endYear: 'Mar 2023',
+        description: 'Delivered data science solutions in e-commerce context.',
+        achievements: [
+            'Developed recommendation systems for product discovery',
+            'Built customer segmentation models for targeted marketing',
+            'Implemented fraud detection algorithms'
+        ],
+        tech: ['Python', 'Scikit-learn', 'SQL', 'AWS', 'Recommender Systems']
+    },
+    {
+        id: 7,
+        company: 'Udacity',
+        jobtitle: 'Deep Learning Session Lead',
+        startYear: 'Sep 2021',
+        endYear: 'Mar 2022',
+        description: 'Led deep learning sessions and guided cohorts.',
+        achievements: [
+            'Instructed deep learning concepts to 100+ students',
+            'Developed curriculum for neural networks and computer vision',
+            'Provided technical mentorship and project guidance'
+        ],
+        tech: ['Python', 'TensorFlow', 'PyTorch', 'Deep Learning', 'Computer Vision']
+    },
+    {
+        id: 8,
+        company: 'Upwork',
+        jobtitle: 'Data Scientist',
+        startYear: 'Jun 2020',
+        endYear: 'Mar 2022',
+        location: 'Egypt',
+        description: 'Top-Rated Data Scientist with projects in segmentation, face auth, anomaly detection, XAI, and training.',
+        achievements: [
+            'Delivered segmentation for telecom and retail',
+            'Built face authentication, GANs, and object detection pipelines',
+            'Developed explainable ML for existing systems'
+        ],
+        tech: ['Python','Scikit-learn','TensorFlow','Computer Vision','XAI']
+    },
+    {
+        id: 9,
+        company: 'BBI',
+        jobtitle: 'Data Scientist',
+        startYear: 'Jul 2019',
+        endYear: 'Jul 2020',
+        description: 'Worked on chatbots, recommendations for telecom offers, CV/NLP, and analytics tooling.',
+        achievements: [
+            'Built conversational AI chatbots for customer service',
+            'Developed recommendation engines for telecom offer optimization',
+            'Created analytics dashboards for business intelligence'
+        ],
+        tech: ['Python', 'NLP', 'Chatbots', 'Recommender Systems', 'Analytics']
     },
 ]

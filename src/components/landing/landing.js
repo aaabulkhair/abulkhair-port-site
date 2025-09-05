@@ -12,6 +12,8 @@ import { headerData } from '../../data/header-data';
 import { socialsData } from '../../data/socials-data';
 import styles from '../../styles/landing.module.css';
 import Link from '../link';
+import TrustBadges from '../trust-badges/trust-badges';
+import { MonetizationLink } from '../analytics/enhanced-link-tracker';
 
 function Landing() {
     const { theme, drawerOpen } = useContext(ThemeContext);
@@ -114,7 +116,53 @@ function Landing() {
                         />
                         <p>{headerData.desciption}</p>
 
+                        {/* Trust Badges */}
+                        <TrustBadges badges={headerData.trustBadges} />
+
                         <div className={styles.lcrButtonContainer}>
+                            {/* Primary CTA - Book Consultation */}
+                            {headerData.ctaPrimary && (
+                                <MonetizationLink
+                                    href={headerData.ctaPrimary.url}
+                                    platform="topmate"
+                                    position="hero_primary"
+                                    value={35}
+                                >
+                                    <button
+                                        className="sm:w-[180px] bg-[#1D9BF0] 
+                                        text-[#15202B] rounded-[30px] no-underline	
+                                        w-36 text-base font-medium h-12 border-[3px]
+                                         border-[#1D9BF0] transition duration-100 
+                                         ease-out hover:bg-[#8B98A5] hover:text-[#15202B]
+                                          hover:border-[#8B98A5]"
+                                    >
+                                        {headerData.ctaPrimary.text}
+                                    </button>
+                                </MonetizationLink>
+                            )}
+                            
+                            {/* Secondary CTA - Hire on Upwork */}
+                            {headerData.ctaSecondary && (
+                                <MonetizationLink
+                                    href={headerData.ctaSecondary.url}
+                                    platform="upwork"
+                                    position="hero_secondary"
+                                    value={35}
+                                >
+                                    <button
+                                        className="sm:w-[180px] text-[#1D9BF0] 
+                                        rounded-[30px] no-underline	w-36 text-base 
+                                        font-medium h-12 border-[3px] border-[#1D9BF0] 
+                                        transition duration-100 ease-out 
+                                        hover:bg-[#8B98A5] hover:text-[#15202B]
+                                         hover:border-[#8B98A5] hidden sm:block"
+                                    >
+                                        {headerData.ctaSecondary.text}
+                                    </button>
+                                </MonetizationLink>
+                            )}
+
+                            {/* Fallback resume download if needed */}
                             {headerData.resumePdf && (
                                 <a
                                     href={headerData.resumePdf}
@@ -123,30 +171,16 @@ function Landing() {
                                     rel='noreferrer'
                                 >
                                     <button
-                                        className="sm:w-[180px] text-[#1D9BF0] 
-                                        rounded-[30px] no-underline	w-36 text-base 
-                                        font-medium h-12 border-[3px] border-[#1D9BF0] 
+                                        className="sm:w-[180px] text-[#8B98A5] 
+                                        rounded-[30px] no-underline	w-36 text-sm
+                                        font-medium h-10 border-[2px] border-[#8B98A5] 
                                         transition duration-100 ease-out 
-                                        hover:bg-[#8B98A5] hover:text-[#15202B]
-                                         hover:border-[#8B98A5] "
+                                        hover:bg-[#8B98A5] hover:text-[#15202B]"
                                     >
                                         Download CV
                                     </button>
                                 </a>
                             )}
-                            <Link
-                                href='/#contacts'
-                            >
-                                <button className="sm:w-[180px] bg-[#1D9BF0] 
-                                text-[#15202B] rounded-[30px] no-underline	
-                                w-36 text-base font-medium h-12 border-[3px]
-                                 border-[#1D9BF0] transition duration-100 
-                                 ease-out hover:bg-[#8B98A5] hover:text-[#15202B]
-                                  hover:border-[#8B98A5] hidden sm:block "
-                                >
-                                    Contact
-                                </button>
-                            </Link>
                         </div>
                     </div>
                 </div>

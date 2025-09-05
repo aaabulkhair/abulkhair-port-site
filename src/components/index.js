@@ -11,3 +11,18 @@ export { default as SingleProject } from './projects/project-card/project-card'
 export { default as Projects } from './projects/projects'
 export { default as Skills } from './skills/skills'
 
+// New monetization components
+export { default as TrustBadges } from './trust-badges/trust-badges'
+export { default as StickyCTA } from './sticky-cta/sticky-cta'
+export { default as WhatIDo } from './what-i-do/what-i-do'
+export { default as YouTubeFeed } from './youtube-feed/youtube-feed'
+export { default as TikTokFeed } from './tiktok-feed/tiktok-feed'
+
+// SEO components
+export { default as StructuredData } from './seo/structured-data'
+export { default as SEOHead } from './seo/seo-head'
+
+// Analytics components  
+export { GoogleAnalyticsScript, useGoogleAnalytics } from './analytics/google-analytics'
+export { default as EnhancedLink, MonetizationLink, SocialLink, CTALink, ContentLink } from './analytics/enhanced-link-tracker'
+

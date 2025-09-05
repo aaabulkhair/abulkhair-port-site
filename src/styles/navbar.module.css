@@ -1,12 +1,13 @@
 .navbar {
-  height: 6.5rem;
-  position: absolute;
-  background-color: transparent;
+  height: 5rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 99;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(29, 155, 240, 0.1);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
 }
 
 .navbarContainer {
@@ -14,8 +15,10 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 0 3rem;
-  margin-top: 1rem;
+  max-width: none;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 100%;
 }
 
 .navbarContainer > h1 {
@@ -32,6 +35,46 @@
 .drawer > .MuiBackdropRoot {
   background: rgba(33, 33, 33, 0.15) !important;
   backdrop-filter: blur(20px) !important;
+}
+
+.drawerPaper {
+  overflow-y: auto;
+}
+
+.drawerPaper::-webkit-scrollbar {
+  width: 4px;
+}
+
+.drawerPaper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.drawerPaper::-webkit-scrollbar-thumb {
+  background: rgba(29, 155, 240, 0.3);
+  border-radius: 2px;
+}
+
+.drawerPaper::-webkit-scrollbar-thumb:hover {
+  background: rgba(29, 155, 240, 0.5);
+}
+
+.closeButtonWrapper {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 10;
+}
+
+.closeButton {
+  font-size: 1.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0.8;
+}
+
+.closeButton:hover {
+  transform: scale(1.1);
+  opacity: 1;
 }
 
 @media (max-width: 1100px) {
@@ -65,6 +108,103 @@
   }
   .MuiDrawerPaper {
     border-radius: 0 !important;
+  }
+}
+
+/* Logo Container */
+.logoContainer {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.logoContainer:hover {
+  transform: scale(1.05);
+}
+
+/* Desktop Navigation */
+.desktopNav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.navLink:hover {
+  background: rgba(29, 155, 240, 0.1);
+  transform: translateY(-1px);
+}
+
+.navIcon {
+  font-size: 1.1rem;
+}
+
+/* Theme Toggle Button */
+.themeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 0.5rem;
+}
+
+.themeButton:hover {
+  background: rgba(29, 155, 240, 0.1);
+  transform: rotate(15deg);
+}
+
+.themeIcon {
+  font-size: 1.2rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .desktopNav {
+    gap: 1rem;
+  }
+  
+  .navLink span {
+    display: none;
+  }
+  
+  .navLink {
+    padding: 0.75rem;
+    min-width: 44px;
+    justify-content: center;
+  }
+  
+  .navIcon {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbarContainer {
+    padding: 0 1rem;
+  }
+  
+  .desktopNav {
+    gap: 0.5rem;
+  }
+  
+  .navLink {
+    padding: 0.5rem;
   }
 }
 

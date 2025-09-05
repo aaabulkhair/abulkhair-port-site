@@ -1,0 +1,178 @@
+.themeToggleContainer {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  margin: 0.75rem 0;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, 
+    rgba(var(--quaternary-rgb, 239, 243, 244), 0.1) 0%, 
+    rgba(var(--quaternary-rgb, 239, 243, 244), 0.05) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(var(--primary-rgb, 29, 155, 240), 0.2);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  min-height: 3.5rem;
+}
+
+.themeToggleContainer:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, 
+    rgba(var(--primary-rgb, 29, 155, 240), 0.1) 0%, 
+    rgba(var(--primary-rgb, 29, 155, 240), 0.05) 100%);
+  border-color: rgba(var(--primary-rgb, 29, 155, 240), 0.3);
+  box-shadow: 0 8px 32px rgba(var(--primary-rgb, 29, 155, 240), 0.15);
+}
+
+.toggleTrack {
+  position: relative;
+  width: 3.5rem;
+  height: 2rem;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, 
+    rgba(var(--tertiary-rgb, 239, 243, 244), 0.1) 0%, 
+    rgba(var(--tertiary-rgb, 239, 243, 244), 0.05) 100%);
+  border: 1px solid rgba(var(--tertiary-rgb, 239, 243, 244), 0.2);
+  margin-right: 1rem;
+  overflow: hidden;
+}
+
+.toggleSlider {
+  position: absolute;
+  top: 2px;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), rgba(var(--primary-rgb, 29, 155, 240), 0.8));
+  box-shadow: 0 4px 12px rgba(var(--primary-rgb, 29, 155, 240), 0.4);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggleSlider.light {
+  left: 2px;
+  background: linear-gradient(135deg, #FFA726, #FFB74D);
+  box-shadow: 0 4px 12px rgba(255, 167, 38, 0.4);
+}
+
+.toggleSlider.dark {
+  left: calc(100% - 1.5rem - 2px);
+  background: linear-gradient(135deg, #42A5F5, #64B5F6);
+  box-shadow: 0 4px 12px rgba(66, 165, 245, 0.4);
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.icon {
+  font-size: 0.75rem;
+  color: white;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+}
+
+.trackIcons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.4rem;
+  pointer-events: none;
+}
+
+.trackIcon {
+  font-size: 0.7rem;
+  color: var(--tertiary);
+  opacity: 0.3;
+  transition: all 0.3s ease;
+}
+
+.trackIcon.active {
+  opacity: 0;
+}
+
+.leftIcon {
+  color: #FFA726;
+}
+
+.rightIcon {
+  color: #42A5F5;
+}
+
+.label {
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  color: var(--tertiary);
+  transition: all 0.3s ease;
+}
+
+.themeToggleContainer:hover .label {
+  color: var(--primary);
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .themeToggleContainer {
+    padding: 0.875rem 1.25rem;
+    margin: 0.5rem 0;
+  }
+  
+  .toggleTrack {
+    width: 3rem;
+    height: 1.75rem;
+    margin-right: 0.875rem;
+  }
+  
+  .toggleSlider {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  
+  .toggleSlider.dark {
+    left: calc(100% - 1.25rem - 2px);
+  }
+  
+  .label {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .themeToggleContainer {
+    padding: 0.75rem 1rem;
+  }
+  
+  .toggleTrack {
+    width: 2.75rem;
+    height: 1.5rem;
+    margin-right: 0.75rem;
+  }
+  
+  .toggleSlider {
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  .toggleSlider.dark {
+    left: calc(100% - 1rem - 2px);
+  }
+  
+  .icon {
+    font-size: 0.6rem;
+  }
+  
+  .trackIcon {
+    font-size: 0.6rem;
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "header": {
+    "name": "Ahmed Abulkhair",
+    "title": "Senior Data Scientist & Educator",
+    "description": "Specializing in LLMs, Time-Series Forecasting, and AI Solutions. Book a consultation or hire me for your next project. Available in Arabic and English.",
+    "ctaPrimary": "Book Consultation",
+    "ctaSecondary": "Hire on Upwork"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "experience": "Experience",
+    "skills": "Skills",
+    "projects": "Projects",
+    "blog": "Blog",
+    "contact": "Contact",
+    "services": "Services"
+  },
+  "services": {
+    "title": "What I Do",
+    "subtitle": "Four ways I help individuals and businesses leverage data science and AI",
+    "consulting": {
+      "title": "Data Science Consulting",
+      "description": "Time-series forecasting, LLM/AI agents, and advanced analytics solutions for business growth.",
+      "features": ["Time-Series Analysis", "LLM Integration", "Predictive Modeling", "AI Agent Development"],
+      "cta": "Book Consultation",
+      "pricing": "Starting from $35/session"
+    },
+    "freelance": {
+      "title": "Freelance Development",
+      "description": "End-to-end data pipeline development, ML model deployment, and Power BI solutions.",
+      "features": ["ETL/Data Pipelines", "ML Model Deployment", "Power BI Dashboards", "Database Optimization"],
+      "cta": "Hire on Upwork",
+      "pricing": "$35/hr • 100% Job Success"
+    },
+    "education": {
+      "title": "Educational Content",
+      "description": "Data science education in Arabic through YouTube tutorials and TikTok bite-sized learning.",
+      "features": ["YouTube Tutorials", "TikTok Quick Tips", "Career Guidance", "Interview Prep"],
+      "cta": "Subscribe & Follow",
+      "pricing": "Free educational content"
+    },
+    "writing": {
+      "title": "Technical Writing",
+      "description": "In-depth technical articles and thought leadership content on Medium.",
+      "features": ["Technical Deep-dives", "Industry Analysis", "Best Practices", "Case Studies"],
+      "cta": "Read Articles",
+      "pricing": "Free & premium content"
+    },
+    "bottomCta": {
+      "title": "Not sure which service fits your needs?",
+      "description": "Book a free 15-minute discovery call to discuss your project and find the best solution.",
+      "button": "Book Free Discovery Call"
+    }
+  },
+  "content": {
+    "youtubeTitle": "Latest YouTube Videos",
+    "youtubeChannel": "View Channel",
+    "youtubeSubscribe": "Subscribe to Channel",
+    "youtubeCta": "Love the content? Subscribe for more data science tutorials in Arabic!",
+    "tiktokTitle": "Latest TikTok Content",
+    "tiktokProfile": "@7adidelsafina",
+    "tiktokFollow": "Follow on TikTok",
+    "tiktokCta": "🎯 Follow for bite-sized data science tips in Arabic",
+    "bookSession": "Book 1:1 Session",
+    "watchOn": "Watch on"
+  },
+  "trustBadges": {
+    "topmate": "Topmate",
+    "upwork": "Upwork",
+    "reviews": "Reviews",
+    "jobSuccess": "Job Success"
+  },
+  "stickyCta": {
+    "title": "Ready to get started?",
+    "subtitle": "Book a free discovery call",
+    "minimize": "Book Consultation"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error loading content",
+    "readMore": "Read More",
+    "learnMore": "Learn More",
+    "getStarted": "Get Started",
+    "contactMe": "Contact Me",
+    "viewProject": "View Project",
+    "downloadCV": "Download CV",
+    "watch": "Watch",
+    "follow": "Follow",
+    "subscribe": "Subscribe"
+  }
+}

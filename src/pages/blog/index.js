@@ -62,7 +62,7 @@ function BlogPage() {
                 <div className="blog--search">
                     <input type="text"
                         value={search} onChange={(e) => setSearch(e.target.value)}
-                        placeholder="Seach blog..."
+                        placeholder="Search blog..."
                         style={searchStyle} />
                 </div>
                 <div className="blogs--container">

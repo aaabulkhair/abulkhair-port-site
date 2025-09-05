@@ -39,9 +39,10 @@ function Contacts() {
         if (name && email && message) {
             if (isEmail(email)) {
                 emailjs.sendForm(
-                    process.env.REACT_APP_YOUR_SERVICE_ID,
-                    process.env.REACT_APP_YOUR_TEMPLATE_ID,
-                    form.current, process.env.REACT_APP_YOUR_PUBLIC_KEY)
+                    process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+                    process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+                    form.current,
+                    process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY)
                     .then((result) => {
                         console.log('success');
                         setSuccess(true);
