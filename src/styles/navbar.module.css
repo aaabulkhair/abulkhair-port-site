@@ -129,9 +129,11 @@
 }
 
 .navLink {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
   text-decoration: none;
@@ -148,6 +150,9 @@
 
 .navIcon {
   font-size: 1.1rem;
+  display: inline-flex !important;
+  align-items: center !important;
+  flex-shrink: 0 !important;
 }
 
 /* Theme Toggle Button */
@@ -174,7 +179,7 @@
 }
 
 /* Mobile Responsiveness */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .desktopNav {
     gap: 1rem;
   }
@@ -194,7 +199,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 320px) {
   .navbarContainer {
     padding: 0 1rem;
   }
