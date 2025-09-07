@@ -1,4 +1,5 @@
 import Drawer from '@mui/material/Drawer';
+import Image from 'next/image';
 import React, { useContext, useState } from 'react';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { BsFillMoonFill, BsFillSunFill } from 'react-icons/bs';
@@ -36,9 +37,21 @@ function Navbar() {
     return (
         <div className={styles.navbar}>
             <div className={styles.navbarContainer}>
-                <h1 style={{ color: theme.primary }}>
-                    {shortname(headerData.name)}
-                </h1>
+                <Link href="/">
+                    <Image
+                        src="/images/logo.png"
+                        alt="Ahmed Abulkhair Logo"
+                        width={0}
+                        height={0}
+                        unoptimized={true}
+                        className="cursor-pointer"
+                        style={{ 
+                            width: '80px',
+                            height: 'auto',
+                            filter: theme.isDark ? 'brightness(1)' : 'brightness(1)',
+                        }}
+                    />
+                </Link>
 
                 <IoMenuSharp
                     className={`text-3xl md:text-4xl text-[${theme.tertiary}] cursor-pointer translate-y-3 xs:text-2xl transition-colors hover:text-[${theme.primary}] `}
