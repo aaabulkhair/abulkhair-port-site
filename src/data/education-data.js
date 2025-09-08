@@ -49,7 +49,7 @@ export const educationData = [
             'Comprehensive coverage of ML/DL, Python, and big data tooling',
             'Hands-on projects with real-world datasets'
         ],
-        logo: '/images/education-logos/iti.png'
+        logo: '/images/education-logos/iti.svg'
     },
     {
         id: 3,
@@ -77,6 +77,6 @@ export const educationData = [
             'Engineering problem-solving methodology',
             'Technical project experience'
         ],
-        logo: '/images/education-logos/al-minufiyah-university.png'
+        logo: '/images/education-logos/al-minufiyah-university.webp'
     }
 ]
