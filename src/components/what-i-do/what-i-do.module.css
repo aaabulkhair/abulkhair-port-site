@@ -33,6 +33,7 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin-bottom: 3rem;
+  align-items: stretch;
 }
 
 .serviceCard {
@@ -41,6 +42,9 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .serviceCard:hover {
@@ -104,6 +108,20 @@
   font-weight: 600;
   font-size: 1rem;
   flex-shrink: 0;
+}
+
+.serviceContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.serviceBottom {
+  margin-top: auto;
+}
+
+.socialProof {
+  /* Social proof styling will be in the bottom section */
 }
 
 .servicePricing {

@@ -10,40 +10,41 @@ function WhatIDo() {
         {
             title: '1-on-1 Consulting',
             icon: '🎯',
-            description: 'Get personalized guidance from a 4.9/5★ rated mentor. 100+ hours of successful consultations delivered.',
-            outcome: 'Transform your career or solve complex data challenges with expert guidance.',
+            description: 'Get personalized guidance from a Top 1% Topmate mentor. 100+ hours of successful consultations delivered.',
+            outcome: 'Transform your career or solve complex ML and data challenges with expert guidance.',
             features: [
+                'Machine Learning (Scikit-learn/TensorFlow/PyTorch)',
                 'Time-Series Forecasting (ARIMA/SARIMA/Prophet/TFT)',
                 'LLM Integration & RAG Systems (LangChain/LangGraph)',
                 'Career Mentorship & Interview Prep',
                 'Project Architecture & Best Practices'
             ],
-            socialProof: '4.9/5★ rating • 100+ consultation hours',
+            socialProof: 'Top 1% on Topmate • 4.9/5★ rating • 100+ consultation hours',
             cta: {
                 text: 'Book Your Session',
                 url: `${contactsData.monetizationLinks.primary.url}&utm_campaign=services_consulting`,
                 type: 'primary'
             },
-            pricing: '$35/session • Same-day booking available'
+            pricing: 'Flexible scheduling available'
         },
         {
             title: 'Project Development',
             icon: '🚀',
-            description: 'Complete data science solutions delivered by a Top Rated freelancer. 28 completed jobs, 100% Job Success Rate.',
+            description: 'Complete data science solutions delivered by a Top Rated Upwork freelancer with 100% Job Success Rate.',
             outcome: 'Launch production-ready ML systems that drive measurable business results.',
             features: [
                 'End-to-End ML Pipelines (Scikit-learn/TensorFlow)',
-                'Real-time Data Processing & ETL',
+                'Real-time Data Processing & Analytics',
                 'Power BI & Advanced Analytics Dashboards',
                 'API Development & Model Deployment (FastAPI/Docker)'
             ],
-            socialProof: '100% Job Success • 28 completed projects',
+            socialProof: 'Top Rated Upwork Freelancer • 100% Job Success Rate',
             cta: {
                 text: 'Hire Me Now',
                 url: `${contactsData.monetizationLinks.secondary.url}&utm_campaign=services_development`,
                 type: 'primary'
             },
-            pricing: '$35-45/hr • Available for long-term projects'
+            pricing: 'Ready to work on your project directly'
         },
         {
             title: 'Arabic Data Science Education',
@@ -142,72 +143,76 @@ function WhatIDo() {
                                 </h3>
                             </div>
 
-                            <p 
-                                className={styles.serviceDescription}
-                                style={{ color: theme.tertiary }}
-                            >
-                                {service.description}
-                            </p>
-
-                            <div 
-                                className={styles.serviceOutcome}
-                                style={{ 
-                                    color: theme.primary,
-                                    fontWeight: '600',
-                                    fontSize: '0.95rem',
-                                    margin: '1rem 0',
-                                    fontStyle: 'italic'
-                                }}
-                            >
-                                💡 {service.outcome}
-                            </div>
-
-                            <ul 
-                                className={styles.serviceFeatures}
-                                style={{ color: theme.tertiary }}
-                            >
-                                {service.features.map((feature, idx) => (
-                                    <li key={idx}>
-                                        <span className={styles.checkmark}>✓</span>
-                                        {feature}
-                                    </li>
-                                ))}
-                            </ul>
-
-                            <div 
-                                className={styles.socialProof}
-                                style={{
-                                    backgroundColor: theme.primary + '15',
-                                    color: theme.primary,
-                                    padding: '0.5rem',
-                                    borderRadius: '6px',
-                                    fontSize: '0.85rem',
-                                    fontWeight: '600',
-                                    textAlign: 'center',
-                                    margin: '1rem 0'
-                                }}
-                            >
-                                ⭐ {service.socialProof}
-                            </div>
-
-                            <div className={styles.servicePricing}>
-                                <span 
-                                    className={styles.pricingText}
-                                    style={{ color: theme.primary }}
+                            <div className={styles.serviceContent}>
+                                <p 
+                                    className={styles.serviceDescription}
+                                    style={{ color: theme.tertiary }}
                                 >
-                                    {service.pricing}
-                                </span>
+                                    {service.description}
+                                </p>
+
+                                <div 
+                                    className={styles.serviceOutcome}
+                                    style={{ 
+                                        color: theme.primary,
+                                        fontWeight: '600',
+                                        fontSize: '0.95rem',
+                                        margin: '1rem 0',
+                                        fontStyle: 'italic'
+                                    }}
+                                >
+                                    💡 {service.outcome}
+                                </div>
+
+                                <ul 
+                                    className={styles.serviceFeatures}
+                                    style={{ color: theme.tertiary }}
+                                >
+                                    {service.features.map((feature, idx) => (
+                                        <li key={idx}>
+                                            <span className={styles.checkmark}>✓</span>
+                                            {feature}
+                                        </li>
+                                    ))}
+                                </ul>
                             </div>
 
-                            <a
-                                href={service.cta.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={styles.serviceButton}
-                                style={getCtaStyle(service.cta.type)}
-                            >
-                                {service.cta.text}
-                            </a>
+                            <div className={styles.serviceBottom}>
+                                <div 
+                                    className={styles.socialProof}
+                                    style={{
+                                        backgroundColor: theme.primary + '15',
+                                        color: theme.primary,
+                                        padding: '0.5rem',
+                                        borderRadius: '6px',
+                                        fontSize: '0.85rem',
+                                        fontWeight: '600',
+                                        textAlign: 'center',
+                                        margin: '1rem 0'
+                                    }}
+                                >
+                                    ⭐ {service.socialProof}
+                                </div>
+
+                                <div className={styles.servicePricing}>
+                                    <span 
+                                        className={styles.pricingText}
+                                        style={{ color: theme.primary }}
+                                    >
+                                        {service.pricing}
+                                    </span>
+                                </div>
+
+                                <a
+                                    href={service.cta.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={styles.serviceButton}
+                                    style={getCtaStyle(service.cta.type)}
+                                >
+                                    {service.cta.text}
+                                </a>
+                            </div>
                         </div>
                     ))}
                 </div>
@@ -225,7 +230,7 @@ function WhatIDo() {
                         </h3>
                         <p style={{ color: theme.tertiary }}>
                             Join 100+ satisfied clients who've accelerated their careers and projects. 
-                            <strong> Book now - same-day sessions available.</strong>
+                            <strong> Book your consultation now.</strong>
                         </p>
                         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginTop: '1rem' }}>
                             <a
@@ -266,7 +271,7 @@ function WhatIDo() {
                             marginTop: '1rem',
                             fontWeight: '600'
                         }}>
-                            ⚡ 4.9/5★ rating • 100% Job Success • Same-day availability
+                            ⚡ 4.9/5★ rating • 100% Job Success • Top 1% Topmate mentor
                         </p>
                     </div>
                 </div>
