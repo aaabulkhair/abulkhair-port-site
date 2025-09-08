@@ -27,7 +27,15 @@
       "WebFetch(domain:topmate.io)",
       "WebFetch(domain:brandfetch.com)",
       "Bash(git commit:*)",
-      "WebFetch(domain:www.youtube.com)"
+      "WebFetch(domain:www.youtube.com)",
+      "Bash(next dev:*)",
+      "Bash(npx next dev:*)",
+      "Bash(open:*)",
+      "Bash(claude --debug)",
+      "mcp__playwright__browser_wait_for",
+      "mcp__playwright__browser_network_requests",
+      "WebFetch(domain:tikapi.io)",
+      "WebFetch(domain:developers.google.com)"
     ],
     "deny": [],
     "ask": []

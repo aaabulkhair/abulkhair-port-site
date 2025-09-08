@@ -13,6 +13,14 @@ function YouTubeFeed({ maxVideos = 3 }) {
     const CHANNEL_HANDLE = '7adid_elsafina';
 
     useEffect(() => {
+        // Load Google Platform JavaScript for YouTube subscribe button
+        if (!document.querySelector('script[src="https://apis.google.com/js/platform.js"]')) {
+            const script = document.createElement('script');
+            script.src = 'https://apis.google.com/js/platform.js';
+            script.async = true;
+            document.head.appendChild(script);
+        }
+
         const fetchYouTubeVideos = async () => {
             try {
                 setLoading(true);
@@ -85,15 +93,28 @@ function YouTubeFeed({ maxVideos = 3 }) {
     return (
         <div className={styles.youtubeFeed}>
             <div className={styles.header}>
-                <h3 style={{ color: theme.primary }}>Latest YouTube Videos</h3>
+                <div className={styles.titleSection}>
+                    <div className={styles.logoContainer}>
+                        <img 
+                            src="/images/7adidelsafina-logo.png" 
+                            alt="7adid_elsafina logo" 
+                            className={styles.channelLogo}
+                        />
+                    </div>
+                    <div className={styles.titleInfo}>
+                        <h3 style={{ color: theme.primary }}>YouTube: 7adid_elsafina 📺</h3>
+                        <p className={styles.subtitle} style={{ color: theme.tertiary + '80' }}>
+                            Data Science in Arabic
+                        </p>
+                    </div>
+                </div>
                 <a 
                     href={contactsData.youtube}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={styles.channelLink}
-                    style={{ color: theme.primary }}
+                    className={styles.subscribeButton}
                 >
-                    View Channel →
+                    Subscribe
                 </a>
             </div>
             
@@ -161,18 +182,17 @@ function YouTubeFeed({ maxVideos = 3 }) {
                 <p style={{ color: theme.tertiary }}>
                     Love the content? Subscribe for more data science tutorials in Arabic!
                 </p>
-                <a 
-                    href={contactsData.youtube}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.subscribeButton}
-                    style={{
-                        backgroundColor: theme.primary,
-                        color: theme.secondary
-                    }}
-                >
-                    Subscribe to Channel
-                </a>
+                <div className={styles.youtubeSubscribeContainer}>
+                    <a 
+                        href="https://www.youtube.com/@7adid_elsafina?sub_confirmation=1"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.youtubeSubscribeButton}
+                    >
+                        <span className={styles.youtubeIcon}>▶</span>
+                        Subscribe
+                    </a>
+                </div>
             </div>
         </div>
     );

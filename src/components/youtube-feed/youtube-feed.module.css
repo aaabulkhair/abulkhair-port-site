@@ -8,12 +8,49 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, rgba(255, 0, 0, 0.05) 0%, rgba(255, 0, 0, 0.05) 100%);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 0, 0, 0.1);
 }
 
-.header h3 {
+.titleSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logoContainer {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(45deg, #ff0000, #ff4444);
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.channelLogo {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: white;
+}
+
+.titleInfo h3 {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 600;
+  line-height: 1.2;
+}
+
+.subtitle {
+  margin: 0.25rem 0 0 0;
+  font-size: 0.9rem;
+  font-style: italic;
 }
 
 .channelLink {
@@ -144,19 +181,65 @@
 }
 
 .subscribeButton {
-  display: inline-block;
-  padding: 0.75rem 2rem;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
+  background: #ff0000;
+  color: white;
   border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
   cursor: pointer;
 }
 
 .subscribeButton:hover {
+  background: #cc0000;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
+}
+
+.subscribeButton::before {
+  content: '📺';
+  font-size: 1rem;
+}
+
+.youtubeSubscribeContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.youtubeSubscribeButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #ff0000;
+  color: white;
+  padding: 0.7rem 1.5rem;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(255, 0, 0, 0.3);
+  border: none;
+}
+
+.youtubeSubscribeButton:hover {
+  background: #cc0000;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4);
+}
+
+.youtubeIcon {
+  font-size: 1rem;
+  margin-right: 0.25rem;
 }
 
 .loading, .error {
@@ -170,6 +253,31 @@
     flex-direction: column;
     gap: 1rem;
     text-align: center;
+  }
+  
+  .titleSection {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+  
+  .logoContainer {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .channelLogo {
+    width: 46px;
+    height: 46px;
+  }
+  
+  .titleInfo h3 {
+    font-size: 1.1rem;
+  }
+  
+  .subscribeButton {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
   }
   
   .videosGrid {
