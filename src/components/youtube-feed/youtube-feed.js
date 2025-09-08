@@ -9,48 +9,53 @@ function YouTubeFeed({ maxVideos = 3 }) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    // Fallback videos with actual content from the channel
-    const fallbackVideos = [
-        {
-            id: 'lE1vA0sQMzA',
-            title: '3 Resources to Prepare for Data Science Interview | In Arabic',
-            thumbnail: 'https://img.youtube.com/vi/lE1vA0sQMzA/mqdefault.jpg',
-            publishedAt: '2024-12-15',
-            description: 'Three essential resources to help you prepare for data science interviews in Arabic.',
-            url: 'https://www.youtube.com/watch?v=lE1vA0sQMzA'
-        },
-        {
-            id: 'sample2',
-            title: 'Data Science Career Roadmap | Arabic',
-            thumbnail: 'https://img.youtube.com/vi/lE1vA0sQMzA/mqdefault.jpg',
-            publishedAt: '2024-12-10',
-            description: 'Complete roadmap for starting your data science career.',
-            url: 'https://www.youtube.com/@7adidelsafina'
-        },
-        {
-            id: 'sample3',
-            title: 'Machine Learning Fundamentals | Arabic',
-            thumbnail: 'https://img.youtube.com/vi/lE1vA0sQMzA/mqdefault.jpg',
-            publishedAt: '2024-12-05',
-            description: 'Introduction to machine learning concepts in Arabic.',
-            url: 'https://www.youtube.com/@7adidelsafina'
-        }
-    ];
+    // YouTube channel handle for RSS feed
+    const CHANNEL_HANDLE = '7adid_elsafina';
 
     useEffect(() => {
-        // For now, use fallback videos since YouTube API requires server-side implementation
-        // In production, you'd implement this as an API route in pages/api/
-        const loadVideos = () => {
+        const fetchYouTubeVideos = async () => {
             try {
-                setVideos(fallbackVideos.slice(0, maxVideos));
-                setLoading(false);
+                setLoading(true);
+                setError(null);
+
+                // Use our Next.js API route
+                const response = await fetch('/api/youtube-feed');
+                
+                if (!response.ok) {
+                    throw new Error('Failed to fetch from API');
+                }
+
+                const data = await response.json();
+                
+                if (data.videos && data.videos.length > 0) {
+                    setVideos(data.videos.slice(0, maxVideos));
+                } else {
+                    throw new Error('No videos in API response');
+                }
+                
             } catch (err) {
-                setError('Failed to load videos');
+                console.error('YouTube API fetch error:', err);
+                setError('Unable to load latest videos');
+                
+                // Fallback to static data if API fails
+                const fallbackVideos = [
+                    {
+                        id: 'lE1vA0sQMzA',
+                        title: '3 Resources to Prepare for Data Science Interview | In Arabic',
+                        thumbnail: 'https://img.youtube.com/vi/lE1vA0sQMzA/mqdefault.jpg',
+                        publishedAt: '2024-12-15',
+                        description: 'Three essential resources to help you prepare for data science interviews in Arabic.',
+                        url: 'https://www.youtube.com/watch?v=lE1vA0sQMzA'
+                    }
+                ];
+                setVideos(fallbackVideos.slice(0, maxVideos));
+                
+            } finally {
                 setLoading(false);
             }
         };
 
-        loadVideos();
+        fetchYouTubeVideos();
     }, [maxVideos]);
 
     const formatDate = (dateString) => {

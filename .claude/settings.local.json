@@ -25,7 +25,9 @@
       "Bash(kill:*)",
       "Read(//Users/ahmedabulkhair/Downloads/logos/**)",
       "WebFetch(domain:topmate.io)",
-      "WebFetch(domain:brandfetch.com)"
+      "WebFetch(domain:brandfetch.com)",
+      "Bash(git commit:*)",
+      "WebFetch(domain:www.youtube.com)"
     ],
     "deny": [],
     "ask": []
