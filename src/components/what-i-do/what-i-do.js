@@ -216,65 +216,6 @@ function WhatIDo() {
                         </div>
                     ))}
                 </div>
-
-                <div 
-                    className={styles.bottomCta}
-                    style={{
-                        backgroundColor: theme.primary + '10',
-                        border: `2px solid ${theme.primary}30`
-                    }}
-                >
-                    <div className={styles.bottomCtaContent}>
-                        <h3 style={{ color: theme.primary }}>
-                            🚀 Ready to Transform Your Data Science Journey?
-                        </h3>
-                        <p style={{ color: theme.tertiary }}>
-                            Join 100+ satisfied clients who've accelerated their careers and projects. 
-                            <strong> Book your consultation now.</strong>
-                        </p>
-                        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginTop: '1rem' }}>
-                            <a
-                                href={`${contactsData.monetizationLinks.primary.url}&utm_campaign=services_bottom_cta_primary`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={styles.discoveryButton}
-                                style={{
-                                    backgroundColor: theme.primary,
-                                    color: theme.secondary,
-                                    padding: '1rem 2rem',
-                                    fontSize: '1.1rem',
-                                    fontWeight: '600'
-                                }}
-                            >
-                                💬 Book Consultation ($35)
-                            </a>
-                            <a
-                                href={`${contactsData.monetizationLinks.secondary.url}&utm_campaign=services_bottom_cta_secondary`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={styles.discoveryButton}
-                                style={{
-                                    backgroundColor: 'transparent',
-                                    color: theme.primary,
-                                    border: `2px solid ${theme.primary}`,
-                                    padding: '1rem 2rem',
-                                    fontSize: '1.1rem',
-                                    fontWeight: '600'
-                                }}
-                            >
-                                💼 Hire for Projects
-                            </a>
-                        </div>
-                        <p style={{ 
-                            color: theme.primary, 
-                            fontSize: '0.9rem', 
-                            marginTop: '1rem',
-                            fontWeight: '600'
-                        }}>
-                            ⚡ 4.9/5★ rating • 100% Job Success • Top 1% Topmate mentor
-                        </p>
-                    </div>
-                </div>
             </div>
         </section>
     );
