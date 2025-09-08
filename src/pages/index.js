@@ -19,10 +19,10 @@ function HomePage({ blogs }) {
       <About />
       <WhatIDo />
       <Experience />
+      <Education />
       <Testimonials />
       <YouTubeFeed maxVideos={3} />
       <TikTokFeed maxVideos={3} />
-      <Education />
       <Blog blogs={blogs} />
       <Contacts />
     </>
