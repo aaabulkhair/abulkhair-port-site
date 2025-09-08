@@ -3,8 +3,6 @@ import React, { useContext, useState } from 'react';
 import Fade from 'react-reveal/Fade';
 import expImgBlack from '../../assets/svg/experience/expImgBlack.svg';
 import expImgWhite from '../../assets/svg/experience/expImgWhite.svg';
-import alxLogoBlack from '../../assets/svg/experience/alx-logo-black.svg';
-import alxLogoWhite from '../../assets/svg/experience/alx-logo-white.svg';
 import { ThemeContext } from '../../contexts/theme-context';
 import styles from '../../styles/experience.module.css';
 
@@ -24,20 +22,21 @@ function ExperienceCard({ id, company, jobtitle, startYear, endYear, description
 
     // Determine which icon to show
     const getIconSrc = () => {
-        if (logo === 'alx-africa') {
-            return theme.type === 'light' ? alxLogoBlack : alxLogoWhite;
+        if (logo && logo.startsWith('/images/')) {
+            return logo;
         }
         return theme.type === 'light' ? expImgBlack : expImgWhite;
     };
 
     const getIconStyle = () => {
-        if (logo === 'alx-africa') {
+        if (logo && logo.startsWith('/images/')) {
             return { 
-                backgroundColor: 'transparent',
+                backgroundColor: 'white',
                 padding: '8px',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                borderRadius: '8px'
             };
         }
         return { backgroundColor: theme.primary };
@@ -47,7 +46,13 @@ function ExperienceCard({ id, company, jobtitle, startYear, endYear, description
         <Fade bottom>
             <div key={id} className={styles.experienceCard} style={{ backgroundColor: theme.quaternary, ...(containerStyle || {}) }}>
                 <div className={styles.expcardImg} style={getIconStyle()}>
-                    <Image src={getIconSrc()} alt={company || 'Company'} />
+                    <Image 
+                        src={getIconSrc()} 
+                        alt={company || 'Company'} 
+                        width={logo && logo.startsWith('/images/') ? 80 : undefined}
+                        height={logo && logo.startsWith('/images/') ? 80 : undefined}
+                        style={logo && logo.startsWith('/images/') ? {objectFit: 'contain', width: '100%', height: 'auto'} : undefined}
+                    />
                 </div>
                 <div className={styles.experienceDetails} style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
                     <h6 style={{ color: theme.primary }}>{startYear}-{endYear}</h6>

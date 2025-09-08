@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   About, Blog, Contacts, Education,
-  Experience, Landing, Navbar, Projects, Skills,
+  Experience, Landing, Navbar, Testimonials,
   WhatIDo, YouTubeFeed, TikTokFeed, StickyCTA
 } from '../components';
 import BackToTop from '../components/back-to-top/back-to-top';
@@ -19,8 +19,7 @@ function HomePage({ blogs }) {
       <About />
       <WhatIDo />
       <Experience />
-      <Skills />
-      <Projects />
+      <Testimonials />
       <YouTubeFeed maxVideos={3} />
       <TikTokFeed maxVideos={3} />
       <Education />

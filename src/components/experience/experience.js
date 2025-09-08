@@ -18,6 +18,10 @@ function Experience() {
     const sortedExperiences = useMemo(() => {
         return [...experienceData]
             .sort((a, b) => {
+                // Always put ALX Africa first
+                if (a.company === 'ALX Africa') return -1;
+                if (b.company === 'ALX Africa') return 1;
+                
                 const aTime = new Date(a.endYear === 'Present' ? Date.now() : `${a.endYear}`);
                 const bTime = new Date(b.endYear === 'Present' ? Date.now() : `${b.endYear}`);
                 if (bTime.getTime() === aTime.getTime()) {

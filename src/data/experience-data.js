@@ -15,7 +15,7 @@ export const experienceData = [
         ],
         tech: ['Python','PyTorch','Transformers','NLP','LLMs','Docker','AWS'],
         companyUrl: 'https://www.alxafrica.com/',
-        logo: 'alx-africa'
+        logo: '/images/company-logos/alx.svg'
     },
     {
         id: 2,
@@ -30,7 +30,8 @@ export const experienceData = [
             'Introduced opportunities for predictive analytics and data quality monitoring',
             'Scoped MVPs for price intelligence and automation'
         ],
-        tech: ['Python','Pandas','Scikit-learn','Dashboards']
+        tech: ['Python','Pandas','Scikit-learn','Dashboards'],
+        logo: '/images/company-logos/arabshipbroker.png'
     },
     {
         id: 3,
@@ -43,7 +44,8 @@ export const experienceData = [
             'Optimized web scraping and data pipelines improving throughput and stability',
             'Built dynamic pricing and recommendation components',
         ],
-        tech: ['Python','Airflow','ETL','Recommenders','Time Series']
+        tech: ['Python','Airflow','ETL','Recommenders','Time Series'],
+        logo: '/images/company-logos/shopbrain.avif'
     },
     {
         id: 4,
@@ -59,7 +61,8 @@ export const experienceData = [
             'Mentored graduation projects with industry partners',
             'Continuously updated content with state-of-the-art techniques'
         ],
-        tech: ['Python','Pandas','SQL','ML','DL']
+        tech: ['Python','Pandas','SQL','ML','DL'],
+        logo: '/images/company-logos/iti.svg'
     },
     {
         id: 5,
@@ -73,7 +76,8 @@ export const experienceData = [
             'Guided career development and technical skill building',
             'Facilitated networking and community connections'
         ],
-        tech: ['Python', 'Data Science', 'Mentoring', 'Community Building']
+        tech: ['Python', 'Data Science', 'Mentoring', 'Community Building'],
+        logo: '/images/company-logos/kaggle.png'
     },
     {
         id: 6,
@@ -87,7 +91,8 @@ export const experienceData = [
             'Built customer segmentation models for targeted marketing',
             'Implemented fraud detection algorithms'
         ],
-        tech: ['Python', 'Scikit-learn', 'SQL', 'AWS', 'Recommender Systems']
+        tech: ['Python', 'Scikit-learn', 'SQL', 'AWS', 'Recommender Systems'],
+        logo: '/images/company-logos/jumia.png'
     },
     {
         id: 7,
@@ -101,7 +106,8 @@ export const experienceData = [
             'Developed curriculum for neural networks and computer vision',
             'Provided technical mentorship and project guidance'
         ],
-        tech: ['Python', 'TensorFlow', 'PyTorch', 'Deep Learning', 'Computer Vision']
+        tech: ['Python', 'TensorFlow', 'PyTorch', 'Deep Learning', 'Computer Vision'],
+        logo: '/images/company-logos/udacity.svg'
     },
     {
         id: 8,
@@ -116,7 +122,8 @@ export const experienceData = [
             'Built face authentication, GANs, and object detection pipelines',
             'Developed explainable ML for existing systems'
         ],
-        tech: ['Python','Scikit-learn','TensorFlow','Computer Vision','XAI']
+        tech: ['Python','Scikit-learn','TensorFlow','Computer Vision','XAI'],
+        logo: '/images/company-logos/upwork.svg'
     },
     {
         id: 9,
@@ -130,6 +137,7 @@ export const experienceData = [
             'Developed recommendation engines for telecom offer optimization',
             'Created analytics dashboards for business intelligence'
         ],
-        tech: ['Python', 'NLP', 'Chatbots', 'Recommender Systems', 'Analytics']
+        tech: ['Python', 'NLP', 'Chatbots', 'Recommender Systems', 'Analytics'],
+        logo: '/images/company-logos/bbi.svg'
     },
 ]
