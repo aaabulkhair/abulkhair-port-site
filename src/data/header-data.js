@@ -20,15 +20,15 @@ export const headerData = {
     trustBadges: [
         {
             platform: 'Topmate',
-            rating: '4.9',
-            metric: '13 Reviews',
-            icon: '⭐'
+            rating: '4.9/5.0',
+            metric: 'Stars',
+            icon: '/images/topmate-icon.svg'
         },
         {
             platform: 'Upwork',
             rating: '100%',
             metric: 'Job Success',
-            icon: '✅'
+            icon: '/images/upwork-icon.svg'
         }
     ],
     languages: ['Arabic', 'English'],

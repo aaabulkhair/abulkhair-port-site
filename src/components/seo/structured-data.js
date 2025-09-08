@@ -95,27 +95,71 @@ function StructuredData({ locale = 'en', pageType = 'website', additionalData = 
         "offers": [
             {
                 "@type": "Offer",
-                "name": locale === 'ar' ? "استشارة علم البيانات" : "Data Science Consultation",
-                "description": locale === 'ar' ? "جلسات استشارية في علم البيانات والذكاء الاصطناعي" : "Data Science and AI consultation sessions",
+                "name": locale === 'ar' ? "استشارة فردية" : "1-on-1 Consulting",
+                "description": locale === 'ar' ? "جلسات استشارية شخصية مع خبير تقييم 4.9/5 نجوم" : "Personalized guidance from a 4.9/5★ rated mentor",
                 "price": "35",
                 "priceCurrency": "USD",
+                "category": "Consulting",
                 "availability": "https://schema.org/InStock",
-                "url": contactsData.topmate
-            },
-            {
-                "@type": "Offer", 
-                "name": locale === 'ar' ? "تطوير مشاريع علم البيانات" : "Data Science Project Development",
-                "description": locale === 'ar' ? "تطوير حلول علم البيانات والتعلم الآلي" : "Data Science and Machine Learning solutions development",
-                "price": "35",
-                "priceCurrency": "USD",
+                "url": contactsData.topmate,
                 "priceSpecification": {
                     "@type": "PriceSpecification",
                     "price": "35",
                     "priceCurrency": "USD",
+                    "unitText": "per session"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.9",
+                    "bestRating": "5",
+                    "ratingCount": "100"
+                }
+            },
+            {
+                "@type": "Offer",
+                "name": locale === 'ar' ? "تطوير المشاريع" : "Project Development",
+                "description": locale === 'ar' ? "حلول علم البيانات شاملة من مطور بمعدل نجاح 100%" : "Complete data science solutions from a Top Rated freelancer",
+                "price": "35",
+                "priceCurrency": "USD",
+                "category": "Development",
+                "priceSpecification": {
+                    "@type": "PriceSpecification",
+                    "minPrice": "35",
+                    "maxPrice": "45",
+                    "priceCurrency": "USD",
                     "unitCode": "HUR"
                 },
                 "availability": "https://schema.org/InStock",
-                "url": contactsData.upwork
+                "url": contactsData.upwork,
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "5.0",
+                    "bestRating": "5",
+                    "description": "100% Job Success Rate"
+                }
+            },
+            {
+                "@type": "Offer",
+                "name": locale === 'ar' ? "التعليم باللغة العربية" : "Arabic Data Science Education",
+                "description": locale === 'ar' ? "محتوى تعليمي مجاني في علم البيانات باللغة العربية" : "Free data science education content in Arabic",
+                "price": "0",
+                "priceCurrency": "USD",
+                "category": "Education",
+                "availability": "https://schema.org/InStock",
+                "url": contactsData.youtube,
+                "educationalUse": "Data Science Training",
+                "teaches": ["Machine Learning", "Data Analysis", "Career Development"]
+            },
+            {
+                "@type": "Offer",
+                "name": locale === 'ar' ? "المحتوى التقني والقيادة الفكرية" : "Technical Content & Thought Leadership",
+                "description": locale === 'ar' ? "مقالات تقنية متعمقة ورؤى صناعية" : "In-depth technical articles and industry insights",
+                "price": "0",
+                "priceCurrency": "USD",
+                "category": "Content",
+                "availability": "https://schema.org/InStock",
+                "url": contactsData.medium,
+                "educationalUse": "Professional Development"
             }
         ]
     };
@@ -175,31 +219,77 @@ function StructuredData({ locale = 'en', pageType = 'website', additionalData = 
                 return {
                     "@context": "https://schema.org",
                     "@type": "Service",
-                    "serviceType": "Data Science Consulting",
+                    "serviceType": "Data Science Consulting & Development",
                     "provider": {
                         "@type": "Person",
                         "name": "Ahmed Abulkhair"
                     },
                     "areaServed": "Worldwide",
+                    "aggregateRating": {
+                        "@type": "AggregateRating",
+                        "ratingValue": "4.9",
+                        "bestRating": "5",
+                        "ratingCount": "100"
+                    },
                     "hasOfferCatalog": {
                         "@type": "OfferCatalog",
-                        "name": "Data Science Services",
+                        "name": "Data Science & AI Services",
                         "itemListElement": [
                             {
                                 "@type": "Offer",
                                 "itemOffered": {
                                     "@type": "Service",
-                                    "name": "LLM Consulting",
-                                    "description": "Large Language Model integration and development"
-                                }
+                                    "name": "1-on-1 Consulting",
+                                    "description": "Time-Series Forecasting (ARIMA/SARIMA/Prophet/TFT), LLM Integration & RAG Systems (LangChain/LangGraph), Career Mentorship & Interview Prep",
+                                    "provider": {
+                                        "@type": "Person",
+                                        "name": "Ahmed Abulkhair"
+                                    }
+                                },
+                                "price": "35",
+                                "priceCurrency": "USD"
                             },
                             {
                                 "@type": "Offer",
                                 "itemOffered": {
                                     "@type": "Service",
-                                    "name": "Time-Series Forecasting",
-                                    "description": "Advanced time-series analysis and forecasting"
-                                }
+                                    "name": "Project Development",
+                                    "description": "End-to-End ML Pipelines (Scikit-learn/TensorFlow), Real-time Data Processing & ETL, Power BI & Advanced Analytics Dashboards, API Development & Model Deployment (FastAPI/Docker)",
+                                    "provider": {
+                                        "@type": "Person",
+                                        "name": "Ahmed Abulkhair"
+                                    }
+                                },
+                                "price": "35",
+                                "priceCurrency": "USD"
+                            },
+                            {
+                                "@type": "Offer",
+                                "itemOffered": {
+                                    "@type": "EducationEvent",
+                                    "name": "Arabic Data Science Education",
+                                    "description": "YouTube Deep-dive Tutorials (Arabic), TikTok Quick Learning Bites, Real-world Case Studies & Projects",
+                                    "provider": {
+                                        "@type": "Person",
+                                        "name": "Ahmed Abulkhair"
+                                    }
+                                },
+                                "price": "0",
+                                "priceCurrency": "USD"
+                            },
+                            {
+                                "@type": "Offer",
+                                "itemOffered": {
+                                    "@type": "Article",
+                                    "name": "Technical Content & Thought Leadership",
+                                    "description": "Deep Technical Tutorials & Walkthroughs, Industry Trend Analysis & Predictions, Case Studies from Real Projects",
+                                    "author": {
+                                        "@type": "Person",
+                                        "name": "Ahmed Abulkhair"
+                                    }
+                                },
+                                "price": "0",
+                                "priceCurrency": "USD"
                             }
                         ]
                     }

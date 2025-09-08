@@ -17,6 +17,21 @@ npm run build
 
 # Start production server
 npm start
+
+# Run Playwright tests (requires dev server running)
+npx playwright test
+
+# Run tests in headed mode for debugging
+npx playwright test --headed
+
+# Run tests for specific browser project
+npx playwright test --project=chromium
+
+# Update visual regression baselines
+npx playwright test --update-snapshots
+
+# Install Playwright browsers (run once)
+npx playwright install
 ```
 
 ## Architecture & Structure
@@ -69,6 +84,7 @@ Each portfolio section has a corresponding data file:
 
 ### Environment Variables
 - `NEXT_PUBLIC_DEVTO_USERNAME`: Dev.to username for fetching blog posts
+- `NEXT_PUBLIC_GA_MEASUREMENT_ID`: Google Analytics measurement ID for tracking
 - Environment variables are loaded via `dotenv` in `next.config.js`
 
 ## Development Notes
@@ -76,6 +92,10 @@ Each portfolio section has a corresponding data file:
 ### Image Handling
 - External images are configured in `next.config.js` domains (currently `i.ibb.co`)
 - Add new image domains to the `images.domains` array in `next.config.js`
+- **Logo Implementation**: Personal logo in navbar uses high-resolution PNG (5906x5906px) displayed at 80px width
+  - Located at `/public/images/logo.png` with `unoptimized={true}` for crisp quality
+  - CSS-based sizing: `width: 0, height: 0` props with `style={{ width: '80px', height: 'auto' }}`
+  - Replaces text-based name display in navbar component
 
 ### Theme System
 - Theme context provides dynamic color schemes
@@ -98,11 +118,59 @@ This project has been transformed into **abulkhair.ai** - a monetization-focused
 ### 🎯 Monetization Components
 - **Trust Badges** (`src/components/trust-badges/`) - Displays Topmate 4.9★ and Upwork 100% Job Success
 - **Sticky CTA** (`src/components/sticky-cta/`) - Global booking CTA that appears on scroll
-- **What I Do Section** (`src/components/what-i-do/`) - Four service pillars with contextual CTAs
+- **What I Do Section** (`src/components/what-i-do/`) - Conversion-optimized service showcase with social proof
 - **Enhanced Links** (`src/components/analytics/enhanced-link-tracker.js`) - Automatic UTM tracking for all external links
 
+#### What I Do Section - Conversion-Focused Design
+**Location**: `src/components/what-i-do/what-i-do.js`
+**Purpose**: Transform visitors into clients through results-oriented messaging
+
+**Key Features**:
+- **Four Service Pillars** with conversion-focused copy:
+  1. **1-on-1 Consulting** - Personalized mentorship (4.9/5★, 100+ hours)
+  2. **Project Development** - Complete solutions (100% Job Success, 28 projects)
+  3. **Arabic Education** - Language-barrier-free learning
+  4. **Technical Content** - Thought leadership and insights
+
+- **Social Proof Integration**:
+  - Rating badges (4.9/5★ with 100+ consultation hours)
+  - Job success metrics (100% Job Success • 28 completed projects)
+  - Community building indicators
+  - Featured writer recognition
+
+- **Technical Keywords for SEO**:
+  - Time-Series: ARIMA/SARIMA/Prophet/TFT
+  - LLM/AI: RAG Systems, LangChain/LangGraph
+  - ML Stack: Scikit-learn/TensorFlow, FastAPI/Docker
+  - Analytics: Power BI, Real-time ETL
+
+- **Conversion Psychology Elements**:
+  - Outcome-focused messaging (💡 Transform your career...)
+  - Urgency indicators (Same-day booking available)
+  - Social proof positioning (⭐ 4.9/5★ rating)
+  - Multiple price points ($35/session to $35-45/hr)
+
+- **Enhanced CTAs**:
+  - Primary: "Book Your Session" / "Hire Me Now"
+  - Bottom section: Dual CTA with 💬 and 💼 icons
+  - UTM tracking: services_consulting, services_development, etc.
+
+**Data Structure**:
+```javascript
+// Each service includes:
+{
+  title: "Service Name",
+  description: "Social proof + value proposition", 
+  outcome: "Specific result promise",
+  features: ["Technical keywords", "..."],
+  socialProof: "Metrics + credibility",
+  cta: { text: "Action-oriented", url: "UTM tracked" },
+  pricing: "Clear value + availability"
+}
+```
+
 ### 📊 Content Widgets
-- **YouTube Feed** (`src/components/youtube-feed/`) - Latest videos from @7adidelsafina channel
+- **YouTube Feed** (`src/components/youtube-feed/`) - Latest videos from @7adid_elsafina channel
 - **TikTok Feed** (`src/components/tiktok-feed/`) - Recent TikTok content with Arabic data science tips
 - **Medium Integration** - Pulls latest articles via existing blog system
 
@@ -135,7 +203,7 @@ All external links use consistent UTM parameters:
 ### 🎨 Key Monetization URLs
 - **Topmate**: https://topmate.io/abulkhair (Consultations)
 - **Upwork**: https://www.upwork.com/freelancers/~01e8b690de797b2ecf (Project Work)
-- **YouTube**: https://www.youtube.com/@7adidelsafina (Arabic Content)
+- **YouTube**: https://www.youtube.com/@7adid_elsafina (Arabic Content)
 - **TikTok**: https://www.tiktok.com/@7adidelsafina (Bite-sized Tips)
 - **Medium**: https://medium.com/@aaabulkhair (Technical Writing)
 

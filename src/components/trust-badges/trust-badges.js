@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import Image from 'next/image';
 import { ThemeContext } from '../../contexts/theme-context';
 import { contactsData } from '../../data/contacts-data';
 import styles from './trust-badges.module.css';
@@ -37,7 +38,20 @@ function TrustBadges({ badges, className = '' }) {
                         border: `2px solid ${theme.primary}`
                     }}
                 >
-                    <span className={styles.icon}>{badge.icon}</span>
+                    <span className={styles.icon}>
+                        {badge.icon.startsWith('http') || badge.icon.startsWith('/') ? (
+                            <Image
+                                src={badge.icon}
+                                alt={`${badge.platform} logo`}
+                                width={20}
+                                height={20}
+                                className={styles.logoIcon}
+                                unoptimized={badge.icon.endsWith('.svg')}
+                            />
+                        ) : (
+                            badge.icon
+                        )}
+                    </span>
                     <div className={styles.content}>
                         <div className={styles.platform}>{badge.platform}</div>
                         <div className={styles.rating}>

@@ -91,11 +91,10 @@
 
 .lcrButtonContainer {
   margin-top: 2rem;
-  width: 350px;
   display: flex;
-  gap: 10px;
+  gap: 1rem;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   font-family: "var(--primaryFont)", sans-serif;
 }
 

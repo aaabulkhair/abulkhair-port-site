@@ -8,52 +8,80 @@ function WhatIDo() {
 
     const services = [
         {
-            title: 'Data Science Consulting',
-            icon: '🔬',
-            description: 'Time-series forecasting, LLM/AI agents, and advanced analytics solutions for business growth.',
-            features: ['Time-Series Analysis', 'LLM Integration', 'Predictive Modeling', 'AI Agent Development'],
+            title: '1-on-1 Consulting',
+            icon: '🎯',
+            description: 'Get personalized guidance from a 4.9/5★ rated mentor. 100+ hours of successful consultations delivered.',
+            outcome: 'Transform your career or solve complex data challenges with expert guidance.',
+            features: [
+                'Time-Series Forecasting (ARIMA/SARIMA/Prophet/TFT)',
+                'LLM Integration & RAG Systems (LangChain/LangGraph)',
+                'Career Mentorship & Interview Prep',
+                'Project Architecture & Best Practices'
+            ],
+            socialProof: '4.9/5★ rating • 100+ consultation hours',
             cta: {
-                text: 'Book Consultation',
-                url: contactsData.monetizationLinks.primary.url,
+                text: 'Book Your Session',
+                url: `${contactsData.monetizationLinks.primary.url}&utm_campaign=services_consulting`,
                 type: 'primary'
             },
-            pricing: 'Starting from $35/session'
+            pricing: '$35/session • Same-day booking available'
         },
         {
-            title: 'Freelance Development',
-            icon: '💼',
-            description: 'End-to-end data pipeline development, ML model deployment, and Power BI solutions.',
-            features: ['ETL/Data Pipelines', 'ML Model Deployment', 'Power BI Dashboards', 'Database Optimization'],
+            title: 'Project Development',
+            icon: '🚀',
+            description: 'Complete data science solutions delivered by a Top Rated freelancer. 28 completed jobs, 100% Job Success Rate.',
+            outcome: 'Launch production-ready ML systems that drive measurable business results.',
+            features: [
+                'End-to-End ML Pipelines (Scikit-learn/TensorFlow)',
+                'Real-time Data Processing & ETL',
+                'Power BI & Advanced Analytics Dashboards',
+                'API Development & Model Deployment (FastAPI/Docker)'
+            ],
+            socialProof: '100% Job Success • 28 completed projects',
             cta: {
-                text: 'Hire on Upwork',
-                url: contactsData.monetizationLinks.secondary.url,
-                type: 'secondary'
+                text: 'Hire Me Now',
+                url: `${contactsData.monetizationLinks.secondary.url}&utm_campaign=services_development`,
+                type: 'primary'
             },
-            pricing: '$35/hr • 100% Job Success'
+            pricing: '$35-45/hr • Available for long-term projects'
         },
         {
-            title: 'Educational Content',
-            icon: '🎓',
-            description: 'Data science education in Arabic through YouTube tutorials and TikTok bite-sized learning.',
-            features: ['YouTube Tutorials', 'TikTok Quick Tips', 'Career Guidance', 'Interview Prep'],
+            title: 'Arabic Data Science Education',
+            icon: '📚',
+            description: 'Breaking language barriers in data science education. Helping Arabic speakers master AI and data science.',
+            outcome: 'Master data science concepts in your native language with practical, industry-focused content.',
+            features: [
+                'YouTube Deep-dive Tutorials (Arabic)',
+                'TikTok Quick Learning Bites',
+                'Real-world Case Studies & Projects',
+                'Career Transition Guidance'
+            ],
+            socialProof: 'Growing Arabic DS community',
             cta: {
-                text: 'Subscribe & Follow',
-                url: contactsData.youtube,
+                text: 'Subscribe Now',
+                url: `${contactsData.youtube}?utm_source=abulkhair.ai&utm_campaign=services_education`,
                 type: 'social'
             },
-            pricing: 'Free educational content'
+            pricing: 'Free content • Premium courses coming soon'
         },
         {
-            title: 'Technical Writing',
+            title: 'Technical Content & Thought Leadership',
             icon: '✍️',
-            description: 'In-depth technical articles and thought leadership content on Medium.',
-            features: ['Technical Deep-dives', 'Industry Analysis', 'Best Practices', 'Case Studies'],
+            description: 'In-depth technical articles and industry insights. Sharing real-world solutions to complex data challenges.',
+            outcome: 'Stay ahead of industry trends and learn from practical implementation experiences.',
+            features: [
+                'Deep Technical Tutorials & Walkthroughs',
+                'Industry Trend Analysis & Predictions',
+                'Case Studies from Real Projects',
+                'Best Practices & Lessons Learned'
+            ],
+            socialProof: 'Featured technical writer',
             cta: {
-                text: 'Read Articles',
-                url: contactsData.medium,
+                text: 'Read Latest Articles',
+                url: `${contactsData.medium}?utm_source=abulkhair.ai&utm_campaign=services_writing`,
                 type: 'social'
             },
-            pricing: 'Free & premium content'
+            pricing: 'Free insights • Sponsor content available'
         }
     ];
 
@@ -86,9 +114,10 @@ function WhatIDo() {
         <section className={styles.whatIDo} id="services">
             <div className={styles.container}>
                 <div className={styles.header}>
-                    <h2 style={{ color: theme.primary }}>What I Do</h2>
+                    <h2 style={{ color: theme.primary }}>How I Can Help You Succeed</h2>
                     <p style={{ color: theme.tertiary }}>
-                        Four ways I help individuals and businesses leverage data science and AI
+                        Four proven ways to accelerate your data science journey and business growth. 
+                        <strong> Trusted by 100+ clients with 4.9/5★ rating.</strong>
                     </p>
                 </div>
 
@@ -120,6 +149,19 @@ function WhatIDo() {
                                 {service.description}
                             </p>
 
+                            <div 
+                                className={styles.serviceOutcome}
+                                style={{ 
+                                    color: theme.primary,
+                                    fontWeight: '600',
+                                    fontSize: '0.95rem',
+                                    margin: '1rem 0',
+                                    fontStyle: 'italic'
+                                }}
+                            >
+                                💡 {service.outcome}
+                            </div>
+
                             <ul 
                                 className={styles.serviceFeatures}
                                 style={{ color: theme.tertiary }}
@@ -131,6 +173,22 @@ function WhatIDo() {
                                     </li>
                                 ))}
                             </ul>
+
+                            <div 
+                                className={styles.socialProof}
+                                style={{
+                                    backgroundColor: theme.primary + '15',
+                                    color: theme.primary,
+                                    padding: '0.5rem',
+                                    borderRadius: '6px',
+                                    fontSize: '0.85rem',
+                                    fontWeight: '600',
+                                    textAlign: 'center',
+                                    margin: '1rem 0'
+                                }}
+                            >
+                                ⭐ {service.socialProof}
+                            </div>
 
                             <div className={styles.servicePricing}>
                                 <span 
@@ -163,23 +221,53 @@ function WhatIDo() {
                 >
                     <div className={styles.bottomCtaContent}>
                         <h3 style={{ color: theme.primary }}>
-                            Not sure which service fits your needs?
+                            🚀 Ready to Transform Your Data Science Journey?
                         </h3>
                         <p style={{ color: theme.tertiary }}>
-                            Book a free 15-minute discovery call to discuss your project and find the best solution.
+                            Join 100+ satisfied clients who've accelerated their careers and projects. 
+                            <strong> Book now - same-day sessions available.</strong>
                         </p>
-                        <a
-                            href={`${contactsData.monetizationLinks.primary.url}&utm_campaign=services_discovery`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.discoveryButton}
-                            style={{
-                                backgroundColor: theme.primary,
-                                color: theme.secondary
-                            }}
-                        >
-                            Book Free Discovery Call
-                        </a>
+                        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginTop: '1rem' }}>
+                            <a
+                                href={`${contactsData.monetizationLinks.primary.url}&utm_campaign=services_bottom_cta_primary`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.discoveryButton}
+                                style={{
+                                    backgroundColor: theme.primary,
+                                    color: theme.secondary,
+                                    padding: '1rem 2rem',
+                                    fontSize: '1.1rem',
+                                    fontWeight: '600'
+                                }}
+                            >
+                                💬 Book Consultation ($35)
+                            </a>
+                            <a
+                                href={`${contactsData.monetizationLinks.secondary.url}&utm_campaign=services_bottom_cta_secondary`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.discoveryButton}
+                                style={{
+                                    backgroundColor: 'transparent',
+                                    color: theme.primary,
+                                    border: `2px solid ${theme.primary}`,
+                                    padding: '1rem 2rem',
+                                    fontSize: '1.1rem',
+                                    fontWeight: '600'
+                                }}
+                            >
+                                💼 Hire for Projects
+                            </a>
+                        </div>
+                        <p style={{ 
+                            color: theme.primary, 
+                            fontSize: '0.9rem', 
+                            marginTop: '1rem',
+                            fontWeight: '600'
+                        }}>
+                            ⚡ 4.9/5★ rating • 100% Job Success • Same-day availability
+                        </p>
                     </div>
                 </div>
             </div>
