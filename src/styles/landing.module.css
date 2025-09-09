@@ -151,20 +151,22 @@
     height: 120px;
     align-items: flex-start;
   }
-  .lcrButtonContainer button:nth-child(2) {
-    display: none;
-  }
 }
 
 @media (max-width: 600px) {
+  .landing {
+    min-height: 100vh;
+    height: auto;
+  }
   .landingContainer {
     flex-direction: column;
     justify-content: space-between;
+    min-height: 100vh;
   }
   .landingImg {
     --img-size: 200px;
     left: 50%;
-    top: 30%;
+    top: 25%;
     border: 8px solid #eaeaea;
     transform: translate(-50%, -50%);
   }
@@ -178,19 +180,20 @@
   }
   .landingContainerRight {
     box-sizing: border-box;
-    padding: 0 2rem;
+    padding: 0 1.5rem;
     flex: initial;
     height: 70%;
     width: 100%;
     background-color: #eaeaea;
     align-items: center;
-    justify-content: center;
-    padding: 0 2rem;
+    justify-content: flex-start;
+    padding-bottom: 2rem;
   }
   .lcrContent {
     margin-top: 45%;
     margin-right: initial;
     width: 100%;
+    padding: 0 1rem;
   }
   .lcrContent .typedHeader {
     display: block;
@@ -204,8 +207,9 @@
   .lcrContent p {
     font-size: 0.95rem;
     text-align: center;
-    margin: 0 auto;
-    width: 90%;
+    margin: 1rem auto;
+    width: 95%;
+    line-height: 1.5;
   }
   .lcrButtonContainer {
     margin: 1.5rem auto 0;
@@ -233,7 +237,7 @@
 
 @media (max-width: 370px) {
   .lcrContent {
-    margin-top: 65%;
+    margin-top: 55%;
   }
 }
 
