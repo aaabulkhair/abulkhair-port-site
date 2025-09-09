@@ -30,16 +30,47 @@ function HomePage({ blogs }) {
 }
 
 export async function getStaticProps() {
-  const username = process.env.NEXT_PUBLIC_DEVTO_USERNAME || 'said7388';
-  const res = await fetch(`https://dev.to/api/articles?username=${username}`);
-  const data = await res.json();
-  const filteredBlogs = data.sort(() => Math.random() - 0.5);
+  try {
+    // Try to fetch from Medium RSS first
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+    const res = await fetch(`${baseUrl}/api/medium-feed`);
+    const data = await res.json();
+    
+    if (data.success && data.articles) {
+      return {
+        props: {
+          blogs: data.articles
+        },
+      };
+    } else {
+      throw new Error('Medium RSS fetch failed');
+    }
+  } catch (error) {
+    console.error('Failed to fetch Medium articles:', error);
+    
+    // Fallback to Dev.to if Medium RSS fails
+    try {
+      const username = process.env.NEXT_PUBLIC_DEVTO_USERNAME || 'said7388';
+      const res = await fetch(`https://dev.to/api/articles?username=${username}`);
+      const data = await res.json();
+      const filteredBlogs = data.sort(() => Math.random() - 0.5);
 
-  return {
-    props: {
-      blogs: filteredBlogs
-    },
-  };
+      return {
+        props: {
+          blogs: filteredBlogs
+        },
+      };
+    } catch (fallbackError) {
+      console.error('Fallback to Dev.to also failed:', fallbackError);
+      
+      // Return empty blogs if everything fails
+      return {
+        props: {
+          blogs: []
+        },
+      };
+    }
+  }
 }
 
 export default HomePage

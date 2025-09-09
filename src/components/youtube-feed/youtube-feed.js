@@ -102,20 +102,12 @@ function YouTubeFeed({ maxVideos = 3 }) {
                         />
                     </div>
                     <div className={styles.titleInfo}>
-                        <h3 style={{ color: theme.primary }}>YouTube: 7adid_elsafina 📺</h3>
+                        <h3 style={{ color: theme.primary }}>YouTube</h3>
                         <p className={styles.subtitle} style={{ color: theme.tertiary + '80' }}>
                             Data Science in Arabic
                         </p>
                     </div>
                 </div>
-                <a 
-                    href={contactsData.youtube}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.subscribeButton}
-                >
-                    Subscribe
-                </a>
             </div>
             
             <div className={styles.videosGrid}>

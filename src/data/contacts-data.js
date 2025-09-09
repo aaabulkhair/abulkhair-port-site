@@ -1,5 +1,5 @@
 export const contactsData = {
-    email: 'ahmed.abulkhair@hotmail.com',
+    email: 'ahmed@abulkhair.ai',
     phone: '+201090112694',
     address: 'Cairo, Egypt',
     github: 'https://github.com/aaabulkhair',

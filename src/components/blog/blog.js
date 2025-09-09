@@ -18,7 +18,21 @@ function Blog({blogs}) {
                     id="blog"
                     style={{ backgroundColor: theme.secondary }}>
                     <div className={styles.blogHeader}>
-                        <h1 style={{ color: theme.primary }}>Blog</h1>
+                        <div className={styles.titleSection}>
+                            <div className={styles.logoContainer}>
+                                <img 
+                                    src="/images/medium-logo.webp" 
+                                    alt="Medium logo" 
+                                    className={styles.mediumLogo}
+                                />
+                            </div>
+                            <div className={styles.titleInfo}>
+                                <h3 style={{ color: theme.primary }}>Medium</h3>
+                                <p className={styles.subtitle} style={{ color: theme.tertiary + '80' }}>
+                                    Technical Content & Insights
+                                </p>
+                            </div>
+                        </div>
                     </div>
                     <div className={styles.blogBody}>
                         <div className={styles.blogBodyContainer}>

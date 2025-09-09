@@ -221,23 +221,6 @@ function Contacts() {
                                 {contactsData.email}
                             </p>
                         </a>
-                        <a
-                            href={`tel:${contactsData.phone}`}
-                            className={styles.personalDetails}
-                        >
-                            <div className="w-[45px] h-[45px] 
-                            rounded-[50%] flex items-center 
-                            justify-center text-2xl transition 
-                            ease-in-out text-[#15202B] bg-[#8B98A5]
-                             hover:bg-[#1D9BF0] hover:scale-[1.1] 
-                             shrink delay-200"
-                            >
-                                <FiPhone />
-                            </div>
-                            <p style={{ color: theme.tertiary }}>
-                                {contactsData.phone}
-                            </p>
-                        </a>
                         <div className={styles.personalDetails}>
                             <div className="w-[45px] h-[45px]
                              rounded-[50%] flex items-center 
@@ -266,19 +249,6 @@ function Contacts() {
                                       hover:bg-[#1D9BF0]"
                                 >
                                     <FaTwitter aria-label='Twitter' />
-                                </a>
-                            )}
-                            {socialsData.github && (
-                                <a
-                                    href={socialsData.github}
-                                    target='_blank'
-                                    rel='noreferrer'
-                                    className="w-[45px] h-[45px] 
-                                    rounded-[50%] flex items-center justify-center
-                                     text-xl transition ease-in-out text-[#15202B]
-                                      bg-[#8B98A5] hover:bg-[#1D9BF0]"
-                                >
-                                    <FaGithub aria-label='GitHub' />
                                 </a>
                             )}
                             {socialsData.linkedIn && (

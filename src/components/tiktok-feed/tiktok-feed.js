@@ -35,20 +35,12 @@ function TikTokFeed() {
                         />
                     </div>
                     <div className={styles.titleInfo}>
-                        <h3 style={{ color: theme.primary }}>TikTok: 7adid_elsafina 📱</h3>
+                        <h3 style={{ color: theme.primary }}>TikTok</h3>
                         <p className={styles.subtitle} style={{ color: theme.tertiary + '80' }}>
                             Data Science in Arabic
                         </p>
                     </div>
                 </div>
-                <a 
-                    href={contactsData.tiktok}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.subscribeButton}
-                >
-                    Follow
-                </a>
             </div>
             
             <div className={styles.embedContainer}>
@@ -105,7 +97,7 @@ function TikTokFeed() {
             <div className={styles.cta}>
                 <div className={styles.ctaContent}>
                     <p style={{ color: theme.tertiary }}>
-                        📊 Join 2,300+ Arabic data scientists learning together
+                        📊 Join 2,300+ data scientists learning together
                     </p>
                     <div className={styles.ctaButtons}>
                         <a 
@@ -119,19 +111,6 @@ function TikTokFeed() {
                             }}
                         >
                             Follow on TikTok
-                        </a>
-                        <a 
-                            href={contactsData.monetizationLinks.primary.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.consultButton}
-                            style={{
-                                backgroundColor: theme.primary,
-                                color: theme.secondary,
-                                border: `2px solid ${theme.primary}`
-                            }}
-                        >
-                            Book 1:1 Session
                         </a>
                     </div>
                 </div>
