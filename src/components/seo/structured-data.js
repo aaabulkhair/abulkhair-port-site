@@ -9,7 +9,16 @@ function StructuredData({ locale = 'en', pageType = 'website', additionalData = 
         "@context": "https://schema.org",
         "@type": "Person",
         "name": locale === 'ar' ? "أحمد أبو الخير" : "Ahmed Abulkhair",
-        "alternateName": ["Ahmed Abulkhair", "أحمد أبو الخير"],
+        "givenName": locale === 'ar' ? "أحمد" : "Ahmed",
+        "familyName": locale === 'ar' ? "أبو الخير" : "Abulkhair", 
+        "alternateName": [
+            "Ahmed Abulkhair",
+            "أحمد أبو الخير",
+            "Ahmed Abu AlKhair",
+            "Ahmed Abul Khair",
+            "Dr. Ahmed Abulkhair"
+        ],
+        "disambiguatingDescription": "Senior Data Scientist and AI educator, known for Arabic language data science content and mentorship",
         "url": baseUrl,
         "image": `${baseUrl}/images/profile.jpg`,
         "sameAs": [
@@ -36,6 +45,25 @@ function StructuredData({ locale = 'en', pageType = 'website', additionalData = 
             "Power BI",
             "Arabic Data Science Education"
         ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": contactsData.phone,
+            "contactType": "customer service",
+            "email": contactsData.email,
+            "availableLanguage": ["Arabic", "English"]
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Cairo",
+            "addressCountry": "EG"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": baseUrl
+        },
+        "description": locale === 'ar' ? 
+            "أحمد أبو الخير - عالم بيانات كبير ومُعلم متخصص في نماذج اللغة الكبيرة وتحليل السلاسل الزمنية" :
+            "Ahmed Abulkhair - Senior Data Scientist & Educator specializing in Large Language Models and Time-Series Analysis",
         "knowsLanguage": [
             {
                 "@type": "Language",
@@ -48,18 +76,28 @@ function StructuredData({ locale = 'en', pageType = 'website', additionalData = 
                 "alternateName": "en"
             }
         ],
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": contactsData.phone,
-            "contactType": "customer service",
-            "email": contactsData.email,
-            "availableLanguage": ["Arabic", "English"]
+        "hasOccupation": {
+            "@type": "Occupation",
+            "name": locale === 'ar' ? "عالم بيانات كبير" : "Senior Data Scientist",
+            "occupationLocation": {
+                "@type": "City",
+                "name": "Cairo"
+            },
+            "skills": [
+                "Machine Learning",
+                "Large Language Models", 
+                "Time Series Forecasting",
+                "Python Programming",
+                "Data Visualization",
+                "Artificial Intelligence"
+            ]
         },
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Cairo",
-            "addressCountry": "EG"
-        }
+        "award": [
+            "4.9/5 Star Rating on Topmate (100+ consultations)",
+            "100% Job Success Rate on Upwork",
+            "Top Rated Plus Freelancer",
+            "Featured Arabic Data Science Educator"
+        ]
     };
 
     const organizationSchema = {
@@ -324,7 +362,25 @@ function StructuredData({ locale = 'en', pageType = 'website', additionalData = 
 
     const pageSchema = getPageSpecificSchema();
     
+    // Add a priority name schema to reinforce correct name ordering
+    const nameAuthoritySchema = {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": `${baseUrl}#person`,
+        "name": "Ahmed Abulkhair",
+        "givenName": "Ahmed",
+        "familyName": "Abulkhair",
+        "alternateName": "Ahmed Abu AlKhair",
+        "url": baseUrl,
+        "sameAs": baseUrl,
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": baseUrl
+        }
+    };
+
     const allSchemas = [
+        nameAuthoritySchema, // First for priority
         personSchema,
         organizationSchema, 
         websiteSchema,

@@ -34,10 +34,13 @@ function SEOHead({
             <title>{pageTitle}</title>
             <meta name="description" content={pageDescription} />
             <meta name="keywords" content={locale === 'ar' ? 
-                "علم البيانات, ذكاء اصطناعي, نماذج اللغة, تحليل البيانات, استشارات, تعلم آلي, أحمد أبو الخير" :
-                "data science, artificial intelligence, machine learning, LLM, time-series, consulting, Ahmed Abulkhair"} />
+                "أحمد أبو الخير, علم البيانات, ذكاء اصطناعي, نماذج اللغة, تحليل البيانات, استشارات, تعلم آلي, Ahmed Abulkhair" :
+                "Ahmed Abulkhair, data science, artificial intelligence, machine learning, LLM, time-series, consulting, senior data scientist"} />
             <meta name="author" content="Ahmed Abulkhair" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <meta name="creator" content="Ahmed Abulkhair" />
+            <meta name="publisher" content="Ahmed Abulkhair" />
+            <meta name="subject" content="Ahmed Abulkhair - Senior Data Scientist & AI Educator" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
             
             {/* Canonical and Language */}
             <link rel="canonical" href={pageCanonical} />
