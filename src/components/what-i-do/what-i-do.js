@@ -33,10 +33,10 @@ function WhatIDo() {
             description: 'Complete data science solutions delivered by a Top Rated Upwork freelancer with 100% Job Success Rate.',
             outcome: 'Launch production-ready ML systems that drive measurable business results.',
             features: [
-                'End-to-End ML Pipelines (Scikit-learn/TensorFlow)',
-                'Real-time Data Processing & Analytics',
-                'Power BI & Advanced Analytics Dashboards',
-                'API Development & Model Deployment (FastAPI/Docker)'
+                'End-to-End ML Pipelines (Scikit-learn/TensorFlow/PyTorch)',
+                'LLM & AI Agents Development (LangChain/RAG Systems)',
+                'Real-time Data Processing & Model Deployment',
+                'API Development & Containerization (FastAPI/Docker)'
             ],
             socialProof: 'Top Rated Upwork Freelancer • 100% Job Success Rate',
             cta: {
@@ -64,6 +64,26 @@ function WhatIDo() {
                 type: 'social'
             },
             pricing: 'Free content • Premium courses coming soon'
+        },
+        {
+            title: 'Agentic AI & RAG Solutions',
+            icon: '🤖',
+            description: 'Cutting-edge AI agent development and RAG system implementation. Specializing in LangChain, autonomous agents, and intelligent automation.',
+            outcome: 'Build intelligent AI agents that can reason, plan, and execute complex tasks autonomously.',
+            features: [
+                'RAG Systems with Vector Databases (Pinecone/Chroma)',
+                'Multi-Agent Architectures (LangGraph/CrewAI)',
+                'Tool-Using AI Agents & Function Calling',
+                'Conversational AI & Chatbot Development',
+                'LLM Fine-tuning & Custom Model Training'
+            ],
+            socialProof: 'Cutting-edge AI expertise • ALX Africa Senior Data Scientist',
+            cta: {
+                text: 'Build AI Agents',
+                url: `${contactsData.monetizationLinks.primary.url}&utm_campaign=services_agentic_ai`,
+                type: 'primary'
+            },
+            pricing: 'Enterprise AI solutions available'
         },
         {
             title: 'Technical Content & Thought Leadership',
@@ -117,7 +137,7 @@ function WhatIDo() {
                 <div className={styles.header}>
                     <h2 style={{ color: theme.primary }}>How I Can Help You Succeed</h2>
                     <p style={{ color: theme.tertiary }}>
-                        Four proven ways to accelerate your data science journey and business growth. 
+                        Five proven ways to accelerate your data science journey and business growth.
                         <strong> Trusted by 100+ clients with 4.9/5★ rating.</strong>
                     </p>
                 </div>

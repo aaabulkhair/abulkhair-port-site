@@ -12,13 +12,13 @@ function SEOHead({
     noIndex = false 
 }) {
     const baseUrl = 'https://abulkhair.ai';
-    const defaultTitle = locale === 'ar' ? 
-        "أحمد أبو الخير - عالم بيانات كبير ومُعلم | استشارات علم البيانات والذكاء الاصطناعي" :
-        "Ahmed Abulkhair - Senior Data Scientist & Educator | AI & Data Science Consulting";
+    const defaultTitle = locale === 'ar' ?
+        "أحمد أبو الخير - عالم بيانات كبير وخبير LLM | استشارات الذكاء الاصطناعي مصر" :
+        "Ahmed Abulkhair - Senior Data Scientist & LLM Expert Egypt | AI Consultant";
     
-    const defaultDescription = locale === 'ar' ? 
-        "عالم بيانات كبير متخصص في نماذج اللغة الكبيرة وتحليل السلاسل الزمنية. أقدم استشارات علم البيانات والذكاء الاصطناعي، وخدمات التطوير المستقل، والمحتوى التعليمي باللغة العربية." :
-        "Senior Data Scientist specializing in Large Language Models and Time-Series Forecasting. Offering Data Science consulting, AI solutions, freelance development, and Arabic educational content.";
+    const defaultDescription = locale === 'ar' ?
+        "خبير علم البيانات والذكاء الاصطناعي في مصر. متخصص في LLM وأنظمة RAG والعوامل الذكية. استشارات باللغة العربية والإنجليزية. 100+ مشروع ناجح." :
+        "Egypt's leading data scientist specializing in LLMs, AI agents & machine learning. 100+ successful projects. Arabic & English AI consulting. Expert in RAG systems, LangChain, agentic AI.";
 
     const pageTitle = title ? `${title} | Ahmed Abulkhair` : defaultTitle;
     const pageDescription = description || defaultDescription;
@@ -33,9 +33,9 @@ function SEOHead({
             {/* Basic Meta Tags */}
             <title>{pageTitle}</title>
             <meta name="description" content={pageDescription} />
-            <meta name="keywords" content={locale === 'ar' ? 
-                "أحمد أبو الخير, علم البيانات, ذكاء اصطناعي, نماذج اللغة, تحليل البيانات, استشارات, تعلم آلي, Ahmed Abulkhair" :
-                "Ahmed Abulkhair, data science, artificial intelligence, machine learning, LLM, time-series, consulting, senior data scientist"} />
+            <meta name="keywords" content={locale === 'ar' ?
+                "أحمد أبو الخير, علم البيانات مصر, ذكاء اصطناعي, نماذج اللغة الكبيرة, RAG, عوامل ذكية, LangChain, تعلم آلي, استشارات الذكاء الاصطناعي" :
+                "Ahmed Abulkhair, data science egypt, machine learning expert egypt, LLM consultant, AI agents, RAG systems, LangChain, agentic AI, arabic data scientist, time-series forecasting"} />
             <meta name="author" content="Ahmed Abulkhair" />
             <meta name="creator" content="Ahmed Abulkhair" />
             <meta name="publisher" content="Ahmed Abulkhair" />

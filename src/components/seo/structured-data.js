@@ -37,13 +37,17 @@ function StructuredData({ locale = 'en', pageType = 'website', additionalData = 
         },
         "knowsAbout": [
             "Data Science",
-            "Machine Learning", 
+            "Machine Learning",
             "Large Language Models",
+            "AI Agents",
+            "RAG Systems",
+            "LangChain",
             "Time Series Analysis",
             "Artificial Intelligence",
             "Python Programming",
-            "Power BI",
-            "Arabic Data Science Education"
+            "Arabic Data Science Education",
+            "Agentic AI",
+            "Vector Databases"
         ],
         "contactPoint": {
             "@type": "ContactPoint",
@@ -85,10 +89,14 @@ function StructuredData({ locale = 'en', pageType = 'website', additionalData = 
             },
             "skills": [
                 "Machine Learning",
-                "Large Language Models", 
+                "Large Language Models",
+                "AI Agents Development",
+                "RAG Systems",
+                "LangChain",
                 "Time Series Forecasting",
                 "Python Programming",
-                "Data Visualization",
+                "Agentic AI",
+                "Vector Databases",
                 "Artificial Intelligence"
             ]
         },
@@ -134,7 +142,7 @@ function StructuredData({ locale = 'en', pageType = 'website', additionalData = 
             {
                 "@type": "Offer",
                 "name": locale === 'ar' ? "استشارة فردية" : "1-on-1 Consulting",
-                "description": locale === 'ar' ? "جلسات استشارية شخصية مع خبير تقييم 4.9/5 نجوم" : "Personalized guidance from a 4.9/5★ rated mentor",
+                "description": locale === 'ar' ? "استشارات في LLM والعوامل الذكية وأنظمة RAG مع خبير 4.9/5 نجوم" : "LLM, AI Agents & RAG systems consulting from a 4.9/5★ rated expert",
                 "price": "35",
                 "priceCurrency": "USD",
                 "category": "Consulting",
@@ -187,6 +195,29 @@ function StructuredData({ locale = 'en', pageType = 'website', additionalData = 
                 "url": contactsData.youtube,
                 "educationalUse": "Data Science Training",
                 "teaches": ["Machine Learning", "Data Analysis", "Career Development"]
+            },
+            {
+                "@type": "Offer",
+                "name": locale === 'ar' ? "حلول الذكاء الاصطناعي والعوامل الذكية" : "Agentic AI & RAG Solutions",
+                "description": locale === 'ar' ? "تطوير عوامل ذكية متقدمة وأنظمة RAG باستخدام LangChain والتقنيات الحديثة" : "Advanced AI agent development and RAG system implementation using LangChain",
+                "price": "50",
+                "priceCurrency": "USD",
+                "category": "AI Development",
+                "availability": "https://schema.org/InStock",
+                "url": contactsData.topmate,
+                "priceSpecification": {
+                    "@type": "PriceSpecification",
+                    "minPrice": "50",
+                    "maxPrice": "100",
+                    "priceCurrency": "USD",
+                    "unitText": "per hour"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.9",
+                    "bestRating": "5",
+                    "ratingCount": "25"
+                }
             },
             {
                 "@type": "Offer",
@@ -292,7 +323,7 @@ function StructuredData({ locale = 'en', pageType = 'website', additionalData = 
                                 "itemOffered": {
                                     "@type": "Service",
                                     "name": "Project Development",
-                                    "description": "End-to-End ML Pipelines (Scikit-learn/TensorFlow), Real-time Data Processing & ETL, Power BI & Advanced Analytics Dashboards, API Development & Model Deployment (FastAPI/Docker)",
+                                    "description": "End-to-End ML Pipelines (Scikit-learn/TensorFlow/PyTorch), LLM & AI Agents Development (LangChain/RAG Systems), Real-time Data Processing & Model Deployment, API Development & Containerization (FastAPI/Docker)",
                                     "provider": {
                                         "@type": "Person",
                                         "name": "Ahmed Abulkhair"
