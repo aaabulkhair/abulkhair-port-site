@@ -9,7 +9,7 @@ export const contactsData = {
     topmate: 'https://topmate.io/abulkhair?utm_source=abulkhair.ai&utm_medium=contact&utm_campaign=topmate_contact',
     upwork: 'https://www.upwork.com/freelancers/~01e8b690de797b2ecf?utm_source=abulkhair.ai&utm_medium=contact&utm_campaign=upwork_contact',
     youtube: 'https://www.youtube.com/@7adid_elsafina?utm_source=abulkhair.ai&utm_medium=social&utm_campaign=youtube_channel',
-    tiktok: 'https://www.tiktok.com/@7adidelsafina?utm_source=abulkhair.ai&utm_medium=social&utm_campaign=tiktok_profile',
+    tiktok: 'https://www.tiktok.com/@7adid_elsafina?utm_source=abulkhair.ai&utm_medium=social&utm_campaign=tiktok_profile',
     calendly: 'https://topmate.io/abulkhair?utm_source=abulkhair.ai&utm_medium=booking&utm_campaign=topmate_calendar',
     monetizationLinks: {
         primary: {

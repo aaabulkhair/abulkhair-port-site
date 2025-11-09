@@ -45,10 +45,10 @@ function TikTokFeed() {
             
             <div className={styles.embedContainer}>
                 {/* Official TikTok Profile Embed - always shows latest ~10 videos */}
-                <blockquote 
-                    className="tiktok-embed" 
-                    cite="https://www.tiktok.com/@7adidelsafina"
-                    data-unique-id="7adidelsafina" 
+                <blockquote
+                    className="tiktok-embed"
+                    cite="https://www.tiktok.com/@7adid_elsafina"
+                    data-unique-id="7adid_elsafina"
                     data-embed-type="creator"
                     style={{
                         maxWidth: '720px',
@@ -60,10 +60,10 @@ function TikTokFeed() {
                     }}
                 >
                     <section style={{ padding: '20px', textAlign: 'center' }}>
-                        <a 
-                            target="_blank" 
-                            title="@7adidelsafina"
-                            href="https://www.tiktok.com/@7adidelsafina" 
+                        <a
+                            target="_blank"
+                            title="@7adid_elsafina"
+                            href="https://www.tiktok.com/@7adid_elsafina" 
                             style={{ 
                                 color: theme.primary,
                                 textDecoration: 'none',
@@ -71,7 +71,7 @@ function TikTokFeed() {
                                 fontWeight: 'bold'
                             }}
                         >
-                            @7adidelsafina
+                            @7adid_elsafina
                         </a>
                         <p style={{ 
                             color: theme.tertiary,
@@ -79,10 +79,10 @@ function TikTokFeed() {
                         }}>
                             Data Science tips in Arabic 📊
                         </p>
-                        <a 
-                            target="_blank" 
+                        <a
+                            target="_blank"
                             title="♬ original sound - 7adid_elsafina"
-                            href="https://www.tiktok.com/@7adidelsafina"
+                            href="https://www.tiktok.com/@7adid_elsafina"
                             style={{
                                 color: theme.primary,
                                 textDecoration: 'none'
