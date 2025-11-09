@@ -1,9 +1,14 @@
 import React, { useContext, useEffect } from 'react';
 import ThemeContextProvider, { ThemeContext } from '../contexts/theme-context';
+import { useGoogleAnalytics } from '../components/analytics/google-analytics';
 import '../styles/globals.css';
 
 const ThemedWrapper = ({ children }) => {
   const { theme } = useContext(ThemeContext);
+
+  // Initialize Google Analytics
+  useGoogleAnalytics();
+
   useEffect(() => {
     if (typeof document !== 'undefined') {
       document.documentElement.style.backgroundColor = theme.secondary;
