@@ -5,7 +5,6 @@ import {
   WhatIDo, YouTubeFeed, TikTokFeed, StickyCTA
 } from '../components';
 import BackToTop from '../components/back-to-top/back-to-top';
-import ChangeTheme from '../components/change-theme/change-theme';
 import SEOHead from '../components/seo/seo-head';
 import StructuredData from '../components/seo/structured-data';
 
@@ -16,7 +15,6 @@ function HomePage({ blogs }) {
       <SEOHead />
       <StructuredData pageType="website" />
       <BackToTop />
-      <ChangeTheme />
       <StickyCTA />
       <Navbar />
       <Landing />

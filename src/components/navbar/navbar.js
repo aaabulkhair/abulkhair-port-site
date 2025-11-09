@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import React, { useContext } from 'react';
-import { BsFillMoonFill, BsFillSunFill } from 'react-icons/bs';
 import { FaFolderOpen, FaUser } from 'react-icons/fa';
 import { HiDocumentText } from 'react-icons/hi';
 import { IoHomeSharp } from 'react-icons/io5';
@@ -11,7 +10,7 @@ import styles from '../../styles/navbar.module.css';
 import Link from '../link';
 
 function Navbar() {
-    const { theme, changeTheme, isDark } = useContext(ThemeContext);
+    const { theme } = useContext(ThemeContext);
 
     return (
         <div className={styles.navbar}>
@@ -57,18 +56,6 @@ function Navbar() {
                         <MdPhone className={styles.navIcon} />
                         <span>Contact</span>
                     </Link>
-                    
-                    <button 
-                        onClick={changeTheme} 
-                        className={styles.themeButton}
-                        style={{ color: '#ffffff' }}
-                        aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-                    >
-                        {isDark ? 
-                            <BsFillSunFill className={styles.themeIcon} /> : 
-                            <BsFillMoonFill className={styles.themeIcon} />
-                        }
-                    </button>
                 </div>
             </div>
         </div>
