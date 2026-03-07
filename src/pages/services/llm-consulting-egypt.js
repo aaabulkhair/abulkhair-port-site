@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import { ThemeContext } from '../../contexts/theme-context';
 import { Navbar, BackToTop } from '../../components';
 import ChangeTheme from '../../components/change-theme/change-theme';
@@ -249,7 +250,34 @@ function LLMConsultingEgypt() {
                         </div>
                     </div>
                 </section>
+
+                {/* Related Services */}
+                <section style={{ padding: '40px 0', textAlign: 'center' }}>
+                    <div className={styles.container}>
+                        <h2 className={styles.sectionTitle}>Related Services</h2>
+                        <p style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
+                            Looking for end-to-end machine learning development?
+                            Check out our <a href="/services/machine-learning-development" style={{ color: '#667eea', textDecoration: 'underline' }}>ML Development Services</a>.
+                        </p>
+                    </div>
+                </section>
             </div>
+
+            {/* FAQ Schema - uses static data only, safe for dangerouslySetInnerHTML */}
+            <Head>
+                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    "mainEntity": serviceDetails.faq.map(item => ({
+                        "@type": "Question",
+                        "name": item.question,
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": item.answer
+                        }
+                    }))
+                })}} />
+            </Head>
         </div>
     );
 }

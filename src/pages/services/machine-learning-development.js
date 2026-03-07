@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import { ThemeContext } from '../../contexts/theme-context';
 import { Navbar, BackToTop } from '../../components';
 import ChangeTheme from '../../components/change-theme/change-theme';
@@ -122,6 +123,24 @@ function MachineLearningDevelopment() {
                 ]
             }
         },
+        faq: [
+            {
+                question: "What types of ML projects do you work on?",
+                answer: "I work on end-to-end ML pipelines, time-series forecasting, NLP, computer vision, and recommendation systems. Each project is tailored to your specific business requirements."
+            },
+            {
+                question: "How long does a typical ML project take?",
+                answer: "A proof-of-concept takes 2-4 weeks. Production-ready solutions typically take 6-12 weeks depending on complexity, data quality, and deployment requirements."
+            },
+            {
+                question: "Do you provide ongoing model maintenance?",
+                answer: "Yes, I offer monitoring and retraining services to ensure model performance doesn't degrade over time. This includes drift detection, automated retraining pipelines, and performance dashboards."
+            },
+            {
+                question: "What industries have you worked in?",
+                answer: "I have experience across e-commerce, finance, healthcare, manufacturing, and maritime. My solutions adapt to domain-specific requirements and regulatory constraints."
+            }
+        ],
         testimonials: [
             {
                 name: "Omar Khalil",
@@ -308,7 +327,49 @@ function MachineLearningDevelopment() {
                         </div>
                     </div>
                 </section>
+
+                {/* FAQ Section */}
+                <section className={styles.faqSection}>
+                    <div className={styles.container}>
+                        <h2 className={styles.sectionTitle}>Frequently Asked Questions</h2>
+                        <div className={styles.faqGrid}>
+                            {serviceDetails.faq.map((item, index) => (
+                                <div key={index} className={styles.faqItem}>
+                                    <h3 className={styles.faqQuestion}>{item.question}</h3>
+                                    <p className={styles.faqAnswer}>{item.answer}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* Related Services */}
+                <section style={{ padding: '40px 0', textAlign: 'center' }}>
+                    <div className={styles.container}>
+                        <h2 className={styles.sectionTitle}>Related Services</h2>
+                        <p style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
+                            Need LLM and AI agent solutions?
+                            Check out our <a href="/services/llm-consulting-egypt" style={{ color: '#667eea', textDecoration: 'underline' }}>LLM Consulting Services</a>.
+                        </p>
+                    </div>
+                </section>
             </div>
+
+            {/* FAQ Schema - static data only, safe for JSON-LD injection */}
+            <Head>
+                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    "mainEntity": serviceDetails.faq.map(item => ({
+                        "@type": "Question",
+                        "name": item.question,
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": item.answer
+                        }
+                    }))
+                })}} />
+            </Head>
         </div>
     );
 }

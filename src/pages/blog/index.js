@@ -5,6 +5,8 @@ import { SingleBlog } from '../../components';
 import Link from '../../components/link';
 import { ThemeContext } from '../../contexts/theme-context';
 import { blogData } from '../../data/blog-data';
+import SEOHead from '../../components/seo/seo-head';
+import StructuredData from '../../components/seo/structured-data';
 
 function BlogPage() {
     const [search, setSearch] = useState('')
@@ -45,6 +47,13 @@ function BlogPage() {
     };
 
     return (
+        <>
+        <SEOHead
+            title="Blog - Data Science & AI Articles"
+            description="Technical articles on data science, machine learning, LLMs, and AI by Ahmed Abulkhair. Arabic and English content."
+            canonical="https://abulkhair.ai/blog"
+        />
+        <StructuredData pageType="blog" />
         <div
             className="blogPage"
             style={{ backgroundColor: theme.secondary }}>
@@ -85,6 +94,7 @@ function BlogPage() {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 
