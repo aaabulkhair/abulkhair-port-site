@@ -23,7 +23,7 @@ function About() {
                         <h2 style={{ color: theme.primary }}>{aboutData.title}</h2>
                         <p style={{ color: theme.tertiary }}>{aboutData.description1}<br /><br />{aboutData.description2}</p>
                     </div>
-                    <div className={styles.aboutAnimation}>
+                    <div className={styles.aboutAnimation} role="img" aria-label="Data analytics animation">
                         <AnimationLottie animationPath={dataAnalytics} />
                     </div>
                 </div>

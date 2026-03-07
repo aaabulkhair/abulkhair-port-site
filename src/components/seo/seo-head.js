@@ -23,7 +23,7 @@ function SEOHead({
     const pageTitle = title ? `${title} | Ahmed Abulkhair` : defaultTitle;
     const pageDescription = description || defaultDescription;
     const pageCanonical = canonical || baseUrl;
-    const pageOgImage = ogImage || `${baseUrl}/images/og-image.jpg`;
+    const pageOgImage = ogImage || `${baseUrl}/images/logo.png`;
     
     // Generate alternate language URLs
     const alternateUrl = locale === 'en' ? `${baseUrl}/ar` : baseUrl;

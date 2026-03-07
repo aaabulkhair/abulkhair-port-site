@@ -122,7 +122,7 @@ function Experience() {
                         <AnimationLottie animationPath={aiRobotBrain} />
                     </div>
                     <div className={styles.experienceDescription} style={{ backgroundColor: theme.secondary }}>
-                        <h1 style={{ color: theme.primary }}>Experience</h1>
+                        <h2 style={{ color: theme.primary }}>Experience</h2>
                         <div className="relative" style={{ backgroundColor: theme.secondary }}>
                             <button
                                 className="flex items-center justify-center absolute left-3 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full border-2"
