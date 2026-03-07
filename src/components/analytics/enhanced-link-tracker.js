@@ -98,14 +98,14 @@ const EnhancedLink = forwardRef(({
 
   // Internal Next.js links
   return (
-    <Link href={enhancedHref} ref={ref}>
-      <a 
-        className={className}
-        onClick={handleClick}
-        {...props}
-      >
-        {children}
-      </a>
+    <Link
+      href={enhancedHref}
+      ref={ref}
+      className={className}
+      onClick={handleClick}
+      {...props}
+    >
+      {children}
     </Link>
   );
 });
