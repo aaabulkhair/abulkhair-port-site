@@ -10,116 +10,88 @@ import Typed from 'react-typed';
 import { ThemeContext } from '../../contexts/theme-context';
 import { headerData } from '../../data/header-data';
 import { socialsData } from '../../data/socials-data';
-import styles from '../../styles/landing.module.css';
 import Link from '../link';
 import TrustBadges from '../trust-badges/trust-badges';
 import { MonetizationLink } from '../analytics/enhanced-link-tracker';
 
 function Landing() {
-    const { theme, drawerOpen } = useContext(ThemeContext);
+    const { drawerOpen } = useContext(ThemeContext);
 
     return (
-        <div className={styles.landing} style={{
-            backgroundColor: theme.quaternary
-        }}>
-            <div className={styles.landingContainer}>
-                <div
-                    className={styles.landingContainerLeft}
-                    style={{ backgroundColor: theme.quaternary }}
-                >
-                    <div className={styles.lclContent}>
+        <div className="min-h-screen flex items-center justify-center bg-quaternary">
+            <div className="flex flex-col md:flex-row items-center justify-center w-full h-full">
+                {/* Left Side (Socials) */}
+                <div className="hidden md:flex flex-col items-center justify-center gap-6 p-8 bg-quaternary">
+                    <div className="flex flex-col gap-5">
                         {socialsData.linkedIn && (
-                            <a
-                                href={socialsData.linkedIn}
-                                target='_blank'
-                                rel='noreferrer'
-                            >
+                            <a href={socialsData.linkedIn} target='_blank' rel='noreferrer'>
                                 <FaLinkedin
-                                    className={styles.landingSocial}
-                                    style={{ color: theme.primary }}
+                                    className="text-3xl text-primary hover:scale-110 transition-transform duration-300"
                                     aria-label='LinkedIn'
                                 />
                             </a>
                         )}
                         {socialsData.github && (
-                            <a
-                                href={socialsData.github}
-                                target='_blank'
-                                rel='noreferrer'
-                            >
+                            <a href={socialsData.github} target='_blank' rel='noreferrer'>
                                 <FaGithub
-                                    className={styles.landingSocial}
-                                    style={{ color: theme.primary }}
+                                    className="text-3xl text-primary hover:scale-110 transition-transform duration-300"
                                     aria-label='GitHub'
                                 />
                             </a>
                         )}
                         {socialsData.twitter && (
-                            <a
-                                href={socialsData.twitter}
-                                target='_blank'
-                                rel='noreferrer'
-                            >
+                            <a href={socialsData.twitter} target='_blank' rel='noreferrer'>
                                 <FaTwitter
-                                    className={styles.landingSocial}
-                                    style={{ color: theme.primary }}
+                                    className="text-3xl text-primary hover:scale-110 transition-transform duration-300"
                                     aria-label='Twitter'
                                 />
                             </a>
                         )}
                         {socialsData.facebook && (
-                            <a
-                                href={socialsData.facebook}
-                                target='_blank'
-                                rel='noreferrer'
-                            >
+                            <a href={socialsData.facebook} target='_blank' rel='noreferrer'>
                                 <FaFacebook
-                                    className={styles.landingSocial}
-                                    style={{ color: theme.primary }}
+                                    className="text-3xl text-primary hover:scale-110 transition-transform duration-300"
                                     aria-label='facebook'
                                 />
                             </a>
                         )}
                     </div>
                 </div>
-                <Image
-                    src={headerData.image}
-                    alt=''
-                    width={350}
-                    height={350}
-                    className={styles.landingImg}
-                    style={{
-                        opacity: `${drawerOpen ? '0' : '1'}`,
-                        borderColor: theme.primary,
-                    }}
-                />
-                <div
-                    className={styles.landingContainerRight}
-                    style={{ backgroundColor: theme.secondary }}
-                >
-                    <div
-                        className={styles.lcrContent}
-                        style={{ color: theme.tertiary }}
-                    >
-                        {/* <h6 style={{ color: theme.primary }}>{headerData.title}</h6> */}
-                        <h1>{headerData.name}</h1>
-                        <Typed
-                            strings={[
-                                'Data Scientist',
-                                'Machine Learning Engineer',
-                                'Data Science Mentor']}
-                            typeSpeed={40}
-                            backSpeed={50}
-                            className={styles.typedHeader}
-                            style={{ color: theme.primary, fontSize: '20px' }}
-                            loop
-                        />
-                        <p>{headerData.desciption}</p>
+
+                {/* Center Image */}
+                <div className={`relative w-[350px] h-[350px] rounded-full border-[3px] border-primary overflow-hidden transition-opacity duration-300 ${drawerOpen ? 'opacity-0' : 'opacity-100'}`}>
+                    <Image
+                        src={headerData.image}
+                        alt={headerData.name}
+                        fill
+                        style={{ objectFit: 'cover' }}
+                        className="rounded-full"
+                    />
+                </div>
+
+                {/* Right Side (Content) */}
+                <div className="flex-1 flex flex-col justify-center p-8 bg-secondary h-full text-tertiary">
+                    <div className="max-w-xl">
+                        <h1 className="text-5xl font-bold mb-4">{headerData.name}</h1>
+                        <div className="text-xl font-medium text-primary mb-6 h-8">
+                            <Typed
+                                strings={[
+                                    'Data Scientist',
+                                    'Machine Learning Engineer',
+                                    'Data Science Mentor']}
+                                typeSpeed={40}
+                                backSpeed={50}
+                                loop
+                            />
+                        </div>
+                        <p className="text-lg leading-relaxed mb-8 opacity-90">{headerData.description}</p>
 
                         {/* Trust Badges */}
-                        <TrustBadges badges={headerData.trustBadges} />
+                        <div className="mb-8">
+                            <TrustBadges badges={headerData.trustBadges} />
+                        </div>
 
-                        <div className={styles.lcrButtonContainer}>
+                        <div className="flex flex-wrap gap-4">
                             {/* Primary CTA - Book Consultation */}
                             {headerData.ctaPrimary && (
                                 <MonetizationLink
@@ -129,18 +101,16 @@ function Landing() {
                                     value={35}
                                 >
                                     <button
-                                        className="w-[280px] bg-[#1D9BF0] 
-                                        text-[#15202B] rounded-[30px] no-underline	
-                                        text-base font-medium h-12 border-[3px]
-                                         border-[#1D9BF0] transition duration-100 
-                                         ease-out hover:bg-[#8B98A5] hover:text-[#15202B]
-                                          hover:border-[#8B98A5] flex items-center justify-center"
+                                        className="w-[280px] bg-primary text-quaternary rounded-full 
+                                        text-base font-medium h-12 border-[3px] border-primary 
+                                        transition-all duration-300 hover:bg-button-color hover:border-button-color hover:text-quaternary
+                                        flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                                     >
                                         {headerData.ctaPrimary.text}
                                     </button>
                                 </MonetizationLink>
                             )}
-                            
+
                             {/* Secondary CTA - Hire on Upwork */}
                             {headerData.ctaSecondary && (
                                 <MonetizationLink
@@ -150,12 +120,10 @@ function Landing() {
                                     value={35}
                                 >
                                     <button
-                                        className="w-[280px] text-[#1D9BF0] 
-                                        rounded-[30px] no-underline text-base 
-                                        font-medium h-12 border-[3px] border-[#1D9BF0] 
-                                        transition duration-100 ease-out 
-                                        hover:bg-[#8B98A5] hover:text-[#15202B]
-                                         hover:border-[#8B98A5] flex items-center justify-center"
+                                        className="w-[280px] text-primary bg-transparent rounded-full 
+                                        text-base font-medium h-12 border-[3px] border-primary 
+                                        transition-all duration-300 hover:bg-button-color hover:border-button-color hover:text-quaternary
+                                        flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                                     >
                                         {headerData.ctaSecondary.text}
                                     </button>
@@ -171,11 +139,9 @@ function Landing() {
                                     rel='noreferrer'
                                 >
                                     <button
-                                        className="sm:w-[180px] text-[#8B98A5] 
-                                        rounded-[30px] no-underline	w-36 text-sm
-                                        font-medium h-10 border-[2px] border-[#8B98A5] 
-                                        transition duration-100 ease-out 
-                                        hover:bg-[#8B98A5] hover:text-[#15202B]"
+                                        className="w-36 text-quaternary-light rounded-full text-sm
+                                        font-medium h-10 border-[2px] border-quaternary-light 
+                                        transition-all duration-300 hover:bg-quaternary-light hover:text-quaternary"
                                     >
                                         Download CV
                                     </button>

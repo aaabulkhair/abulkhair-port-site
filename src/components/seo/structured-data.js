@@ -158,7 +158,7 @@ function StructuredData({ locale = 'en', pageType = 'website', additionalData = 
                     "@type": "AggregateRating",
                     "ratingValue": "4.9",
                     "bestRating": "5",
-                    "ratingCount": "100"
+                    "ratingCount": "13"
                 }
             },
             {
@@ -216,7 +216,7 @@ function StructuredData({ locale = 'en', pageType = 'website', additionalData = 
                     "@type": "AggregateRating",
                     "ratingValue": "4.9",
                     "bestRating": "5",
-                    "ratingCount": "25"
+                    "ratingCount": "13"
                 }
             },
             {
@@ -240,8 +240,8 @@ function StructuredData({ locale = 'en', pageType = 'website', additionalData = 
         "alternateName": "abulkhair.ai",
         "url": baseUrl,
         "description": locale === 'ar' ? 
-            headerData.desciption.replace(/Book a consultation or hire me for your next project\. Available in Arabic and English\./, "احجز استشارة أو وظفني لمشروعك القادم. متوفر باللغتين العربية والإنجليزية.") :
-            headerData.desciption,
+            headerData.description.replace(/Book a consultation or hire me for your next project\. Available in Arabic and English\./, "احجز استشارة أو وظفني لمشروعك القادم. متوفر باللغتين العربية والإنجليزية.") :
+            headerData.description,
         "inLanguage": [
             {
                 "@type": "Language",
@@ -298,7 +298,7 @@ function StructuredData({ locale = 'en', pageType = 'website', additionalData = 
                         "@type": "AggregateRating",
                         "ratingValue": "4.9",
                         "bestRating": "5",
-                        "ratingCount": "100"
+                        "ratingCount": "13"
                     },
                     "hasOfferCatalog": {
                         "@type": "OfferCatalog",
