@@ -72,7 +72,7 @@ function Landing() {
                 {/* Right Side (Content) */}
                 <div className="flex-1 flex flex-col justify-center p-8 bg-secondary h-full text-tertiary">
                     <div className="max-w-xl">
-                        <h1 className="text-5xl font-bold mb-4">{headerData.name}</h1>
+                        <h1 className="text-5xl font-bold mb-4 text-tertiary">{headerData.name}</h1>
                         <div className="text-xl font-medium text-primary mb-6 h-8">
                             <Typed
                                 strings={[
