@@ -31,6 +31,7 @@ html, body, #__next {
 
 /* Ensure main content container takes full width */
 body {
+  font-family: var(--primaryFont);
   font-size: 16px;
 }
 
