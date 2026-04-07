@@ -18,7 +18,7 @@ function StructuredData({ locale = 'en', pageType = 'website', additionalData = 
             "Ahmed Abul Khair",
             "Dr. Ahmed Abulkhair"
         ],
-        "disambiguatingDescription": "Senior Data Scientist and AI educator, known for Arabic language data science content and mentorship",
+        "disambiguatingDescription": "AI Scientist at Incept Labs, known for Arabic language data science content, LLM research, and mentorship",
         "url": baseUrl,
         "image": `${baseUrl}/images/profile.jpg`,
         "sameAs": [
@@ -30,10 +30,11 @@ function StructuredData({ locale = 'en', pageType = 'website', additionalData = 
             contactsData.topmate,
             contactsData.upwork
         ].filter(Boolean),
-        "jobTitle": locale === 'ar' ? "عالم بيانات كبير ومُعلم" : "Senior Data Scientist & Educator",
+        "jobTitle": locale === 'ar' ? "عالم ذكاء اصطناعي" : "AI Scientist",
         "worksFor": {
             "@type": "Organization",
-            "name": "Freelance Data Scientist"
+            "name": "Incept Labs",
+            "url": "https://inceptlabs.ai/"
         },
         "knowsAbout": [
             "Data Science",
@@ -65,9 +66,9 @@ function StructuredData({ locale = 'en', pageType = 'website', additionalData = 
             "@type": "WebPage",
             "@id": baseUrl
         },
-        "description": locale === 'ar' ? 
-            "أحمد أبو الخير - عالم بيانات كبير ومُعلم متخصص في نماذج اللغة الكبيرة وتحليل السلاسل الزمنية" :
-            "Ahmed Abulkhair - Senior Data Scientist & Educator specializing in Large Language Models and Time-Series Analysis",
+        "description": locale === 'ar' ?
+            "أحمد أبو الخير - عالم ذكاء اصطناعي في Incept Labs متخصص في نماذج اللغة الكبيرة وتحليل السلاسل الزمنية" :
+            "Ahmed Abulkhair - AI Scientist at Incept Labs specializing in Large Language Models and Time-Series Analysis",
         "knowsLanguage": [
             {
                 "@type": "Language",
@@ -82,7 +83,7 @@ function StructuredData({ locale = 'en', pageType = 'website', additionalData = 
         ],
         "hasOccupation": {
             "@type": "Occupation",
-            "name": locale === 'ar' ? "عالم بيانات كبير" : "Senior Data Scientist",
+            "name": locale === 'ar' ? "عالم ذكاء اصطناعي" : "AI Scientist",
             "occupationLocation": {
                 "@type": "City",
                 "name": "Cairo"

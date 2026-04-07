@@ -7,9 +7,9 @@ import {
 import BackToTop from '../components/back-to-top/back-to-top';
 import SEOHead from '../components/seo/seo-head';
 import StructuredData from '../components/seo/structured-data';
+import Footer from '../components/footer/footer';
 
 function HomePage({ blogs }) {
-
   return (
     <>
       <SEOHead />
@@ -27,6 +27,7 @@ function HomePage({ blogs }) {
       <TikTokFeed maxVideos={3} />
       <Blog blogs={blogs} />
       <Contacts />
+      <Footer />
     </>
   )
 }
