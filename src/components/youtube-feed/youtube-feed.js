@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { ThemeContext } from '../../contexts/theme-context';
 import { contactsData } from '../../data/contacts-data';
-import styles from './youtube-feed.module.css';
 
 function YouTubeFeed({ maxVideos = 3 }) {
     const { theme } = useContext(ThemeContext);
@@ -28,23 +27,23 @@ function YouTubeFeed({ maxVideos = 3 }) {
 
                 // Use our Next.js API route
                 const response = await fetch('/api/youtube-feed');
-                
+
                 if (!response.ok) {
                     throw new Error('Failed to fetch from API');
                 }
 
                 const data = await response.json();
-                
+
                 if (data.videos && data.videos.length > 0) {
                     setVideos(data.videos.slice(0, maxVideos));
                 } else {
                     throw new Error('No videos in API response');
                 }
-                
+
             } catch (err) {
                 console.error('YouTube API fetch error:', err);
                 setError('Unable to load latest videos');
-                
+
                 // Fallback to static data if API fails
                 const fallbackVideos = [
                     {
@@ -57,7 +56,7 @@ function YouTubeFeed({ maxVideos = 3 }) {
                     }
                 ];
                 setVideos(fallbackVideos.slice(0, maxVideos));
-                
+
             } finally {
                 setLoading(false);
             }
@@ -76,117 +75,92 @@ function YouTubeFeed({ maxVideos = 3 }) {
 
     if (loading) {
         return (
-            <div className={styles.loading} style={{ color: theme.tertiary }}>
-                Loading latest videos...
-            </div>
+            <section className="border-b border-rule py-16" style={{ backgroundColor: theme.secondary }}>
+                <div className="max-w-page mx-auto px-6 md:px-12">
+                    <p className="text-text-secondary text-sm">Loading latest videos...</p>
+                </div>
+            </section>
         );
     }
 
-    if (error) {
+    if (error && videos.length === 0) {
         return (
-            <div className={styles.error} style={{ color: theme.tertiary }}>
-                {error}
-            </div>
+            <section className="border-b border-rule py-16" style={{ backgroundColor: theme.secondary }}>
+                <div className="max-w-page mx-auto px-6 md:px-12">
+                    <p className="text-text-secondary text-sm">{error}</p>
+                </div>
+            </section>
         );
     }
 
     return (
-        <div className={styles.youtubeFeed}>
-            <div className={styles.header}>
-                <div className={styles.titleSection}>
-                    <div className={styles.logoContainer}>
-                        <img 
-                            src="/images/7adidelsafina-logo.png" 
-                            alt="7adid_elsafina logo" 
-                            className={styles.channelLogo}
-                        />
-                    </div>
-                    <div className={styles.titleInfo}>
-                        <h3 style={{ color: theme.primary }}>YouTube</h3>
-                        <p className={styles.subtitle} style={{ color: theme.tertiary + '80' }}>
-                            Data Science in Arabic
-                        </p>
+        <section className="border-b border-rule py-16" style={{ backgroundColor: theme.secondary }}>
+            <div className="max-w-page mx-auto px-6 md:px-12">
+                <p className="section-label">06 / YouTube</p>
+                <div className="flex items-center gap-3 mb-8">
+                    <img
+                        src="/images/7adidelsafina-logo.png"
+                        alt="7adid_elsafina logo"
+                        className="w-8 h-8 rounded-full"
+                    />
+                    <div>
+                        <h3 className="text-base font-semibold text-text-primary">YouTube</h3>
+                        <p className="text-[0.75rem] text-text-secondary">Data Science in Arabic</p>
                     </div>
                 </div>
-            </div>
-            
-            <div className={styles.videosGrid}>
-                {videos.map((video, index) => (
-                    <div 
-                        key={video.id}
-                        className={styles.videoCard}
-                        style={{
-                            backgroundColor: theme.secondary,
-                            border: `1px solid ${theme.primary}20`
-                        }}
-                    >
-                        <div className={styles.thumbnail}>
-                            <img 
-                                src={video.thumbnail} 
-                                alt={video.title}
-                                loading="lazy"
-                            />
-                            <div className={styles.playButton}>▶</div>
-                        </div>
-                        
-                        <div className={styles.videoInfo}>
-                            <h4 
-                                className={styles.videoTitle}
-                                style={{ color: theme.tertiary }}
-                            >
-                                {video.title}
-                            </h4>
-                            
-                            <p 
-                                className={styles.videoDescription}
-                                style={{ color: theme.tertiary + '80' }}
-                            >
-                                {video.description}
-                            </p>
-                            
-                            <div className={styles.videoMeta}>
-                                <span 
-                                    className={styles.publishDate}
-                                    style={{ color: theme.tertiary + '60' }}
-                                >
-                                    {formatDate(video.publishedAt)}
-                                </span>
-                                
-                                <a 
-                                    href={`${video.url}?utm_source=abulkhair.ai&utm_medium=widget&utm_campaign=youtube_feed`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className={styles.watchButton}
-                                    style={{
-                                        color: theme.primary,
-                                        border: `1px solid ${theme.primary}`
-                                    }}
-                                >
-                                    Watch
-                                </a>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {videos.map((video) => (
+                        <div key={video.id} className="bg-bg-surface rounded overflow-hidden">
+                            <div className="relative aspect-video overflow-hidden">
+                                <img
+                                    src={video.thumbnail}
+                                    alt={video.title}
+                                    loading="lazy"
+                                    className="w-full h-full object-cover"
+                                />
+                            </div>
+                            <div className="p-4">
+                                <h4 className="text-[0.75rem] font-medium text-text-primary mb-1">
+                                    {video.title}
+                                </h4>
+                                <p className="text-[0.65rem] text-text-secondary line-clamp-2 mb-2">
+                                    {video.description}
+                                </p>
+                                <div className="flex items-center justify-between">
+                                    <span className="text-[0.6rem] text-text-muted">
+                                        {formatDate(video.publishedAt)}
+                                    </span>
+                                    <a
+                                        href={`${video.url}?utm_source=abulkhair.ai&utm_medium=widget&utm_campaign=youtube_feed`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-[0.65rem] text-primary border-b border-primary/20 pb-px"
+                                    >
+                                        Watch
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
-            </div>
-            
-            <div className={styles.cta}>
-                <p style={{ color: theme.tertiary }}>
-                    Love the content? Subscribe for more data science tutorials in Arabic!
-                </p>
-                <div className={styles.youtubeSubscribeContainer}>
-                    <a 
+                    ))}
+                </div>
+
+                <div className="flex items-center gap-4 mt-8">
+                    <p className="text-[0.8rem] text-text-secondary">
+                        Love the content? Subscribe for more data science tutorials in Arabic!
+                    </p>
+                    <a
                         href="https://www.youtube.com/@7adid_elsafina?sub_confirmation=1"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={styles.youtubeSubscribeButton}
+                        className="inline-flex items-center gap-2 px-5 py-2 text-[0.7rem] text-primary border border-primary/30 rounded hover:border-primary/60 transition-colors"
                     >
-                        <span className={styles.youtubeIcon}>▶</span>
+                        <span>▶</span>
                         Subscribe
                     </a>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 
