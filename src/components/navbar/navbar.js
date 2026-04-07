@@ -1,64 +1,52 @@
-import Image from 'next/image';
-import React, { useContext } from 'react';
-import { FaFolderOpen, FaUser } from 'react-icons/fa';
-import { HiDocumentText } from 'react-icons/hi';
-import { IoHomeSharp } from 'react-icons/io5';
-import { MdPhone } from 'react-icons/md';
+import React, { useContext, useState, useEffect } from 'react';
 import { ThemeContext } from '../../contexts/theme-context';
-import { headerData } from '../../data/header-data';
-import styles from '../../styles/navbar.module.css';
 import Link from '../link';
 
 function Navbar() {
     const { theme } = useContext(ThemeContext);
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => setScrolled(window.scrollY > 50);
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const navLinks = [
+        { label: 'Home', href: '/' },
+        { label: 'About', href: '/#about' },
+        { label: 'Services', href: '/#services' },
+        { label: 'Resume', href: '/#experience' },
+        { label: 'Blog', href: '/#blog' },
+        { label: 'Contact', href: '/#contacts' },
+    ];
 
     return (
-        <div className={styles.navbar}>
-            <div className={styles.navbarContainer}>
+        <nav
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+                scrolled ? 'backdrop-blur-md bg-[#0a0a0a]/80' : 'bg-transparent'
+            }`}
+        >
+            <div className="max-w-page mx-auto px-6 md:px-12 flex justify-between items-center h-16 border-b border-rule">
                 <Link href="/">
-                    <Image
-                        src="/images/logo.png"
-                        alt="Ahmed Abulkhair Logo"
-                        width={0}
-                        height={0}
-                        unoptimized={true}
-                        className="cursor-pointer"
-                        style={{ 
-                            width: '80px',
-                            height: 'auto',
-                            filter: theme.isDark ? 'brightness(1)' : 'brightness(1)',
-                        }}
-                    />
+                    <span className="text-sm font-bold tracking-wider text-text-primary cursor-pointer">
+                        AA
+                    </span>
                 </Link>
 
-                <div className={styles.desktopNav}>
-                    <Link href="/" className={styles.navLink} style={{ color: '#ffffff' }}>
-                        <IoHomeSharp className={styles.navIcon} />
-                        <span>Home</span>
-                    </Link>
-                    
-                    <Link href="/#about" className={styles.navLink} style={{ color: '#ffffff' }}>
-                        <FaUser className={styles.navIcon} />
-                        <span>About</span>
-                    </Link>
-                    
-                    <Link href="/#resume" className={styles.navLink} style={{ color: '#ffffff' }}>
-                        <HiDocumentText className={styles.navIcon} />
-                        <span>Resume</span>
-                    </Link>
-                    
-                    <Link href="/#blog" className={styles.navLink} style={{ color: '#ffffff' }}>
-                        <FaFolderOpen className={styles.navIcon} />
-                        <span>Blog</span>
-                    </Link>
-                    
-                    <Link href="/#contacts" className={styles.navLink} style={{ color: '#ffffff' }}>
-                        <MdPhone className={styles.navIcon} />
-                        <span>Contact</span>
-                    </Link>
+                <div className="hidden md:flex items-center gap-8">
+                    {navLinks.map((link) => (
+                        <Link
+                            key={link.label}
+                            href={link.href}
+                            className="text-[0.7rem] tracking-[1px] uppercase text-text-secondary hover:text-primary transition-colors duration-200"
+                        >
+                            {link.label}
+                        </Link>
+                    ))}
                 </div>
             </div>
-        </div>
+        </nav>
     );
 }
 
