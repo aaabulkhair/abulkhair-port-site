@@ -2,7 +2,7 @@ import { Html, Head, Main, NextScript } from 'next/document';
 import { GoogleAnalyticsScript } from '../components/analytics/google-analytics';
 
 export default function Document() {
-  // lang="en" is intentional - i18n routing not yet configured in next.config.js
+  // Site is English-only; Arabic i18n routing not implemented
   return (
     <Html lang="en">
       <Head>

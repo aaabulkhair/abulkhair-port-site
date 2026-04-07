@@ -25,28 +25,21 @@ function SEOHead({
     const pageCanonical = canonical || baseUrl;
     const pageOgImage = ogImage || `${baseUrl}/images/logo.png`;
     
-    // Generate alternate language URLs
-    const alternateUrl = locale === 'en' ? `${baseUrl}/ar` : baseUrl;
-    
     return (
         <Head>
             {/* Basic Meta Tags */}
             <title>{pageTitle}</title>
             <meta name="description" content={pageDescription} />
-            <meta name="keywords" content={locale === 'ar' ?
-                "أحمد أبو الخير, علم البيانات مصر, ذكاء اصطناعي, نماذج اللغة الكبيرة, RAG, عوامل ذكية, LangChain, تعلم آلي, استشارات الذكاء الاصطناعي" :
-                "Ahmed Abulkhair, data science egypt, machine learning expert egypt, LLM consultant, AI agents, RAG systems, LangChain, agentic AI, arabic data scientist, time-series forecasting"} />
+            <meta name="keywords" content="Ahmed Abulkhair, data science egypt, machine learning expert egypt, LLM consultant, AI agents, RAG systems, LangChain, agentic AI, arabic data scientist, time-series forecasting, أحمد أبو الخير, علم البيانات مصر, ذكاء اصطناعي, نماذج اللغة الكبيرة, استشارات الذكاء الاصطناعي" />
             <meta name="author" content="Ahmed Abulkhair" />
             <meta name="creator" content="Ahmed Abulkhair" />
             <meta name="publisher" content="Ahmed Abulkhair" />
             <meta name="subject" content="Ahmed Abulkhair - AI Scientist @ Incept Labs" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
-            
-            {/* Canonical and Language */}
+
+            {/* Canonical */}
             <link rel="canonical" href={pageCanonical} />
-            <link rel="alternate" hrefLang={locale === 'en' ? 'ar' : 'en'} href={alternateUrl} />
-            <link rel="alternate" hrefLang="x-default" href={baseUrl} />
-            <meta httpEquiv="content-language" content={locale} />
+            <meta httpEquiv="content-language" content="en" />
             
             {/* Robots */}
             {noIndex ? (
@@ -65,8 +58,7 @@ function SEOHead({
             <meta property="og:image:height" content="630" />
             <meta property="og:image:alt" content={pageTitle} />
             <meta property="og:site_name" content="Ahmed Abulkhair" />
-            <meta property="og:locale" content={locale === 'ar' ? 'ar_EG' : 'en_US'} />
-            <meta property="og:locale:alternate" content={locale === 'ar' ? 'en_US' : 'ar_EG'} />
+            <meta property="og:locale" content="en_US" />
             
             {/* Article specific OG tags */}
             {articleData && (

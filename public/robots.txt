@@ -1,23 +1,7 @@
 # robots.txt for abulkhair.ai
-# Ahmed Abulkhair - Senior Data Scientist & LLM Expert Egypt
 
 User-agent: *
 Allow: /
-
-# Allow all major search engines
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Slurp
-Allow: /
-
-User-agent: DuckDuckBot
-Allow: /
-
-# Disallow unnecessary files and directories
 Disallow: /_next/static/
 Disallow: /api/
 Disallow: /*.json$
@@ -30,11 +14,7 @@ Disallow: /.playwright-mcp/
 # Allow important static assets
 Allow: /images/
 Allow: /favicon.ico
-Allow: /apple-touch-icon.png
-Allow: /site.webmanifest
+Allow: /manifest.json
 
-# Crawl-delay for respectful crawling
-Crawl-delay: 1
-
-# Sitemap location
+# Sitemap
 Sitemap: https://abulkhair.ai/sitemap.xml
