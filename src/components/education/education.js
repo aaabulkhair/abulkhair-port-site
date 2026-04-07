@@ -21,7 +21,11 @@ function Education() {
                                 {edu.startYear} &ndash; {edu.endYear}
                             </div>
                             <div>
-                                <div className="text-[0.85rem] font-semibold text-text-primary">{edu.institution}</div>
+                                <div className="text-[0.85rem] font-semibold text-text-primary">
+                                    {edu.url ? (
+                                        <a href={edu.url} target="_blank" rel="noopener noreferrer" className="hover:underline">{edu.institution}</a>
+                                    ) : edu.institution}
+                                </div>
                                 <div className="text-[0.75rem] text-primary/70 mb-1">{edu.course}</div>
                                 {(edu.location || edu.grade) && (
                                     <div className="text-[0.65rem] text-text-muted mb-2">

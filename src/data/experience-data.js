@@ -49,6 +49,7 @@ export const experienceData = [
             'Scoped MVPs for price intelligence and automation'
         ],
         tech: ['Python','Pandas','Scikit-learn','Dashboards'],
+        companyUrl: 'https://www.arabshipbroker.com/',
         logo: '/images/company-logos/arabshipbroker.png'
     },
     {
@@ -63,6 +64,7 @@ export const experienceData = [
             'Built dynamic pricing and recommendation components',
         ],
         tech: ['Python','Airflow','ETL','Recommenders','Time Series'],
+        companyUrl: 'https://www.shopbrain.co/',
         logo: '/images/company-logos/shopbrain.avif'
     },
     {
@@ -80,6 +82,7 @@ export const experienceData = [
             'Continuously updated content with state-of-the-art techniques'
         ],
         tech: ['Python','Pandas','SQL','ML','DL'],
+        companyUrl: 'https://iti.gov.eg/home',
         logo: '/images/company-logos/iti.svg'
     },
     {
@@ -95,6 +98,7 @@ export const experienceData = [
             'Facilitated networking and community connections'
         ],
         tech: ['Python', 'Data Science', 'Mentoring', 'Community Building'],
+        companyUrl: 'https://www.kaggle.com/ahmedabdulhamid',
         logo: '/images/company-logos/kaggle.png'
     },
     {
@@ -110,6 +114,7 @@ export const experienceData = [
             'Implemented fraud detection algorithms'
         ],
         tech: ['Python', 'Scikit-learn', 'SQL', 'AWS', 'Recommender Systems'],
+        companyUrl: 'https://www.jumia.com/',
         logo: '/images/company-logos/jumia.png'
     },
     {
@@ -125,6 +130,7 @@ export const experienceData = [
             'Provided technical mentorship and project guidance'
         ],
         tech: ['Python', 'TensorFlow', 'PyTorch', 'Deep Learning', 'Computer Vision'],
+        companyUrl: 'https://www.udacity.com/',
         logo: '/images/company-logos/udacity.svg'
     },
     {
@@ -141,6 +147,7 @@ export const experienceData = [
             'Developed explainable ML for existing systems'
         ],
         tech: ['Python','Scikit-learn','TensorFlow','Computer Vision','XAI'],
+        companyUrl: 'https://www.upwork.com/freelancers/~01e8b690de797b2ecf',
         logo: '/images/company-logos/upwork.svg'
     },
     {

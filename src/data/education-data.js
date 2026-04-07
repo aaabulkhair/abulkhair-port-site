@@ -21,6 +21,7 @@ export const educationData = [
             'Currently pursuing cutting-edge data science education',
             'Focus on practical applications and research methodologies'
         ],
+        url: 'https://www.london.ac.uk/',
         logo: '/images/education-logos/university-of-london.png'
     },
     {
@@ -49,6 +50,7 @@ export const educationData = [
             'Comprehensive coverage of ML/DL, Python, and big data tooling',
             'Hands-on projects with real-world datasets'
         ],
+        url: 'https://iti.gov.eg/home',
         logo: '/images/education-logos/iti.svg'
     },
     {
@@ -77,6 +79,7 @@ export const educationData = [
             'Engineering problem-solving methodology',
             'Technical project experience'
         ],
+        url: 'https://www.menofia.edu.eg/',
         logo: '/images/education-logos/al-minufiyah-university.webp'
     }
 ]
