@@ -1,49 +1,26 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { IoIosArrowDropupCircle } from 'react-icons/io';
-import { ThemeContext } from '../../contexts/theme-context';
-import styles from '../../styles/backToTop.module.css';
+import React, { useEffect, useState } from 'react';
 
 function BackToTop() {
     const [visible, setVisible] = useState(false);
-    const { theme } = useContext(ThemeContext);
-
-    const toggleVisible = () => {
-        const scrolled = document.documentElement.scrollTop;
-        if (scrolled > 300) {
-            setVisible(true);
-        } else if (scrolled <= 300) {
-            setVisible(false);
-        }
-    };
-
-    const scrollToTop = () => {
-        if (typeof window !== 'undefined') {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth',
-            });
-        }
-    };
 
     useEffect(() => {
-        window.addEventListener('scroll', toggleVisible);
-        return () => window.removeEventListener('scroll', toggleVisible);
+        const toggle = () => setVisible(document.documentElement.scrollTop > 300);
+        window.addEventListener('scroll', toggle);
+        return () => window.removeEventListener('scroll', toggle);
     }, []);
 
+    const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    if (!visible) return null;
 
     return (
-        <div
-            style={{ display: visible ? 'inline' : 'none' }}
-            className={styles.backToTop}
+        <button
+            onClick={scrollToTop}
+            className="fixed bottom-6 left-6 z-50 w-8 h-8 rounded-full border border-rule bg-bg text-text-muted hover:text-primary hover:border-primary/30 transition-colors flex items-center justify-center text-sm"
+            aria-label="Back to top"
         >
-            <button
-                onClick={scrollToTop}
-                aria-label='Back to top'>
-                <IoIosArrowDropupCircle
-                    className={`text-[2rem] text-[${theme.primary}] 
-                    hover:scale-[1.08] hover:text-[${theme.tertiary}]`} />
-            </button>
-        </div>
+            &uarr;
+        </button>
     );
 }
 
