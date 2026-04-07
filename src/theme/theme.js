@@ -1,33 +1,36 @@
 /* eslint-disable */
 import { contactsGreen } from './images'
 
-
 export const theLightTheme = {
     type: 'light',
-    primary: '#1D9BF0',
-    primaryRgb: '29, 155, 240',
-    quaternary: '#EFF3F4',
-    quaternaryRgb: '239, 243, 244',
-    quaternaryLight: '#F7F9F9',
+    primary: '#e8c47c',
+    primaryRgb: '232, 196, 124',
+    quaternary: '#f5f5f5',
+    quaternaryRgb: '245, 245, 245',
+    quaternaryLight: '#666666',
     secondary: '#ffffff',
     secondaryRgb: '255, 255, 255',
-    tertiary: '#0f1419',
-    tertiaryRgb: '15, 20, 25',
-    buttonColor: '#0F1419',
+    sectionAlt: '#fafafa',
+    sectionAltRgb: '250, 250, 250',
+    tertiary: '#0a0a0a',
+    tertiaryRgb: '10, 10, 10',
+    buttonColor: '#0a0a0a',
     contactsimg: contactsGreen
 }
 
 export const theDarkTheme = {
     type: 'dark',
-    primary: '#1D9BF0',
-    primaryRgb: '29, 155, 240',
-    secondary: '#0F0C41',
-    secondaryRgb: '15, 12, 65',
-    quaternary: '#0C0B33',
-    quaternaryRgb: '12, 11, 51',
-    quaternaryLight: '#8b98a5',
-    tertiary: '#EFF3F4',
-    tertiaryRgb: '239, 243, 244',
-    buttonColor: '#8B98A5',
+    primary: '#e8c47c',
+    primaryRgb: '232, 196, 124',
+    secondary: '#0a0a0a',
+    secondaryRgb: '10, 10, 10',
+    sectionAlt: '#0a0a0a',
+    sectionAltRgb: '10, 10, 10',
+    quaternary: '#0a0a0a',
+    quaternaryRgb: '10, 10, 10',
+    quaternaryLight: 'rgba(255,255,255,0.35)',
+    tertiary: '#f0f0f0',
+    tertiaryRgb: '240, 240, 240',
+    buttonColor: 'rgba(255,255,255,0.35)',
     contactsimg: contactsGreen
 }
