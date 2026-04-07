@@ -77,7 +77,7 @@ function Landing() {
                             src={headerData.image}
                             alt={headerData.name}
                             fill
-                            style={{ objectFit: 'cover' }}
+                            style={{ objectFit: 'cover', objectPosition: 'center 20%' }}
                             className="rounded-full"
                         />
                     </div>
