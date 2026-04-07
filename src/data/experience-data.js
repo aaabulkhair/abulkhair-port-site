@@ -1,5 +1,23 @@
 export const experienceData = [
     {
+        id: 0,
+        company: 'Incept Labs',
+        jobtitle: 'AI Scientist',
+        startYear: 'Jan 2026',
+        endYear: 'Present',
+        location: 'California, United States',
+        employmentType: 'Full-time',
+        description: 'Contributing to the mission of Incept Labs, a startup focused on revolutionizing educational experiences through AI technology.',
+        achievements: [
+            'Developed large language models tailored for K-12 education, enhancing real-time adaptability to diverse learners',
+            'Collaborated with national governments to align AI models with local curricula, languages, and customs',
+            'Contributed to revolutionizing educational experiences through AI technology'
+        ],
+        tech: ['LLMs', 'GenAI', 'Python', 'K-12 Education', 'NLP'],
+        companyUrl: 'https://inceptlabs.ai/',
+        logo: '/images/company-logos/inceptlabs.png'
+    },
+    {
         id: 1,
         company: 'ALX Africa',
         jobtitle: 'Senior Data Scientist',
