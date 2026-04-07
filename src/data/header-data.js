@@ -2,7 +2,7 @@ import profile from '../assets/png/profile.png';
 
 export const headerData = {
     name: 'Ahmed Abulkhair',
-    title: "Senior Data Scientist & Educator",
+    title: "AI Scientist @ Incept Labs",
     description: "Specializing in LLMs, Time-Series Forecasting, and AI Solutions. Book a consultation or hire me for your next project. Available in Arabic and English.",
     image: profile,
     imagebw: profile,
@@ -32,5 +32,5 @@ export const headerData = {
         }
     ],
     languages: ['Arabic', 'English'],
-    specialties: ['LLMs & AI Agents', 'Time-Series Forecasting', 'Data Science Consulting', 'Power BI Solutions']
+    specialties: ['LLMs & AI Agents', 'Time-Series Forecasting', 'Data Science Consulting', 'Educational AI']
 }

@@ -2,21 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Text:wght@100;300;400;500;600;700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet');
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,200;1,300;1,400&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&display=swap");
-
-@font-face {
-  font-family: "BestermindRegular";
-  src: url("../assets/fonts/Bestermind/BestermindRegular.ttf");
-  src: url("../assets/fonts/Bestermind/BestermindRegular.ttf")
-      format("embedded-opentype"),
-    url("../assets/fonts/Bestermind/BestermindRegular.ttf") format("truetype");
-}
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
 
 * {
   margin: 0;
@@ -29,20 +15,13 @@ html, body, #__next {
   min-width: 320px;
 }
 
-/* Ensure main content container takes full width */
 body {
-  font-family: var(--primaryFont);
+  font-family: 'Inter', system-ui, sans-serif;
   font-size: 16px;
+  background-color: #0a0a0a;
+  color: #f0f0f0;
 }
 
-/* Ensure proper viewport sizing for all devices */
-@media screen and (min-width: 1024px) {
-  html, body {
-    min-width: 1024px;
-  }
-}
-
-/* Prevent page-level horizontal scrolling; individual sections manage their own overflow */
 html, body {
   overflow-x: hidden;
 }
@@ -51,41 +30,32 @@ a {
   text-decoration: none;
 }
 
-.MuiPaper-root,
-.MuiBackdropRoot {
-  background: rgba(33, 33, 33, 0.15) !important;
-  backdrop-filter: blur(20px) !important;
-}
-/* scrollBar */
-
 ::-webkit-scrollbar {
   width: 0;
 }
 
-::-webkit-scrollbar-track {
-  background: #555;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #555;
-  border-radius: 10px;
-  transition: 0.3s;
-}
-
 :root {
-  --primaryFont: "Poppins", sans-serif;
-  /* --primaryFont: 'Montserrat', sans-serif; */
-  /* --primaryFont: 'Raleway', sans-serif; */
+  --primaryFont: 'Inter', system-ui, sans-serif;
+  --bg: #0a0a0a;
+  --bg-surface: rgba(255,255,255,0.02);
+  --text-primary: #f0f0f0;
+  --text-secondary: rgba(255,255,255,0.35);
+  --text-muted: rgba(255,255,255,0.15);
+  --accent: #e8c47c;
+  --accent-dim: rgba(232,196,124,0.15);
+  --rule: rgba(255,255,255,0.06);
 }
 
-@media screen and (max-width: 400px) {
-  body {
-    overflow-x: hidden;
-  }
+/* Section label pattern */
+.section-label {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
 }
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3) {
-  body {
-    overflow-x: hidden;
-  }
+/* Section rule */
+.section-rule {
+  border-bottom: 1px solid var(--rule);
 }

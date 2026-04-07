@@ -1,35 +1,33 @@
-import { Container } from '@mui/material';
 import React, { useContext } from 'react';
-import dataAnalytics from '../../assets/lottie/data-analytics.json';
 import { ThemeContext } from '../../contexts/theme-context';
 import { aboutData } from '../../data/about-data';
-import styles from '../../styles/about.module.css';
-import AnimationLottie from '../animation';
-
 
 function About() {
-
     const { theme } = useContext(ThemeContext);
+
     return (
-        <div style={{ backgroundColor: theme.secondary }}>
-            <Container className={styles.about} id="about">
-                <div className={styles.lineStyling}>
-                    <div className={styles.styleCircle} style={{ backgroundColor: theme.primary }}></div>
-                    <div className={styles.styleCircle} style={{ backgroundColor: theme.primary }}></div>
-                    <div className={styles.styleLine} style={{ backgroundColor: theme.primary }}></div>
-                </div>
-                <div className={styles.aboutBody}>
-                    <div className={styles.aboutDescription}>
-                        <h2 style={{ color: theme.primary }}>{aboutData.title}</h2>
-                        <p style={{ color: theme.tertiary }}>{aboutData.description1}<br /><br />{aboutData.description2}</p>
+        <section
+            className="border-b border-rule py-16"
+            id="about"
+            style={{ backgroundColor: theme.secondary }}
+        >
+            <div className="max-w-page mx-auto px-6 md:px-12">
+                <p className="section-label">01 / About</p>
+                <div className="grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-12">
+                    <div>
+                        <p className="text-[0.95rem] text-text-secondary leading-[1.8]">
+                            {aboutData.description1}
+                        </p>
+                        <br />
+                        <p className="text-[0.95rem] text-text-secondary leading-[1.8]">
+                            {aboutData.description2}
+                        </p>
                     </div>
-                    <div className={styles.aboutAnimation} role="img" aria-label="Data analytics animation">
-                        <AnimationLottie animationPath={dataAnalytics} />
-                    </div>
+                    <div>{/* Breathing room */}</div>
                 </div>
-            </Container>
-        </div>
-    )
+            </div>
+        </section>
+    );
 }
 
-export default About
+export default About;

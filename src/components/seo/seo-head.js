@@ -14,7 +14,7 @@ function SEOHead({
     const baseUrl = 'https://abulkhair.ai';
     const defaultTitle = locale === 'ar' ?
         "أحمد أبو الخير - عالم بيانات كبير وخبير LLM | استشارات الذكاء الاصطناعي مصر" :
-        "Ahmed Abulkhair - Senior Data Scientist & LLM Expert Egypt | AI Consultant";
+        "Ahmed Abulkhair - AI Scientist & LLM Expert Egypt | AI Consultant";
     
     const defaultDescription = locale === 'ar' ?
         "خبير علم البيانات والذكاء الاصطناعي في مصر. متخصص في LLM وأنظمة RAG والعوامل الذكية. استشارات باللغة العربية والإنجليزية. 100+ مشروع ناجح." :
@@ -39,7 +39,7 @@ function SEOHead({
             <meta name="author" content="Ahmed Abulkhair" />
             <meta name="creator" content="Ahmed Abulkhair" />
             <meta name="publisher" content="Ahmed Abulkhair" />
-            <meta name="subject" content="Ahmed Abulkhair - Senior Data Scientist & AI Educator" />
+            <meta name="subject" content="Ahmed Abulkhair - AI Scientist @ Incept Labs" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
             
             {/* Canonical and Language */}

@@ -1,20 +1,13 @@
 import emailjs from '@emailjs/browser';
 import { IconButton, Snackbar, SnackbarContent } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import Image from 'next/image';
 import React, { useContext, useRef, useState } from 'react';
-import { AiOutlineCheckCircle, AiOutlineSend } from 'react-icons/ai';
-import {
-    FaFacebook, FaGithub, FaLinkedinIn, FaMediumM,
-    FaStackOverflow, FaTwitter
-} from 'react-icons/fa';
-import { FiAtSign, FiPhone } from 'react-icons/fi';
-import { HiOutlineLocationMarker } from 'react-icons/hi';
+import { AiOutlineCheckCircle } from 'react-icons/ai';
+import { FaGithub, FaLinkedinIn, FaMediumM } from 'react-icons/fa';
 import isEmail from 'validator/lib/isEmail';
 import { ThemeContext } from '../../contexts/theme-context';
 import { contactsData } from '../../data/contacts-data';
 import { socialsData } from '../../data/socials-data';
-import styles from '../../styles/contacts.module.css';
 
 function Contacts() {
     const [open, setOpen] = useState(false);
@@ -65,258 +58,74 @@ function Contacts() {
     };
 
     return (
-        <div
-            className={styles.contacts}
-            id='contacts'
-            style={{ backgroundColor: theme.secondary }}
-        >
-            <div className={styles.contactsContainer}>
-                <h1 style={{ color: theme.primary }}>Contacts</h1>
-                <div className={styles.contactsBody}>
-                    <div className={styles.contactsForm}>
-                        <form ref={form} onSubmit={handleContactForm}>
-                            <div className={styles.inputContainer}>
-                                <label htmlFor='Name'
-                                    className="bg-[#15202B] text-[#EFF3F4] 
-                                font-semibold text-[0.9rem] py-0 px-[5px] 
-                                inline-flex translate-x-[25px] translate-y-[50%]">
-                                    Name
-                                </label>
-                                <input
-                                    placeholder='John Doe'
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                    type='text'
-                                    name='user_name'
-                                    className={`${styles.formInput}  
-                                    border-2 border-[#8B98A5] bg-[#15202B]
-                                     text-[#EFF3F4] font-medium transition 
-                                     focus:border-[#1D9BF0]`}
-                                />
+        <section className="border-b border-rule py-16" id="contacts" style={{ backgroundColor: theme.secondary }}>
+            <div className="max-w-page mx-auto px-6 md:px-12">
+                <p className="section-label">09 / Contact</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div>
+                        <h2 className="text-2xl font-light tracking-tight mb-4">
+                            Let&apos;s work <strong className="font-bold">together</strong>
+                        </h2>
+                        <p className="text-[0.85rem] text-text-secondary leading-relaxed mb-6">
+                            Whether you need a consultation, project development, or just want to connect — I&apos;m here to help.
+                        </p>
+                        <div className="flex flex-col gap-3">
+                            <a href={`mailto:${contactsData.email}`} className="text-[0.8rem] text-primary hover:text-primary/80 transition-colors">
+                                {contactsData.email}
+                            </a>
+                            <span className="text-[0.8rem] text-text-secondary">{contactsData.address}</span>
+                            <a href={contactsData.topmate} target="_blank" rel="noreferrer" className="text-[0.8rem] text-primary hover:text-primary/80 transition-colors">
+                                topmate.io/abulkhair
+                            </a>
+                        </div>
+                        <div className="flex gap-3 mt-6">
+                            {socialsData.linkedIn && (
+                                <a href={socialsData.linkedIn} target="_blank" rel="noreferrer" className="w-9 h-9 rounded-full border border-rule flex items-center justify-center text-text-muted hover:text-primary hover:border-primary/30 transition-colors" aria-label="LinkedIn">
+                                    <FaLinkedinIn size={14} />
+                                </a>
+                            )}
+                            {socialsData.github && (
+                                <a href={socialsData.github} target="_blank" rel="noreferrer" className="w-9 h-9 rounded-full border border-rule flex items-center justify-center text-text-muted hover:text-primary hover:border-primary/30 transition-colors" aria-label="GitHub">
+                                    <FaGithub size={14} />
+                                </a>
+                            )}
+                            {socialsData.medium && (
+                                <a href={socialsData.medium} target="_blank" rel="noreferrer" className="w-9 h-9 rounded-full border border-rule flex items-center justify-center text-text-muted hover:text-primary hover:border-primary/30 transition-colors" aria-label="Medium">
+                                    <FaMediumM size={14} />
+                                </a>
+                            )}
+                        </div>
+                    </div>
+                    <div>
+                        <form ref={form} onSubmit={handleContactForm} className="flex flex-col gap-4">
+                            <div>
+                                <label className="text-[0.7rem] text-text-muted uppercase tracking-wider mb-1 block">Name</label>
+                                <input placeholder="John Doe" value={name} onChange={(e) => setName(e.target.value)} type="text" name="user_name" className="w-full bg-bg-surface border border-rule rounded px-4 py-3 text-sm text-text-primary placeholder:text-text-muted focus:border-primary/50 focus:outline-none transition-colors" />
                             </div>
-                            <div className={styles.inputContainer}>
-                                <label
-                                    htmlFor='Email'
-                                    className="bg-[#15202B] text-[#EFF3F4] 
-                                    font-semibold text-[0.9rem] px-[5px] 
-                                    inline-flex translate-x-[25px] 
-                                    translate-y-[50%]"
-                                >
-                                    Email
-                                </label>
-                                <input
-                                    placeholder='John@doe.com'
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    type='email'
-                                    name='user_email'
-                                    className={`${styles.formInput}  
-                                    border-2 border-[#8B98A5] bg-[#15202B]
-                                     text-[#EFF3F4] font-medium transition
-                                      focus:border-[#1D9BF0]`}
-                                />
+                            <div>
+                                <label className="text-[0.7rem] text-text-muted uppercase tracking-wider mb-1 block">Email</label>
+                                <input placeholder="john@doe.com" value={email} onChange={(e) => setEmail(e.target.value)} type="email" name="user_email" className="w-full bg-bg-surface border border-rule rounded px-4 py-3 text-sm text-text-primary placeholder:text-text-muted focus:border-primary/50 focus:outline-none transition-colors" />
                             </div>
-                            <div className={styles.inputContainer}>
-                                <label
-                                    htmlFor='Message'
-                                    className="bg-[#15202B] text-[#EFF3F4]
-                                     font-semibold text-[0.9rem] px-[5px] 
-                                     inline-flex translate-x-[25px] 
-                                     translate-y-[50%]"
-                                >
-                                    Message
-                                </label>
-                                <textarea
-                                    placeholder='Type your message....'
-                                    value={message}
-                                    onChange={(e) => setMessage(e.target.value)}
-                                    type='text'
-                                    name='message'
-                                    className={`${styles.formMessage} 
-                                    border-2 border-[#8B98A5] 
-                                    focus:border-[#1D9BF0] bg-[#15202B]
-                                     text-[#EFF3F4] font-medium transition`}
-                                />
+                            <div>
+                                <label className="text-[0.7rem] text-text-muted uppercase tracking-wider mb-1 block">Message</label>
+                                <textarea placeholder="Type your message..." value={message} onChange={(e) => setMessage(e.target.value)} name="message" rows={5} className="w-full bg-bg-surface border border-rule rounded px-4 py-3 text-sm text-text-primary placeholder:text-text-muted focus:border-primary/50 focus:outline-none transition-colors resize-none" />
                             </div>
-
-                            <div className={styles.submitBtn}>
-                                <button
-                                    type='submit'
-                                    className="bg-[#1D9BF0] 
-                                    hover:bg-[#8B98A5] text-[#15202B]
-                                     transition delay-200 ">
-                                    <p>{!success ? 'Send' : 'Sent'}</p>
-                                    <div className={styles.submitIcon}>
-                                        <AiOutlineSend
-                                            className={styles.sendIcon}
-                                            style={{
-                                                animation: !success
-                                                    ? 'initial'
-                                                    : 'fly 0.8s linear both',
-                                                position: success
-                                                    ? 'absolute'
-                                                    : 'initial',
-                                            }}
-                                        />
-                                        <AiOutlineCheckCircle
-                                            className={styles.successIcon}
-                                            style={{
-                                                display: !success
-                                                    ? 'none'
-                                                    : 'inline-flex',
-                                                opacity: !success ? '0' : '1',
-                                            }}
-                                        />
-                                    </div>
-                                </button>
-                            </div>
+                            <button type="submit" className="self-start px-6 py-2.5 bg-primary text-bg rounded text-sm font-semibold hover:opacity-90 transition-opacity flex items-center gap-2">
+                                {!success ? 'Send' : 'Sent'}
+                                {success && <AiOutlineCheckCircle />}
+                            </button>
                         </form>
-                        <Snackbar
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'center',
-                            }}
-                            open={open}
-                            autoHideDuration={4000}
-                            onClose={handleClose}
-                        >
+                        <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }} open={open} autoHideDuration={4000} onClose={handleClose}>
                             <SnackbarContent
-                                action={
-                                    <React.Fragment>
-                                        <IconButton
-                                            size='small'
-                                            aria-label='close'
-                                            color='inherit'
-                                            onClick={handleClose}
-                                        >
-                                            <CloseIcon fontSize='small' />
-                                        </IconButton>
-                                    </React.Fragment>
-                                }
-                                style={{
-                                    backgroundColor: theme.primary,
-                                    color: theme.secondary,
-                                    fontFamily: 'var(--primaryFont)',
-                                }}
+                                action={<IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}><CloseIcon fontSize="small" /></IconButton>}
+                                style={{ backgroundColor: '#e8c47c', color: '#0a0a0a', fontFamily: 'Inter, system-ui, sans-serif' }}
                                 message={errMsg}
                             />
                         </Snackbar>
                     </div>
-
-                    <div className={styles.contactsDetails}>
-                        <a
-                            href={`mailto:${contactsData.email}`}
-                            className={styles.personalDetails}
-                        >
-                            <div className="w-[45px] h-[45px] 
-                            rounded-[50%] flex items-center 
-                            justify-center text-2xl transition 
-                            ease-in-out text-[#15202B] bg-[#8B98A5]
-                             hover:bg-[#1D9BF0] hover:scale-[1.1] 
-                             shrink delay-200"
-                            >
-                                <FiAtSign />
-                            </div>
-                            <p style={{ color: theme.tertiary }}>
-                                {contactsData.email}
-                            </p>
-                        </a>
-                        <div className={styles.personalDetails}>
-                            <div className="w-[45px] h-[45px]
-                             rounded-[50%] flex items-center 
-                             justify-center text-2xl transition 
-                             ease-in-out text-[#15202B] bg-[#8B98A5]
-                              hover:bg-[#1D9BF0] hover:scale-[1.1]
-                               shrink delay-200"
-                            >
-                                <HiOutlineLocationMarker />
-                            </div>
-                            <p style={{ color: theme.tertiary }}>
-                                {contactsData.address}
-                            </p>
-                        </div>
-
-                        <div className={styles.socialmediaIcons}>
-                            {socialsData.twitter && (
-                                <a
-                                    href={socialsData.twitter}
-                                    target='_blank'
-                                    rel='noreferrer'
-                                    className="w-[45px] h-[45px] 
-                                    rounded-[50%] flex items-center 
-                                    justify-center text-xl transition
-                                     ease-in-out text-[#15202B] bg-[#8B98A5]
-                                      hover:bg-[#1D9BF0]"
-                                >
-                                    <FaTwitter aria-label='Twitter' />
-                                </a>
-                            )}
-                            {socialsData.linkedIn && (
-                                <a
-                                    href={socialsData.linkedIn}
-                                    target='_blank'
-                                    rel='noreferrer'
-                                    className="w-[45px] h-[45px] rounded-[50%] flex 
-                                    items-center justify-center text-xl transition 
-                                    ease-in-out text-[#15202B] bg-[#8B98A5] 
-                                    hover:bg-[#1D9BF0]"
-                                >
-                                    <FaLinkedinIn aria-label='LinkedIn' />
-                                </a>
-                            )}
-
-                            {socialsData.medium && (
-                                <a
-                                    href={socialsData.medium}
-                                    target='_blank'
-                                    rel='noreferrer'
-                                    className="w-[45px] h-[45px] rounded-[50%] flex 
-                                    items-center justify-center text-xl transition 
-                                    ease-in-out text-[#15202B] bg-[#8B98A5] 
-                                    hover:bg-[#1D9BF0]"
-                                >
-                                    <FaMediumM aria-label='Medium' />
-                                </a>
-                            )}
-
-
-
-                            {socialsData.stackOverflow && (
-                                <a
-                                    href={socialsData.stackOverflow}
-                                    target='_blank'
-                                    rel='noreferrer'
-                                    className="w-[45px] h-[45px] rounded-[50%] flex 
-                                    items-center justify-center text-xl transition 
-                                    ease-in-out text-[#15202B] bg-[#8B98A5] 
-                                    hover:bg-[#1D9BF0]"
-                                >
-                                    <FaStackOverflow aria-label='Stack Overflow' />
-                                </a>
-                            )}
-                            {socialsData.facebook && (
-                                <a
-                                    href={socialsData.facebook}
-                                    target='_blank'
-                                    rel='noreferrer'
-                                    className="w-[45px] h-[45px] rounded-[50%] flex
-                                     items-center justify-center text-xl transition
-                                      ease-in-out text-[#15202B] bg-[#8B98A5]
-                                       hover:bg-[#1D9BF0]"
-                                >
-                                    <FaFacebook aria-label='facebook' />
-                                </a>
-                            )}
-                        </div>
-                    </div>
                 </div>
             </div>
-            <Image
-                src={theme.contactsimg}
-                alt='contacts'
-                className={styles.contactsImg}
-            />
-        </div>
+        </section>
     );
 }
 

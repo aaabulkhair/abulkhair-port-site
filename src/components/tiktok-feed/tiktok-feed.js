@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { ThemeContext } from '../../contexts/theme-context';
 import { contactsData } from '../../data/contacts-data';
-import styles from './tiktok-feed.module.css';
 
 function TikTokFeed() {
     const { theme } = useContext(ThemeContext);
@@ -24,98 +23,87 @@ function TikTokFeed() {
     }, []);
 
     return (
-        <div className={styles.tiktokFeed}>
-            <div className={styles.header}>
-                <div className={styles.titleSection}>
-                    <div className={styles.logoContainer}>
-                        <img 
-                            src="/images/7adidelsafina-logo.png" 
-                            alt="7adid_elsafina logo" 
-                            className={styles.channelLogo}
-                        />
-                    </div>
-                    <div className={styles.titleInfo}>
-                        <h3 style={{ color: theme.primary }}>TikTok</h3>
-                        <p className={styles.subtitle} style={{ color: theme.tertiary + '80' }}>
-                            Data Science in Arabic
-                        </p>
+        <section className="border-b border-rule py-16" style={{ backgroundColor: theme.secondary }}>
+            <div className="max-w-page mx-auto px-6 md:px-12">
+                <p className="section-label">07 / TikTok</p>
+                <div className="flex items-center gap-3 mb-8">
+                    <img
+                        src="/images/7adidelsafina-logo.png"
+                        alt="7adid_elsafina logo"
+                        className="w-8 h-8 rounded-full"
+                    />
+                    <div>
+                        <h3 className="text-base font-semibold text-text-primary">TikTok</h3>
+                        <p className="text-[0.75rem] text-text-secondary">Data Science in Arabic</p>
                     </div>
                 </div>
-            </div>
-            
-            <div className={styles.embedContainer}>
-                {/* Official TikTok Profile Embed - always shows latest ~10 videos */}
-                <blockquote
-                    className="tiktok-embed"
-                    cite="https://www.tiktok.com/@7adid_elsafina"
-                    data-unique-id="7adid_elsafina"
-                    data-embed-type="creator"
-                    style={{
-                        maxWidth: '720px',
-                        minWidth: '288px',
-                        margin: '0 auto',
-                        backgroundColor: theme.secondary,
-                        borderRadius: '12px',
-                        overflow: 'hidden'
-                    }}
-                >
-                    <section style={{ padding: '20px', textAlign: 'center' }}>
-                        <a
-                            target="_blank"
-                            title="@7adid_elsafina"
-                            href="https://www.tiktok.com/@7adid_elsafina" 
-                            style={{ 
-                                color: theme.primary,
-                                textDecoration: 'none',
-                                fontSize: '18px',
-                                fontWeight: 'bold'
-                            }}
-                        >
-                            @7adid_elsafina
-                        </a>
-                        <p style={{ 
-                            color: theme.tertiary,
-                            margin: '10px 0'
-                        }}>
-                            Data Science tips in Arabic 📊
-                        </p>
-                        <a
-                            target="_blank"
-                            title="♬ original sound - 7adid_elsafina"
-                            href="https://www.tiktok.com/@7adid_elsafina"
-                            style={{
-                                color: theme.primary,
-                                textDecoration: 'none'
-                            }}
-                        >
-                            ♬ View Latest Videos
-                        </a>
-                    </section>
-                </blockquote>
-            </div>
-            
-            <div className={styles.cta}>
-                <div className={styles.ctaContent}>
-                    <p style={{ color: theme.tertiary }}>
+
+                <div className="flex justify-center">
+                    {/* Official TikTok Profile Embed - always shows latest ~10 videos */}
+                    <blockquote
+                        className="tiktok-embed"
+                        cite="https://www.tiktok.com/@7adid_elsafina"
+                        data-unique-id="7adid_elsafina"
+                        data-embed-type="creator"
+                        style={{
+                            maxWidth: '720px',
+                            minWidth: '288px',
+                            margin: '0 auto',
+                            backgroundColor: theme.secondary,
+                            borderRadius: '12px',
+                            overflow: 'hidden'
+                        }}
+                    >
+                        <section style={{ padding: '20px', textAlign: 'center' }}>
+                            <a
+                                target="_blank"
+                                title="@7adid_elsafina"
+                                href="https://www.tiktok.com/@7adid_elsafina"
+                                style={{
+                                    color: theme.primary,
+                                    textDecoration: 'none',
+                                    fontSize: '18px',
+                                    fontWeight: 'bold'
+                                }}
+                            >
+                                @7adid_elsafina
+                            </a>
+                            <p style={{
+                                color: theme.tertiary,
+                                margin: '10px 0'
+                            }}>
+                                Data Science tips in Arabic 📊
+                            </p>
+                            <a
+                                target="_blank"
+                                title="♬ original sound - 7adid_elsafina"
+                                href="https://www.tiktok.com/@7adid_elsafina"
+                                style={{
+                                    color: theme.primary,
+                                    textDecoration: 'none'
+                                }}
+                            >
+                                ♬ View Latest Videos
+                            </a>
+                        </section>
+                    </blockquote>
+                </div>
+
+                <div className="flex items-center gap-4 mt-8">
+                    <p className="text-[0.8rem] text-text-secondary">
                         📊 Join 2,300+ data scientists learning together
                     </p>
-                    <div className={styles.ctaButtons}>
-                        <a 
-                            href={contactsData.tiktok}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.followButton}
-                            style={{
-                                backgroundColor: '#ff0050',
-                                color: 'white'
-                            }}
-                        >
-                            Follow on TikTok
-                        </a>
-                    </div>
+                    <a
+                        href={contactsData.tiktok}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-2 text-[0.7rem] text-primary border border-primary/30 rounded hover:border-primary/60 transition-colors"
+                    >
+                        Follow on TikTok
+                    </a>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 

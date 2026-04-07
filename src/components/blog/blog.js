@@ -1,41 +1,36 @@
 import React, { useContext } from 'react';
-import { HiArrowRight } from "react-icons/hi";
 import { ThemeContext } from '../../contexts/theme-context';
-import styles from '../../styles/blog.module.css';
 import Link from '../link';
 import SingleBlog from './blog-card/blog-card';
 
 
-function Blog({blogs}) {
+function Blog({ blogs }) {
 
     const { theme } = useContext(ThemeContext);
 
     return (
         <>
             {blogs.length > 0 && (
-                <div
-                    className={styles.blog}
+                <section
+                    className="border-b border-rule py-16"
                     id="blog"
-                    style={{ backgroundColor: theme.secondary }}>
-                    <div className={styles.blogHeader}>
-                        <div className={styles.titleSection}>
-                            <div className={styles.logoContainer}>
-                                <img 
-                                    src="/images/medium-logo.webp" 
-                                    alt="Medium logo" 
-                                    className={styles.mediumLogo}
-                                />
-                            </div>
-                            <div className={styles.titleInfo}>
-                                <h3 style={{ color: theme.primary }}>Medium</h3>
-                                <p className={styles.subtitle} style={{ color: theme.tertiary + '80' }}>
-                                    Technical Content & Insights
-                                </p>
+                    style={{ backgroundColor: theme.secondary }}
+                >
+                    <div className="max-w-page mx-auto px-6 md:px-12">
+                        <p className="section-label">08 / Blog</p>
+                        <div className="flex items-center gap-3 mb-8">
+                            <img
+                                src="/images/medium-logo.webp"
+                                alt="Medium logo"
+                                className="w-8 h-8 rounded-full"
+                            />
+                            <div>
+                                <h3 className="text-base font-semibold text-text-primary">Medium</h3>
+                                <p className="text-[0.75rem] text-text-secondary">Technical Content &amp; Insights</p>
                             </div>
                         </div>
-                    </div>
-                    <div className={styles.blogBody}>
-                        <div className={styles.blogBodyContainer}>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                             {blogs.slice(0, 3).reverse().map(blog => (
                                 <SingleBlog
                                     theme={theme}
@@ -51,25 +46,19 @@ function Blog({blogs}) {
                         </div>
 
                         {blogs.length > 3 && (
-                            <div className={styles.blogViewAll}>
+                            <div className="mt-6">
                                 <Link href="/blog">
-                                    <button
-                                        className="text-[#15202B] bg-[#8B98A5] 
-                                    hover:bg-[#1D9BF0] transition-colors">
-                                        View All
-                                        <HiArrowRight
-                                            className="text-[#8B98A5] bg-[#15202B] 
-                                        w-[40px] h-[40px] p-2 text-base 
-                                        rounded-[50%] cursor-pointer transition-colors" />
-                                    </button>
+                                    <span className="text-[0.7rem] text-primary border-b border-primary/20 pb-px hover:border-primary/50 transition-colors cursor-pointer">
+                                        View All Articles &rarr;
+                                    </span>
                                 </Link>
                             </div>
                         )}
                     </div>
-                </div>
+                </section>
             )}
         </>
-    )
+    );
 }
 
-export default Blog
+export default Blog;
