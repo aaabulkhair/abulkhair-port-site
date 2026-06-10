@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from '../../contexts/theme-context';
 import { contactsData } from '../../data/contacts-data';
+import Link from '../link';
 
 function WhatIDo() {
     const { theme } = useContext(ThemeContext);
@@ -22,6 +23,7 @@ function WhatIDo() {
                 text: 'Book Your Session',
                 url: `${contactsData.monetizationLinks.primary.url}&utm_campaign=services_consulting`,
             },
+            servicePage: '/services/llm-consulting-egypt',
             pricing: 'Flexible scheduling available'
         },
         {
@@ -39,6 +41,7 @@ function WhatIDo() {
                 text: 'Hire Me Now',
                 url: `${contactsData.monetizationLinks.secondary.url}&utm_campaign=services_development`,
             },
+            servicePage: '/services/machine-learning-development',
             pricing: 'Ready to work on your project directly'
         },
         {
@@ -74,6 +77,7 @@ function WhatIDo() {
                 text: 'Build AI Agents',
                 url: `${contactsData.monetizationLinks.primary.url}&utm_campaign=services_agentic_ai`,
             },
+            servicePage: '/services/ai-agents-development',
             pricing: 'Enterprise AI solutions available'
         },
         {
@@ -120,6 +124,15 @@ function WhatIDo() {
                         <ServiceCard key={index + 3} service={service} theme={theme} />
                     ))}
                 </div>
+
+                <div className="mt-8">
+                    <Link
+                        href="/services"
+                        className="inline-block text-[0.75rem] text-primary border-b border-primary/20 pb-px hover:border-primary/50 transition-colors"
+                    >
+                        Explore all services &rarr;
+                    </Link>
+                </div>
             </div>
         </section>
     );
@@ -149,14 +162,24 @@ function ServiceCard({ service, theme }) {
 
             <div className="text-[0.65rem] text-primary/60 mb-3">{service.pricing}</div>
 
-            <a
-                href={service.cta.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block text-[0.7rem] text-primary border-b border-primary/20 pb-px hover:border-primary/50 transition-colors"
-            >
-                {service.cta.text} &rarr;
-            </a>
+            <div className="flex items-center gap-4">
+                <a
+                    href={service.cta.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block text-[0.7rem] text-primary border-b border-primary/20 pb-px hover:border-primary/50 transition-colors"
+                >
+                    {service.cta.text} &rarr;
+                </a>
+                {service.servicePage && (
+                    <Link
+                        href={service.servicePage}
+                        className="inline-block text-[0.7rem] text-text-secondary border-b border-rule pb-px hover:text-primary hover:border-primary/50 transition-colors"
+                    >
+                        Learn more
+                    </Link>
+                )}
+            </div>
         </div>
     );
 }

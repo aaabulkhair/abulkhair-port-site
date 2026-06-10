@@ -46,16 +46,6 @@ const nextConfig = {
     ];
   },
 
-  async redirects() {
-    return [
-      // Redirect common trailing slash patterns
-      {
-        source: '/services',
-        destination: '/',
-        permanent: true,
-      },
-    ];
-  },
 };
 
 module.exports = nextConfig;

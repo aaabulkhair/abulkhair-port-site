@@ -15,7 +15,7 @@ function Navbar() {
     const navLinks = [
         { label: 'Home', href: '/' },
         { label: 'About', href: '/#about' },
-        { label: 'Services', href: '/#services' },
+        { label: 'Services', href: '/services' },
         { label: 'Resume', href: '/#experience' },
         { label: 'Blog', href: '/#blog' },
         { label: 'Contact', href: '/#contacts' },

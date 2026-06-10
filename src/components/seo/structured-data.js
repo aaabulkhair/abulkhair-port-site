@@ -154,12 +154,6 @@ function StructuredData({ locale = 'en', pageType = 'website', additionalData = 
                     "price": "35",
                     "priceCurrency": "USD",
                     "unitText": "per session"
-                },
-                "aggregateRating": {
-                    "@type": "AggregateRating",
-                    "ratingValue": "4.9",
-                    "bestRating": "5",
-                    "ratingCount": "13"
                 }
             },
             {
@@ -177,13 +171,7 @@ function StructuredData({ locale = 'en', pageType = 'website', additionalData = 
                     "unitCode": "HUR"
                 },
                 "availability": "https://schema.org/InStock",
-                "url": contactsData.upwork,
-                "aggregateRating": {
-                    "@type": "AggregateRating",
-                    "ratingValue": "5.0",
-                    "bestRating": "5",
-                    "description": "100% Job Success Rate"
-                }
+                "url": contactsData.upwork
             },
             {
                 "@type": "Offer",
@@ -212,12 +200,6 @@ function StructuredData({ locale = 'en', pageType = 'website', additionalData = 
                     "maxPrice": "100",
                     "priceCurrency": "USD",
                     "unitText": "per hour"
-                },
-                "aggregateRating": {
-                    "@type": "AggregateRating",
-                    "ratingValue": "4.9",
-                    "bestRating": "5",
-                    "ratingCount": "13"
                 }
             },
             {
@@ -292,12 +274,6 @@ function StructuredData({ locale = 'en', pageType = 'website', additionalData = 
                         "name": "Ahmed Abulkhair"
                     },
                     "areaServed": "Worldwide",
-                    "aggregateRating": {
-                        "@type": "AggregateRating",
-                        "ratingValue": "4.9",
-                        "bestRating": "5",
-                        "ratingCount": "13"
-                    },
                     "hasOfferCatalog": {
                         "@type": "OfferCatalog",
                         "name": "Data Science & AI Services",
