@@ -1,10 +1,22 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { FiPlay } from 'react-icons/fi';
-import { ThemeContext } from '../../contexts/theme-context';
 import { contactsData } from '../../data/contacts-data';
 
+function SkeletonCard() {
+    return (
+        <div className="bg-bg-surface rounded overflow-hidden animate-pulse" aria-hidden="true">
+            <div className="aspect-video bg-rule" />
+            <div className="p-4 space-y-2">
+                <div className="h-3 bg-rule rounded w-3/4" />
+                <div className="h-2.5 bg-rule rounded w-full" />
+                <div className="h-2.5 bg-rule rounded w-1/3" />
+            </div>
+        </div>
+    );
+}
+
 function YouTubeFeed({ maxVideos = 3 }) {
-    const { theme } = useContext(ThemeContext);
     const [videos, setVideos] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -76,9 +88,15 @@ function YouTubeFeed({ maxVideos = 3 }) {
 
     if (loading) {
         return (
-            <section className="border-b border-rule py-16" style={{ backgroundColor: theme.secondary }}>
+            <section className="border-b border-rule py-16">
                 <div className="max-w-page mx-auto px-6 md:px-12">
-                    <p className="text-text-secondary text-sm">Loading latest videos...</p>
+                    <p className="section-label">06 / YouTube</p>
+                    <p className="sr-only" role="status">Loading latest videos</p>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <SkeletonCard />
+                        <SkeletonCard />
+                        <SkeletonCard />
+                    </div>
                 </div>
             </section>
         );
@@ -86,7 +104,7 @@ function YouTubeFeed({ maxVideos = 3 }) {
 
     if (error && videos.length === 0) {
         return (
-            <section className="border-b border-rule py-16" style={{ backgroundColor: theme.secondary }}>
+            <section className="border-b border-rule py-16">
                 <div className="max-w-page mx-auto px-6 md:px-12">
                     <p className="text-text-secondary text-sm">{error}</p>
                 </div>
@@ -95,13 +113,15 @@ function YouTubeFeed({ maxVideos = 3 }) {
     }
 
     return (
-        <section className="border-b border-rule py-16" style={{ backgroundColor: theme.secondary }}>
+        <section className="border-b border-rule py-16">
             <div className="max-w-page mx-auto px-6 md:px-12">
                 <p className="section-label">06 / YouTube</p>
                 <div className="flex items-center gap-3 mb-8">
-                    <img
+                    <Image
                         src="/images/7adidelsafina-logo.png"
                         alt="7adid_elsafina logo"
+                        width={32}
+                        height={32}
                         className="w-8 h-8 rounded-full"
                     />
                     <div>
@@ -114,11 +134,12 @@ function YouTubeFeed({ maxVideos = 3 }) {
                     {videos.map((video) => (
                         <div key={video.id} className="bg-bg-surface rounded overflow-hidden">
                             <div className="relative aspect-video overflow-hidden">
-                                <img
+                                <Image
                                     src={video.thumbnail}
                                     alt={video.title}
-                                    loading="lazy"
-                                    className="w-full h-full object-cover"
+                                    fill
+                                    sizes="(max-width: 768px) 100vw, 33vw"
+                                    className="object-cover"
                                 />
                             </div>
                             <div className="p-4">

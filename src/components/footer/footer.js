@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import { ThemeContext } from '../../contexts/theme-context';
+import React from 'react';
 import { socialsData } from '../../data/socials-data';
 import { contactsData } from '../../data/contacts-data';
 import { services } from '../../data/services';
@@ -7,7 +6,6 @@ import Link from '../link';
 import { FaLinkedin, FaGithub, FaMedium, FaYoutube, FaTiktok } from 'react-icons/fa';
 
 function Footer() {
-    const { theme } = useContext(ThemeContext);
     const currentYear = new Date().getFullYear();
 
     const socialLinks = [
@@ -28,7 +26,7 @@ function Footer() {
     const linkClass = 'text-[0.75rem] text-text-secondary hover:text-primary transition-colors';
 
     return (
-        <footer className="border-t border-rule mt-8" style={{ backgroundColor: theme.secondary }}>
+        <footer className="border-t border-rule mt-8">
             <div className="max-w-page mx-auto px-6 md:px-12 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                     <Link href="/" className="text-sm font-bold tracking-wider text-text-primary">AA</Link>

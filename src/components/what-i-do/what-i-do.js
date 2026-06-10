@@ -1,10 +1,9 @@
-import React, { useContext } from 'react';
-import { ThemeContext } from '../../contexts/theme-context';
+import React from 'react';
 import { contactsData } from '../../data/contacts-data';
 import Link from '../link';
+import Reveal from '../ui/reveal';
 
 function WhatIDo() {
-    const { theme } = useContext(ThemeContext);
 
     const services = [
         {
@@ -100,7 +99,7 @@ function WhatIDo() {
     ];
 
     return (
-        <section className="border-b border-rule py-16" id="services" style={{ backgroundColor: theme.secondary }}>
+        <section className="border-b border-rule py-16" id="services">
             <div className="max-w-page mx-auto px-6 md:px-12">
                 <p className="section-label">02 / Services</p>
                 <h2 className="text-3xl font-light tracking-tight mb-2">
@@ -114,14 +113,18 @@ function WhatIDo() {
                 {/* Top row: 3 cards */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                     {services.slice(0, 3).map((service, index) => (
-                        <ServiceCard key={index} service={service} theme={theme} />
+                        <Reveal key={index} delay={index * 80}>
+                            <ServiceCard service={service} />
+                        </Reveal>
                     ))}
                 </div>
 
                 {/* Bottom row: 2 cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {services.slice(3).map((service, index) => (
-                        <ServiceCard key={index + 3} service={service} theme={theme} />
+                        <Reveal key={index + 3} delay={index * 80}>
+                            <ServiceCard service={service} />
+                        </Reveal>
                     ))}
                 </div>
 
@@ -139,28 +142,34 @@ function WhatIDo() {
 }
 
 function ServiceCard({ service, theme }) {
-    return (
-        <div className="p-6 bg-bg-surface border-l-2 border-rule rounded-r hover:border-l-primary transition-colors duration-200">
-            <h4 className="text-[0.85rem] font-semibold text-text-primary mb-2">{service.title}</h4>
-            <p className="text-[0.75rem] text-text-secondary leading-relaxed mb-3">{service.description}</p>
+    const visibleFeatures = service.features.slice(0, 3);
+    const hiddenCount = service.features.length - visibleFeatures.length;
 
-            <p className="text-[0.75rem] text-primary/70 font-medium italic mb-3">
+    return (
+        <div className="h-full p-6 bg-bg-surface border-l-2 border-rule rounded-r hover:border-l-primary hover:-translate-y-0.5 transition-all duration-200">
+            <h4 className="text-sm font-semibold text-text-primary mb-2">{service.title}</h4>
+            <p className="text-[0.8rem] text-text-secondary leading-relaxed mb-3">{service.description}</p>
+
+            <p className="text-[0.8rem] text-primary/90 font-medium mb-3">
                 {service.outcome}
             </p>
 
             <ul className="mb-3 space-y-1">
-                {service.features.map((feature, idx) => (
-                    <li key={idx} className="text-[0.7rem] text-text-secondary pl-3 relative before:content-[''] before:absolute before:left-0 before:top-[7px] before:w-1 before:h-1 before:rounded-full before:bg-rule">
+                {visibleFeatures.map((feature, idx) => (
+                    <li key={idx} className="text-[0.7rem] text-text-secondary pl-3 relative before:content-[''] before:absolute before:left-0 before:top-[7px] before:w-1 before:h-1 before:rounded-full before:bg-primary/40">
                         {feature}
                     </li>
                 ))}
+                {hiddenCount > 0 && (
+                    <li className="text-[0.7rem] text-text-muted pl-3">+{hiddenCount} more</li>
+                )}
             </ul>
 
-            <div className="text-[0.65rem] text-primary/50 font-semibold text-center bg-primary-dim rounded py-2 px-3 mb-3">
+            <div className="text-[0.65rem] text-primary/80 font-semibold text-center bg-primary-dim rounded py-2 px-3 mb-3">
                 {service.socialProof}
             </div>
 
-            <div className="text-[0.65rem] text-primary/60 mb-3">{service.pricing}</div>
+            <div className="text-[0.65rem] text-text-secondary mb-3">{service.pricing}</div>
 
             <div className="flex items-center gap-4">
                 <a

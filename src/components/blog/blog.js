@@ -1,10 +1,8 @@
-import React, { useContext } from 'react';
-import { ThemeContext } from '../../contexts/theme-context';
+import React from 'react';
 import Link from '../link';
 import SingleBlog from './blog-card/blog-card';
 
 function Blog({ blogs }) {
-    const { theme } = useContext(ThemeContext);
 
     return (
         <>
@@ -12,7 +10,7 @@ function Blog({ blogs }) {
                 <section
                     className="border-b border-rule py-16"
                     id="blog"
-                    style={{ backgroundColor: theme.secondary }}
+                   
                 >
                     <div className="max-w-page mx-auto px-6 md:px-12">
                         <p className="section-label">08 / Blog</p>

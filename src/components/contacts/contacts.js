@@ -1,10 +1,9 @@
 import emailjs from '@emailjs/browser';
-import React, { useContext, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { FiCheck } from 'react-icons/fi';
 import { FaGithub, FaLinkedinIn, FaMediumM } from 'react-icons/fa';
 import Toast from '../ui/toast';
 import isEmail from 'validator/lib/isEmail';
-import { ThemeContext } from '../../contexts/theme-context';
 import { contactsData } from '../../data/contacts-data';
 import { socialsData } from '../../data/socials-data';
 
@@ -18,7 +17,6 @@ function Contacts() {
     const [errMsg, setErrMsg] = useState('');
     const [fieldErrors, setFieldErrors] = useState({});
     const form = useRef();
-    const { theme } = useContext(ThemeContext);
 
     const handleClose = () => setOpen(false);
 
@@ -61,7 +59,7 @@ function Contacts() {
     };
 
     return (
-        <section className="border-b border-rule py-16" id="contacts" style={{ backgroundColor: theme.secondary }}>
+        <section className="border-b border-rule py-16" id="contacts">
             <div className="max-w-page mx-auto px-6 md:px-12">
                 <p className="section-label">09 / Contact</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">

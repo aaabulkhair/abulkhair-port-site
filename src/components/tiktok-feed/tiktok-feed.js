@@ -1,9 +1,8 @@
-import React, { useContext, useEffect } from 'react';
-import { ThemeContext } from '../../contexts/theme-context';
+import React, { useEffect } from 'react';
+import Image from 'next/image';
 import { contactsData } from '../../data/contacts-data';
 
 function TikTokFeed() {
-    const { theme } = useContext(ThemeContext);
 
     useEffect(() => {
         // Load TikTok embed script if not already loaded
@@ -23,13 +22,15 @@ function TikTokFeed() {
     }, []);
 
     return (
-        <section className="border-b border-rule py-16" style={{ backgroundColor: theme.secondary }}>
+        <section className="border-b border-rule py-16">
             <div className="max-w-page mx-auto px-6 md:px-12">
                 <p className="section-label">07 / TikTok</p>
                 <div className="flex items-center gap-3 mb-8">
-                    <img
+                    <Image
                         src="/images/7adidelsafina-logo.png"
                         alt="7adid_elsafina logo"
+                        width={32}
+                        height={32}
                         className="w-8 h-8 rounded-full"
                     />
                     <div>
@@ -38,7 +39,8 @@ function TikTokFeed() {
                     </div>
                 </div>
 
-                <div className="flex justify-center">
+                {/* min-height reserves space until the TikTok script hydrates (CLS) */}
+                <div className="flex justify-center min-h-[480px]">
                     {/* Official TikTok Profile Embed - always shows latest ~10 videos */}
                     <blockquote
                         className="tiktok-embed"
@@ -49,7 +51,7 @@ function TikTokFeed() {
                             maxWidth: '720px',
                             minWidth: '288px',
                             margin: '0 auto',
-                            backgroundColor: theme.secondary,
+                            backgroundColor: '#0a0a0a',
                             borderRadius: '12px',
                             overflow: 'hidden'
                         }}
@@ -60,7 +62,7 @@ function TikTokFeed() {
                                 title="@7adid_elsafina"
                                 href="https://www.tiktok.com/@7adid_elsafina"
                                 style={{
-                                    color: theme.primary,
+                                    color: '#e8c47c',
                                     textDecoration: 'none',
                                     fontSize: '18px',
                                     fontWeight: 'bold'
@@ -69,7 +71,7 @@ function TikTokFeed() {
                                 @7adid_elsafina
                             </a>
                             <p style={{
-                                color: theme.tertiary,
+                                color: '#f0f0f0',
                                 margin: '10px 0'
                             }}>
                                 Data Science tips in Arabic
@@ -79,7 +81,7 @@ function TikTokFeed() {
                                 title="Latest videos from 7adid_elsafina"
                                 href="https://www.tiktok.com/@7adid_elsafina"
                                 style={{
-                                    color: theme.primary,
+                                    color: '#e8c47c',
                                     textDecoration: 'none'
                                 }}
                             >

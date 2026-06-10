@@ -1,9 +1,7 @@
-import React, { useContext, useMemo, useState } from 'react';
-import { ThemeContext } from '../../contexts/theme-context';
+import React, { useMemo, useState } from 'react';
 import { experienceData } from '../../data/experience-data';
 
 function Experience() {
-    const { theme } = useContext(ThemeContext);
     const [showAll, setShowAll] = useState(false);
 
     const sortedExperiences = useMemo(() => {
@@ -27,13 +25,13 @@ function Experience() {
     const remaining = sortedExperiences.length - visibleCount;
 
     return (
-        <section className="border-b border-rule py-16" id="experience" style={{ backgroundColor: theme.secondary }}>
+        <section className="border-b border-rule py-16" id="experience">
             <div className="max-w-page mx-auto px-6 md:px-12">
                 <p className="section-label">03 / Experience</p>
 
                 <div className="flex flex-col">
                     {visible.map((exp) => (
-                        <ExperienceItem key={exp.id} exp={exp} theme={theme} />
+                        <ExperienceItem key={exp.id} exp={exp} />
                     ))}
                 </div>
 

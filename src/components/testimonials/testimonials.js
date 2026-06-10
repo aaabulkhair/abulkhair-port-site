@@ -1,13 +1,11 @@
-import React, { useContext } from 'react';
-import { ThemeContext } from '../../contexts/theme-context';
+import React from 'react';
 import { featuredTestimonials } from '../../data/testimonials-data';
 import Rating from '../ui/rating';
 
 function Testimonials() {
-    const { theme } = useContext(ThemeContext);
 
     return (
-        <section className="border-b border-rule py-16" id="testimonials" style={{ backgroundColor: theme.secondary }}>
+        <section className="border-b border-rule py-16" id="testimonials">
             <div className="max-w-page mx-auto px-6 md:px-12">
                 <p className="section-label">05 / Testimonials</p>
                 <h2 className="text-3xl font-light tracking-tight mb-2">
