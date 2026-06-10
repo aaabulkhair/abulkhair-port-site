@@ -1,0 +1,66 @@
+---
+title: "Classical or Deep Learning? How I Choose Time-Series Forecasting Models"
+description: "A practical decision framework for picking between ARIMA, Prophet, gradient boosting, and Temporal Fusion Transformers — based on what actually wins backtests, not hype."
+date: "2026-06-10"
+tags: ["time-series", "forecasting", "machine-learning"]
+---
+
+Every forecasting engagement starts with the same client question: *"Should we use deep learning?"* And my answer is always the same: **let the backtest decide.** After years of building demand and sales forecasting systems, here is the decision framework I actually use.
+
+## Start with a naive baseline — always
+
+Before any model, establish what you must beat:
+
+- **Naive forecast**: tomorrow = today (or same day last week, for weekly seasonality)
+- **Seasonal naive**: next July = last July
+
+If a model can't beat these convincingly in a time-aware backtest, it doesn't ship. You would be surprised how often a sophisticated model loses to seasonal naive on short, noisy series.
+
+## When classical models win
+
+**ARIMA / SARIMA and Prophet** tend to win when:
+
+- You have **few series** (one product, one store, one metric)
+- History is **short** — under two seasonal cycles
+- Patterns are dominated by **trend + seasonality**, with few external drivers
+- You need **explainability** that a planner can audit
+
+They're cheap to run, easy to retrain daily, and their uncertainty intervals are well understood. For a single revenue line or a handful of KPIs, I rarely reach past this tier.
+
+## When machine learning wins
+
+**Gradient boosting (LightGBM/XGBoost) on engineered features** is my workhorse for retail-scale problems:
+
+- **Many related series** (hundreds of SKUs × stores)
+- Rich **covariates**: promotions, prices, holidays, weather
+- Non-linear interactions between drivers
+
+The trick is honest feature engineering: lags, rolling statistics, and calendar features built so that nothing leaks from the future into training.
+
+## When deep learning earns its complexity
+
+**Temporal Fusion Transformers, N-BEATS, and LSTM-family models** justify their cost when:
+
+- You're forecasting **thousands of related series** that can share one global model
+- You need **multi-horizon** forecasts with quantile outputs in one shot
+- Covariates are known into the future (planned promotions, prices) and the model should attend to them
+
+TFT in particular gives you attention-based interpretability and native P10/P50/P90 quantiles — both genuinely useful in planning conversations. But it needs data volume, tuning time, and an MLOps setup classical models simply don't.
+
+## The part everyone skips: uncertainty
+
+Point forecasts are for dashboards; **quantiles are for decisions**. Inventory, staffing, and cash planning all need ranges. Whatever model wins, I evaluate calibration (do 90% intervals actually contain 90% of outcomes?) alongside accuracy. A slightly less accurate but well-calibrated model is usually more valuable to the business.
+
+## My default playbook
+
+1. Audit the data; establish naive and seasonal-naive baselines.
+2. Backtest Prophet/SARIMA as the classical contender.
+3. Backtest LightGBM with engineered features as the ML contender.
+4. Only if both plateau — and the data supports it — bring in TFT or N-BEATS.
+5. Pick by backtested error **at the horizon the business plans on**, weighted by the real cost of over- vs under-forecasting.
+
+The model is the easy part. The baselines, the backtesting discipline, and the uncertainty handling are what make a forecasting system trustworthy.
+
+---
+
+*Working on a forecasting problem? I help teams build demand and sales forecasting systems end to end — [see how we can work together](/services/time-series-forecasting).*

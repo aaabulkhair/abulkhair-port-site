@@ -5,28 +5,31 @@ module.exports = {
   changefreq: 'weekly',
   priority: 0.7,
   sitemapSize: 5000,
-  exclude: ['/api/*', '/project'],
+  exclude: ['/api/*'],
   transform: async (config, path) => {
-    // Custom priority per page
     const priorityMap = {
       '/': 1.0,
+      '/services': 0.9,
       '/blog': 0.8,
-      '/services/llm-consulting-egypt': 0.9,
-      '/services/machine-learning-development': 0.9,
     };
 
-    const changefreqMap = {
-      '/': 'weekly',
-      '/blog': 'weekly',
-      '/services/llm-consulting-egypt': 'monthly',
-      '/services/machine-learning-development': 'monthly',
-    };
+    let priority = priorityMap[path];
+    let changefreq = config.changefreq;
 
+    if (path.startsWith('/services/')) {
+      priority = 0.9;
+      changefreq = 'monthly';
+    } else if (path.startsWith('/blog/')) {
+      priority = 0.7;
+      changefreq = 'monthly';
+    }
+
+    // No lastmod: stamping every URL "modified now" on each deploy teaches
+    // crawlers to ignore the signal entirely.
     return {
       loc: path,
-      changefreq: changefreqMap[path] || config.changefreq,
-      priority: priorityMap[path] || config.priority,
-      lastmod: new Date().toISOString(),
+      changefreq,
+      priority: priority ?? config.priority,
     };
   },
 };

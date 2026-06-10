@@ -4,11 +4,14 @@
   "private": true,
   "dependencies": {
     "@emailjs/browser": "^3.7.0",
+    "gray-matter": "^4.0.3",
     "next": "^16.0.0",
+    "next-mdx-remote": "^6.0.0",
     "next-sitemap": "^4.2.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^4.2.0",
+    "reading-time": "^1.5.0",
     "rss-parser": "^3.13.0",
     "validator": "^13.15.21",
     "xml2js": "^0.6.2"
@@ -16,7 +19,7 @@
   "scripts": {
     "dev": "next dev -p 3000",
     "build": "next build",
-    "postbuild": "next-sitemap",
+    "postbuild": "node scripts/generate-rss.mjs && next-sitemap",
     "start": "next start"
   },
   "devDependencies": {
