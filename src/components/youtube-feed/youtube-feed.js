@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
+import { FiPlay } from 'react-icons/fi';
 import { ThemeContext } from '../../contexts/theme-context';
 import { contactsData } from '../../data/contacts-data';
 
@@ -155,7 +156,7 @@ function YouTubeFeed({ maxVideos = 3 }) {
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-5 py-2 text-[0.7rem] text-primary border border-primary/30 rounded hover:border-primary/60 transition-colors"
                     >
-                        <span>▶</span>
+                        <FiPlay size={10} aria-hidden="true" />
                         Subscribe
                     </a>
                 </div>

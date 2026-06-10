@@ -72,18 +72,18 @@ function TikTokFeed() {
                                 color: theme.tertiary,
                                 margin: '10px 0'
                             }}>
-                                Data Science tips in Arabic 📊
+                                Data Science tips in Arabic
                             </p>
                             <a
                                 target="_blank"
-                                title="♬ original sound - 7adid_elsafina"
+                                title="Latest videos from 7adid_elsafina"
                                 href="https://www.tiktok.com/@7adid_elsafina"
                                 style={{
                                     color: theme.primary,
                                     textDecoration: 'none'
                                 }}
                             >
-                                ♬ View Latest Videos
+                                View Latest Videos
                             </a>
                         </section>
                     </blockquote>
@@ -91,7 +91,7 @@ function TikTokFeed() {
 
                 <div className="flex items-center gap-4 mt-8">
                     <p className="text-[0.8rem] text-text-secondary">
-                        📊 Join 2,300+ data scientists learning together
+                        Join 2,300+ data scientists learning together
                     </p>
                     <a
                         href={contactsData.tiktok}

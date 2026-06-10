@@ -26,7 +26,7 @@ function Landing() {
                         {headerData.title}
                     </p>
                     <h1 className="text-5xl md:text-7xl font-light leading-[1.05] tracking-tight">
-                        {headerData.name.split(' ')[0]}
+                        <span className="font-serif italic">{headerData.name.split(' ')[0]}</span>
                         <br />
                         <span className="font-extrabold">{headerData.name.split(' ').slice(1).join(' ')}</span>
                     </h1>

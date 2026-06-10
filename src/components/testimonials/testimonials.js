@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from '../../contexts/theme-context';
 import { featuredTestimonials } from '../../data/testimonials-data';
+import Rating from '../ui/rating';
 
 function Testimonials() {
     const { theme } = useContext(ThemeContext);
@@ -22,15 +23,13 @@ function Testimonials() {
                             <span className="absolute top-2 left-4 text-5xl text-primary/10 font-serif leading-none select-none">
                                 &ldquo;
                             </span>
-                            <p className="text-[0.8rem] text-text-secondary leading-relaxed italic pt-4 mb-4">
+                            <p className="font-serif text-[0.85rem] text-text-secondary leading-relaxed italic pt-4 mb-4">
                                 {t.testimonial}
                             </p>
                             <div className="text-[0.75rem] font-semibold text-text-primary">{t.name}</div>
                             <div className="text-[0.65rem] text-text-muted mb-3">{t.role}</div>
                             <div className="flex items-center gap-3 flex-wrap">
-                                <span className="text-[0.65rem] text-primary">
-                                    {Array.from({ length: t.rating }, () => '\u2605').join('')} {t.rating}/5
-                                </span>
+                                <Rating value={t.rating} className="text-[0.65rem] text-primary" />
                                 <span className="text-[0.6rem] text-text-muted px-2 py-0.5 border border-rule rounded-sm">
                                     {t.platform}
                                 </span>
