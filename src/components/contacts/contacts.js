@@ -46,6 +46,8 @@ function Contacts() {
                         setOpen(false);
                     }, (error) => {
                         console.log(error.text);
+                        setErrMsg('Something went wrong — please email me directly.');
+                        setOpen(true);
                     });
             } else {
                 setErrMsg('Invalid email');

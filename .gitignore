@@ -36,3 +36,15 @@ jspm_packages
 # Optional REPL history
 .node_repl_history
 .next
+.vercel
+.superpowers/
+
+# Environment files (use .env.example as template)
+.env
+.env*.local
+
+# Test artifacts
+.playwright-mcp/
+playwright-report/
+test-results/
+.playwright/

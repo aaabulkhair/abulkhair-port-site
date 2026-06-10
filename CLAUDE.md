@@ -212,16 +212,59 @@ This project has been transformed into **abulkhair.ai** - a monetization-focused
 - **Medium Integration** - Pulls latest articles via existing blog system
 
 ### 🌍 Internationalization (i18n)
-- **next-intl** configured for Arabic/English support
-- **Translation Files** (`messages/en.json`, `messages/ar.json`) - Complete translations
-- **Middleware** (`src/middleware.js`) - Route-based language switching
-- **RTL Support** - Ready for Arabic text direction
+- **Not implemented.** The site is English-only; there is no locale routing, middleware, or translation wiring. Arabic audience is served via YouTube/TikTok content. An Arabic site version is a possible future project — do not assume any i18n infrastructure exists.
 
 ### 🔍 SEO & Analytics
 - **Structured Data** (`src/components/seo/structured-data.js`) - Schema.org JSON-LD for Person, Organization, WebSite
 - **SEO Head** (`src/components/seo/seo-head.js`) - Complete meta tags, OG tags, Twitter cards
 - **GA4 Analytics** (`src/components/analytics/google-analytics.js`) - Full tracking with UTM campaign support
 - **Link Tracking** - Automatic monetization and engagement tracking
+
+#### Google Analytics 4 (GA4) Configuration
+**Status**: ✅ Active and tracking (configured November 9, 2025)
+**Measurement ID**: `G-W348BQP5D9`
+
+**Setup Process**:
+1. Created Google Analytics account at https://analytics.google.com
+2. Set up property for "abulkhair.ai" with:
+   - Account name: Abulkhair.ai
+   - Property name: abulkhair.ai
+   - Time zone: Egypt (GMT+02:00) Cairo Time
+   - Currency: US Dollar ($)
+   - Industry: Professional Services
+   - Business size: Small (1-10 employees)
+   - Business objectives: Generate leads, Understand traffic, View engagement
+3. Selected "Web" platform and received measurement ID
+4. Added measurement ID to `.env` file:
+   ```
+   NEXT_PUBLIC_GA_MEASUREMENT_ID=G-W348BQP5D9
+   ```
+
+**What GA4 Tracks**:
+- **Page views**: Every page visit with full page title and URL
+- **Scroll depth**: Automatic tracking of 90% scroll engagement
+- **CTA clicks**: "Book Consultation", "Hire on Upwork", all monetization links
+- **Traffic sources**: Google search, social media, direct visits, referrals
+- **User demographics**: Location (Cairo focus), device type, browser
+- **UTM campaigns**: All external links tracked with campaign parameters
+- **Engagement metrics**: Time on page, bounce rate, user flow
+
+**Accessing Analytics Dashboard**:
+- URL: https://analytics.google.com
+- Real-time data: Reports → Realtime (see live visitors)
+- Traffic analysis: Reports → Acquisition → Traffic acquisition
+- Conversion tracking: Reports → Engagement → Conversions
+
+**Integration Details**:
+- Script location: `src/pages/_document.js` (GoogleAnalyticsScript component)
+- Initialization: `src/pages/_app.js` (useGoogleAnalytics hook)
+- Event tracking: Automatic page views + scroll events
+- Custom events: CTA clicks tracked via enhanced-link-tracker.js
+
+**Verification**:
+- Network requests show successful tracking: `POST https://www.google-analytics.com/g/collect`
+- Google Tag Manager script loads: `https://www.googletagmanager.com/gtag/js?id=G-W348BQP5D9`
+- Data appears in GA dashboard within 24-48 hours
 
 ### 🧪 Testing Framework
 - **Playwright Tests** (`tests/abulkhair-ai.spec.js`) - Visual regression, SEO validation, link health

@@ -2,7 +2,6 @@ import React from 'react';
 import Head from 'next/head';
 import { ThemeContext } from '../../contexts/theme-context';
 import { Navbar, BackToTop } from '../../components';
-import ChangeTheme from '../../components/change-theme/change-theme';
 import SEOHead from '../../components/seo/seo-head';
 import StructuredData from '../../components/seo/structured-data';
 import { contactsData } from '../../data/contacts-data';
@@ -123,7 +122,6 @@ function LLMConsultingEgypt() {
             <StructuredData pageType="services" />
 
             <BackToTop />
-            <ChangeTheme />
             <Navbar />
 
             <div className={styles.servicePage}>
