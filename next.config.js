@@ -1,6 +1,3 @@
-const dotenv = require('dotenv')
-dotenv.config()
-
 const securityHeaders = [
   {
     key: 'X-DNS-Prefetch-Control',
@@ -32,9 +29,11 @@ const nextConfig = {
   reactStrictMode: true,
 
   images: {
-    domains: [
-      'i.ibb.co',
-      'cdn.brandfetch.io',
+    remotePatterns: [
+      { protocol: 'https', hostname: 'i.ibb.co' },
+      { protocol: 'https', hostname: 'cdn.brandfetch.io' },
+      { protocol: 'https', hostname: '**.medium.com' },
+      { protocol: 'https', hostname: 'img.youtube.com' },
     ],
   },
 

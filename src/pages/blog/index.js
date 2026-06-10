@@ -1,4 +1,3 @@
-import { Grid } from '@mui/material';
 import React, { useContext, useState } from 'react';
 import { AiOutlineHome } from "react-icons/ai";
 import { SingleBlog } from '../../components';
@@ -75,9 +74,7 @@ function BlogPage() {
                         style={searchStyle} />
                 </div>
                 <div className="blogs--container">
-                    <Grid
-                        className="blog-grid" container direction="row"
-                        alignItems="center" justifyContent="center">
+                    <div className="blog-grid flex flex-row flex-wrap items-center justify-center">
                         {filteredArticles.reverse().map(blog => (
                             <SingleBlog
                                 theme={theme}
@@ -90,7 +87,7 @@ function BlogPage() {
                                 id={blog.id}
                             />
                         ))}
-                    </Grid>
+                    </div>
                 </div>
             </div>
         </div>

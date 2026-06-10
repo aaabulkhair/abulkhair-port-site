@@ -1,12 +1,12 @@
 import React from 'react';
-import Fade from 'react-reveal/Fade';
+import Reveal from '../../ui/reveal';
 import placeholder from '../../../assets/png/placeholder.png';
 import styles from '../../../styles/singleBlog.module.css';
 import { timeConverter } from '../../../utils/time-converter';
 
 function SingleBlog({ theme, title, desc, date, image, url, id }) {
     return (
-        <Fade bottom>
+        <Reveal>
             <a
                 className={styles.singleBlog}
                 key={id} href={url}
@@ -23,7 +23,7 @@ function SingleBlog({ theme, title, desc, date, image, url, id }) {
                     <h6 style={{ color: theme.tertiary }}>{desc}</h6>
                 </div>
             </a>
-        </Fade>
+        </Reveal>
     )
 }
 

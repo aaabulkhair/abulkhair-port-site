@@ -1,5 +1,4 @@
 /* eslint-disable */
-import { contactsGreen } from './images'
 
 export const theLightTheme = {
     type: 'light',
@@ -14,8 +13,7 @@ export const theLightTheme = {
     sectionAltRgb: '250, 250, 250',
     tertiary: '#0a0a0a',
     tertiaryRgb: '10, 10, 10',
-    buttonColor: '#0a0a0a',
-    contactsimg: contactsGreen
+    buttonColor: '#0a0a0a'
 }
 
 export const theDarkTheme = {
@@ -31,6 +29,5 @@ export const theDarkTheme = {
     quaternaryLight: 'rgba(255,255,255,0.35)',
     tertiary: '#f0f0f0',
     tertiaryRgb: '240, 240, 240',
-    buttonColor: 'rgba(255,255,255,0.35)',
-    contactsimg: contactsGreen
+    buttonColor: 'rgba(255,255,255,0.35)'
 }

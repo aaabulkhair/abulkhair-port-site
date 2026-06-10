@@ -16,7 +16,8 @@ module.exports = {
         rule: 'rgba(255,255,255,0.06)',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-serif)', 'Georgia', 'serif'],
       },
       maxWidth: {
         page: '1400px',

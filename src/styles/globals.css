@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
-
 * {
   margin: 0;
   box-sizing: border-box;
@@ -16,7 +14,7 @@ html, body, #__next {
 }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
   font-size: 16px;
   background-color: #0a0a0a;
   color: #f0f0f0;
@@ -35,7 +33,7 @@ a {
 }
 
 :root {
-  --primaryFont: 'Inter', system-ui, sans-serif;
+  --primaryFont: var(--font-inter), system-ui, sans-serif;
   --bg: #0a0a0a;
   --bg-surface: rgba(255,255,255,0.02);
   --text-primary: #f0f0f0;
@@ -58,4 +56,31 @@ a {
 /* Section rule */
 .section-rule {
   border-bottom: 1px solid var(--rule);
+}
+
+/* Reveal-on-scroll (see src/hooks/use-reveal.js) */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Keyboard focus */
+:focus-visible {
+  outline: 2px solid rgba(232, 196, 124, 0.6);
+  outline-offset: 2px;
 }

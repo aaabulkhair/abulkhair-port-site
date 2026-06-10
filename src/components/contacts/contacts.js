@@ -1,9 +1,8 @@
 import emailjs from '@emailjs/browser';
-import { IconButton, Snackbar, SnackbarContent } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
 import React, { useContext, useRef, useState } from 'react';
-import { AiOutlineCheckCircle } from 'react-icons/ai';
+import { FiCheck } from 'react-icons/fi';
 import { FaGithub, FaLinkedinIn, FaMediumM } from 'react-icons/fa';
+import Toast from '../ui/toast';
 import isEmail from 'validator/lib/isEmail';
 import { ThemeContext } from '../../contexts/theme-context';
 import { contactsData } from '../../data/contacts-data';
@@ -15,48 +14,50 @@ function Contacts() {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
     const [success, setSuccess] = useState(false);
+    const [sending, setSending] = useState(false);
     const [errMsg, setErrMsg] = useState('');
+    const [fieldErrors, setFieldErrors] = useState({});
     const form = useRef();
     const { theme } = useContext(ThemeContext);
 
-    const handleClose = (event, reason) => {
-        if (reason === 'clickaway') {
-            return;
-        }
-        setOpen(false);
-    };
+    const handleClose = () => setOpen(false);
 
     const handleContactForm = (e) => {
         e.preventDefault();
+        if (sending) return;
 
-        if (name && email && message) {
-            if (isEmail(email)) {
-                emailjs.sendForm(
-                    process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-                    process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-                    form.current,
-                    process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY)
-                    .then((result) => {
-                        console.log('success');
-                        setSuccess(true);
-                        setErrMsg('');
-                        setName('');
-                        setEmail('');
-                        setMessage('');
-                        setOpen(false);
-                    }, (error) => {
-                        console.log(error.text);
-                        setErrMsg('Something went wrong — please email me directly.');
-                        setOpen(true);
-                    });
-            } else {
-                setErrMsg('Invalid email');
-                setOpen(true);
-            }
-        } else {
-            setErrMsg('Enter all the fields');
+        const errors = {};
+        if (!name) errors.name = 'Please enter your name';
+        if (!email) errors.email = 'Please enter your email';
+        else if (!isEmail(email)) errors.email = 'Please enter a valid email';
+        if (!message) errors.message = 'Please enter a message';
+        setFieldErrors(errors);
+
+        if (Object.keys(errors).length > 0) {
+            setErrMsg('Please fill in all the fields');
             setOpen(true);
+            return;
         }
+
+        setSending(true);
+        emailjs.sendForm(
+            process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+            process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+            form.current,
+            process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY)
+            .then(() => {
+                setSuccess(true);
+                setErrMsg('');
+                setName('');
+                setEmail('');
+                setMessage('');
+                setOpen(false);
+            }, (error) => {
+                console.log(error.text);
+                setErrMsg('Something went wrong — please email me directly.');
+                setOpen(true);
+            })
+            .finally(() => setSending(false));
     };
 
     return (
@@ -102,28 +103,25 @@ function Contacts() {
                         <form ref={form} onSubmit={handleContactForm} className="flex flex-col gap-4">
                             <div>
                                 <label className="text-[0.7rem] text-text-muted uppercase tracking-wider mb-1 block">Name</label>
-                                <input placeholder="John Doe" value={name} onChange={(e) => setName(e.target.value)} type="text" name="user_name" className="w-full bg-bg-surface border border-rule rounded px-4 py-3 text-sm text-text-primary placeholder:text-text-muted focus:border-primary/50 focus:outline-none transition-colors" />
+                                <input placeholder="John Doe" value={name} onChange={(e) => setName(e.target.value)} type="text" name="user_name" aria-invalid={!!fieldErrors.name} className="w-full bg-bg-surface border border-rule rounded px-4 py-3 text-sm text-text-primary placeholder:text-text-muted focus:border-primary/50 focus:outline-none transition-colors" />
+                                {fieldErrors.name && <p className="text-[0.7rem] text-primary mt-1">{fieldErrors.name}</p>}
                             </div>
                             <div>
                                 <label className="text-[0.7rem] text-text-muted uppercase tracking-wider mb-1 block">Email</label>
-                                <input placeholder="john@doe.com" value={email} onChange={(e) => setEmail(e.target.value)} type="email" name="user_email" className="w-full bg-bg-surface border border-rule rounded px-4 py-3 text-sm text-text-primary placeholder:text-text-muted focus:border-primary/50 focus:outline-none transition-colors" />
+                                <input placeholder="john@doe.com" value={email} onChange={(e) => setEmail(e.target.value)} type="email" name="user_email" aria-invalid={!!fieldErrors.email} className="w-full bg-bg-surface border border-rule rounded px-4 py-3 text-sm text-text-primary placeholder:text-text-muted focus:border-primary/50 focus:outline-none transition-colors" />
+                                {fieldErrors.email && <p className="text-[0.7rem] text-primary mt-1">{fieldErrors.email}</p>}
                             </div>
                             <div>
                                 <label className="text-[0.7rem] text-text-muted uppercase tracking-wider mb-1 block">Message</label>
-                                <textarea placeholder="Type your message..." value={message} onChange={(e) => setMessage(e.target.value)} name="message" rows={5} className="w-full bg-bg-surface border border-rule rounded px-4 py-3 text-sm text-text-primary placeholder:text-text-muted focus:border-primary/50 focus:outline-none transition-colors resize-none" />
+                                <textarea placeholder="Type your message..." value={message} onChange={(e) => setMessage(e.target.value)} name="message" rows={5} aria-invalid={!!fieldErrors.message} className="w-full bg-bg-surface border border-rule rounded px-4 py-3 text-sm text-text-primary placeholder:text-text-muted focus:border-primary/50 focus:outline-none transition-colors resize-none" />
+                                {fieldErrors.message && <p className="text-[0.7rem] text-primary mt-1">{fieldErrors.message}</p>}
                             </div>
-                            <button type="submit" className="self-start px-6 py-2.5 bg-primary text-bg rounded text-sm font-semibold hover:opacity-90 transition-opacity flex items-center gap-2">
-                                {!success ? 'Send' : 'Sent'}
-                                {success && <AiOutlineCheckCircle />}
+                            <button type="submit" disabled={sending} className="self-start px-6 py-2.5 bg-primary text-bg rounded text-sm font-semibold hover:opacity-90 transition-opacity flex items-center gap-2 disabled:opacity-60 disabled:cursor-wait">
+                                {sending ? 'Sending…' : !success ? 'Send' : 'Sent'}
+                                {success && !sending && <FiCheck aria-hidden="true" />}
                             </button>
                         </form>
-                        <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }} open={open} autoHideDuration={4000} onClose={handleClose}>
-                            <SnackbarContent
-                                action={<IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}><CloseIcon fontSize="small" /></IconButton>}
-                                style={{ backgroundColor: '#e8c47c', color: '#0a0a0a', fontFamily: 'Inter, system-ui, sans-serif' }}
-                                message={errMsg}
-                            />
-                        </Snackbar>
+                        <Toast open={open} message={errMsg} onClose={handleClose} />
                     </div>
                 </div>
             </div>
