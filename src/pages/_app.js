@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { Inter, Fraunces } from 'next/font/google';
 import ThemeContextProvider, { ThemeContext } from '../contexts/theme-context';
+import { MotionProvider } from '../components/ui/motion';
 import { useGoogleAnalytics } from '../components/analytics/google-analytics';
 import '../styles/globals.css';
 
@@ -38,7 +39,9 @@ const ThemedWrapper = ({ children }) => {
 const App = ({ Component, pageProps }) => (
   <ThemeContextProvider>
     <ThemedWrapper>
-      <Component {...pageProps} />
+      <MotionProvider>
+        <Component {...pageProps} />
+      </MotionProvider>
     </ThemedWrapper>
   </ThemeContextProvider>
 );

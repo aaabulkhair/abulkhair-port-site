@@ -11,8 +11,8 @@ module.exports = {
         bg: '#0a0a0a',
         'bg-surface': 'rgba(255,255,255,0.02)',
         'text-primary': '#f0f0f0',
-        'text-secondary': 'rgba(255,255,255,0.35)',
-        'text-muted': 'rgba(255,255,255,0.15)',
+        'text-secondary': 'rgba(255,255,255,0.62)',
+        'text-muted': 'rgba(255,255,255,0.45)',
         rule: 'rgba(255,255,255,0.06)',
       },
       fontFamily: {
