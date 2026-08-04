@@ -71,7 +71,7 @@ function WhatIDo() {
                 'Conversational AI & Chatbot Development',
                 'LLM Fine-tuning & Custom Model Training'
             ],
-            socialProof: 'Cutting-edge AI expertise \u2022 ALX Africa Senior Data Scientist',
+            socialProof: 'Cutting-edge AI expertise \u2022 AI Scientist at Incept Labs',
             cta: {
                 text: 'Build AI Agents',
                 url: `${contactsData.monetizationLinks.primary.url}&utm_campaign=services_agentic_ai`,

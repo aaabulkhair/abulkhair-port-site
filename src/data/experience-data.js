@@ -3,17 +3,17 @@ export const experienceData = [
         id: 0,
         company: 'Incept Labs',
         jobtitle: 'AI Scientist',
-        startYear: 'Jan 2026',
+        startYear: 'Nov 2025',
         endYear: 'Present',
-        location: 'California, United States',
+        location: 'California, US (Remote)',
         employmentType: 'Full-time',
-        description: 'Contributing to the mission of Incept Labs, a startup focused on revolutionizing educational experiences through AI technology.',
+        description: 'Fine-tuning and evaluating LLMs for Arabic and K-12 education; tuned Arabic models rank top-5 on the OALL and Arabic HELM benchmarks.',
         achievements: [
-            'Developed large language models tailored for K-12 education, enhancing real-time adaptability to diverse learners',
-            'Collaborated with national governments to align AI models with local curricula, languages, and customs',
-            'Contributed to revolutionizing educational experiences through AI technology'
+            'Fine-tuned Arabic LLMs ranked top-5 on OALL and Arabic HELM benchmarks',
+            'Develop LLMs for K-12 education with real-time adaptability to diverse learners',
+            'Partner with national governments to align models with local curricula, languages, and customs'
         ],
-        tech: ['LLMs', 'GenAI', 'Python', 'K-12 Education', 'NLP'],
+        tech: ['LLM Fine-Tuning', 'LLM Evaluation', 'Arabic NLP', 'Python', 'K-12 Education'],
         companyUrl: 'https://inceptlabs.ai/',
         logo: '/images/company-logos/inceptlabs.png'
     },
@@ -22,14 +22,14 @@ export const experienceData = [
         company: 'ALX Africa',
         jobtitle: 'Senior Data Scientist',
         startYear: 'Nov 2024',
-        endYear: 'Present',
-        location: 'Cairo, Egypt',
+        endYear: 'Jan 2026',
+        location: 'Remote',
         employmentType: 'Full-time',
-        description: 'Delivering LLM-powered solutions to enhance educational processes and learner outcomes across the ALX ecosystem.',
+        description: 'Built and deployed LLM-powered educational products across the ALX ecosystem.',
         achievements: [
-            'Optimized data and inference pipelines to improve reliability and scalability for AI features',
-            'Prototyped adaptive learning use-cases leveraging transformers for content understanding',
-            'Collaborated cross-functionally to align model behavior with pedagogical goals'
+            'Built and deployed Chidi, a Socratic AI tutor on Anthropic models, live across the ALX × Anthropic × Government of Rwanda partnership',
+            'Developed and deployed LLM applications with advanced NLP to enhance educational processes across the ALX initiative',
+            'Researched adaptive learning strategies that widened access to education through AI'
         ],
         tech: ['Python','PyTorch','Transformers','NLP','LLMs','Docker','AWS'],
         companyUrl: 'https://www.alxafrica.com/',
@@ -40,13 +40,14 @@ export const experienceData = [
         company: 'Arab ShipBroker',
         jobtitle: 'Consultant Data Scientist',
         startYear: 'Jul 2025',
-        endYear: 'Present',
+        endYear: 'Jan 2026',
         location: 'Remote',
-        employmentType: 'Consultant',
-        description: 'Advising on analytics and ML initiatives for maritime brokerage use-cases.',
+        employmentType: 'Consultant · Weekends',
+        description: 'Weekend consulting engagement on analytics and ML for maritime brokerage use-cases.',
         achievements: [
-            'Introduced opportunities for predictive analytics and data quality monitoring',
-            'Scoped MVPs for price intelligence and automation'
+            'Built freight-rate forecasting and vessel-performance models supporting chartering decisions',
+            'Developed voyage-economics (TCE) profitability models and an AI cargo–vessel matching engine',
+            'Designed automated pipelines turning multi-source shipping-market data into stakeholder dashboards'
         ],
         tech: ['Python','Pandas','Scikit-learn','Dashboards'],
         companyUrl: 'https://www.arabshipbroker.com/',
@@ -56,12 +57,15 @@ export const experienceData = [
         id: 3,
         company: 'ShopBrain',
         jobtitle: 'Lead Data Scientist',
-        startYear: 'Feb 2024',
-        endYear: 'Present',
-        description: 'Leading data science for a price comparison platform; previously Senior DS (Mar 2023–Feb 2024).',
+        startYear: 'Mar 2023',
+        endYear: 'Jul 2025',
+        description: 'Led the data science team behind a price comparison platform; promoted from Senior Data Scientist in Feb 2024.',
         achievements: [
-            'Optimized web scraping and data pipelines improving throughput and stability',
-            'Built dynamic pricing and recommendation components',
+            'Led the data science team; production ML serving millions of product comparisons',
+            'Deployed a dynamic pricing model driving revenue optimization for partner retailers',
+            'Built demand-forecasting models with gradient-boosted trees, cutting forecast error (MAPE) from 50% to 10%',
+            'Built a recommendation system using collaborative filtering and NLP-based similarity',
+            'Optimized real-time price-tracking pipelines across e-commerce sources'
         ],
         tech: ['Python','Airflow','ETL','Recommenders','Time Series'],
         companyUrl: 'https://www.shopbrain.co/',
@@ -74,12 +78,12 @@ export const experienceData = [
         startYear: 'Jul 2020',
         endYear: 'Jul 2024',
         location: 'Cairo, Egypt',
-        employmentType: 'Part-time',
-        description: 'Data Science track supervisor: curriculum design, course delivery, and mentoring.',
+        employmentType: 'Full-time until Mar 2022, then part-time',
+        description: 'Data Science track supervisor: owned the track\'s 40+ courses, designed the full curriculum, and taught core courses.',
         achievements: [
-            'Designed and taught data science courses and labs',
-            'Mentored graduation projects with industry partners',
-            'Continuously updated content with state-of-the-art techniques'
+            'Owned the Data Science track curriculum of 40+ courses and taught core courses',
+            'Mentored hundreds of students; supervised graduation projects with industry partners',
+            'Continued part-time with crash courses, guest sessions, and graduation-project evaluation'
         ],
         tech: ['Python','Pandas','SQL','ML','DL'],
         companyUrl: 'https://iti.gov.eg/home',
@@ -107,11 +111,11 @@ export const experienceData = [
         jobtitle: 'Senior Data Scientist',
         startYear: 'Mar 2022',
         endYear: 'Mar 2023',
-        description: 'Delivered data science solutions in e-commerce context.',
+        description: 'Data science for the e-commerce platform, focused on payments and customer modeling.',
         achievements: [
-            'Developed recommendation systems for product discovery',
-            'Built customer segmentation models for targeted marketing',
-            'Implemented fraud detection algorithms'
+            'Led Cash-on-Delivery (COD) feature enablement for the e-commerce platform',
+            'Reduced order cancellation rates by 40% through COD adoption and payment-risk optimization',
+            'Built customer-profiling models later reused across other internal systems'
         ],
         tech: ['Python', 'Scikit-learn', 'SQL', 'AWS', 'Recommender Systems'],
         companyUrl: 'https://www.jumia.com/',
@@ -156,11 +160,11 @@ export const experienceData = [
         jobtitle: 'Data Scientist',
         startYear: 'Jul 2019',
         endYear: 'Jul 2020',
-        description: 'Worked on chatbots, recommendations for telecom offers, CV/NLP, and analytics tooling.',
+        description: 'Consulting delivery across telecom, banking, and analytics.',
         achievements: [
-            'Built conversational AI chatbots for customer service',
-            'Developed recommendation engines for telecom offer optimization',
-            'Created analytics dashboards for business intelligence'
+            'Built chatbots for telecom and banking, plus recommendation models segmenting telecom subscribers for targeted offers',
+            'Delivered object detection, text mining, and OCR solutions across domains',
+            'Built an AI-driven analytics tool and ran campaign optimization using neural networks'
         ],
         tech: ['Python', 'NLP', 'Chatbots', 'Recommender Systems', 'Analytics'],
         logo: '/images/company-logos/bbi.svg'
