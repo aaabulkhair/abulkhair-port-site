@@ -1,18 +1,19 @@
-import React, { useContext, useMemo } from 'react';
-import { ThemeContext } from '../../contexts/theme-context';
+import React, { useMemo } from 'react';
 import { educationData } from '../../data/education-data';
 
 function Education() {
-    const { theme } = useContext(ThemeContext);
 
     const sortedEducation = useMemo(() => {
         return [...educationData].sort((a, b) => parseInt(b.startYear) - parseInt(a.startYear));
     }, []);
 
     return (
-        <section className="border-b border-rule py-16" id="education" style={{ backgroundColor: theme.secondary }}>
+        <section className="border-b border-rule py-24" id="education">
             <div className="max-w-page mx-auto px-6 md:px-12">
                 <p className="section-label">04 / Education</p>
+                <h2 className="display-section font-light mb-8">
+                    Education &amp; <strong className="font-serif italic font-medium text-primary">credentials</strong>
+                </h2>
 
                 <div className="flex flex-col">
                     {sortedEducation.map((edu) => (

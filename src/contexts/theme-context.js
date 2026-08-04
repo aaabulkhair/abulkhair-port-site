@@ -9,8 +9,9 @@ function ThemeContextProvider(props) {
     const theme = theDarkTheme;
     const [drawerOpen, setDrawerOpen] = useState(false);
 
-    const setHandleDrawer = () => {
-        setDrawerOpen(!drawerOpen)
+    // Accepts an explicit boolean, or toggles when called with none.
+    const setHandleDrawer = (open) => {
+        setDrawerOpen((prev) => (typeof open === 'boolean' ? open : !prev));
     }
 
     const value = { theme, drawerOpen, setHandleDrawer }

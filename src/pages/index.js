@@ -24,7 +24,7 @@ function HomePage({ blogs }) {
       <Education />
       <Testimonials />
       <YouTubeFeed maxVideos={3} />
-      <TikTokFeed maxVideos={3} />
+      <TikTokFeed />
       <Blog blogs={blogs} />
       <Contacts />
       <Footer />
@@ -33,6 +33,18 @@ function HomePage({ blogs }) {
 }
 
 export async function getStaticProps() {
+  // Native MDX posts come first; Medium articles fill the remaining slots.
+  const { getAllPosts } = await import('../lib/posts');
+  const nativePosts = getAllPosts().map((post) => ({
+    id: `native-${post.slug}`,
+    title: post.title,
+    description: post.description,
+    published_at: post.date,
+    cover_image: post.coverImage,
+    url: `/blog/${post.slug}`,
+    internal: true,
+  }));
+
   try {
     // Try to fetch directly from Medium RSS (better for static generation)
     const mediumUsername = 'aaabulkhair';
@@ -79,47 +91,29 @@ export async function getStaticProps() {
       }
       
       return {
-        id: index + 1,
+        id: `medium-${index + 1}`,
         title: item.title ? item.title[0] : 'Untitled',
         description: description,
-        published_at: item.pubDate ? item.pubDate[0] : new Date().toISOString(),
+        published_at: item.pubDate ? item.pubDate[0] : null,
         cover_image: coverImage,
-        canonical_url: item.link ? item.link[0] : '#',
-        url: item.link ? item.link[0] : '#'
+        url: item.link ? item.link[0] : '#',
+        internal: false,
       };
     });
-    
+
     return {
       props: {
-        blogs: articles.slice(0, 10) // Return latest 10 articles
+        blogs: [...nativePosts, ...articles].slice(0, 6),
       },
     };
-    
+
   } catch (error) {
     console.error('Failed to fetch Medium articles:', error);
-    
-    // Fallback to Dev.to if Medium RSS fails
-    try {
-      const username = process.env.NEXT_PUBLIC_DEVTO_USERNAME || 'aaabulkhair';
-      const res = await fetch(`https://dev.to/api/articles?username=${username}`);
-      const data = await res.json();
-      const filteredBlogs = data.sort(() => Math.random() - 0.5);
-
-      return {
-        props: {
-          blogs: filteredBlogs
-        },
-      };
-    } catch (fallbackError) {
-      console.error('Fallback to Dev.to also failed:', fallbackError);
-      
-      // Return empty blogs if everything fails
-      return {
-        props: {
-          blogs: []
-        },
-      };
-    }
+    return {
+      props: {
+        blogs: nativePosts,
+      },
+    };
   }
 }
 

@@ -18,7 +18,7 @@ function SEOHead({
     
     const defaultDescription = locale === 'ar' ?
         "خبير علم البيانات والذكاء الاصطناعي في مصر. متخصص في LLM وأنظمة RAG والعوامل الذكية. استشارات باللغة العربية والإنجليزية. 100+ مشروع ناجح." :
-        "Egypt's leading data scientist specializing in LLMs, AI agents & machine learning. 100+ successful projects. Arabic & English AI consulting. Expert in RAG systems, LangChain, agentic AI.";
+        "AI Scientist with 7+ years of production ML. LLM fine-tuning & evaluation — tuned Arabic models rank top-5 on OALL & Arabic HELM. Arabic & English consulting: RAG systems, AI agents, time-series forecasting.";
 
     const pageTitle = title ? `${title} | Ahmed Abulkhair` : defaultTitle;
     const pageDescription = description || defaultDescription;
@@ -30,12 +30,11 @@ function SEOHead({
             {/* Basic Meta Tags */}
             <title>{pageTitle}</title>
             <meta name="description" content={pageDescription} />
-            <meta name="keywords" content="Ahmed Abulkhair, data science egypt, machine learning expert egypt, LLM consultant, AI agents, RAG systems, LangChain, agentic AI, arabic data scientist, time-series forecasting, أحمد أبو الخير, علم البيانات مصر, ذكاء اصطناعي, نماذج اللغة الكبيرة, استشارات الذكاء الاصطناعي" />
             <meta name="author" content="Ahmed Abulkhair" />
             <meta name="creator" content="Ahmed Abulkhair" />
             <meta name="publisher" content="Ahmed Abulkhair" />
             <meta name="subject" content="Ahmed Abulkhair - AI Scientist @ Incept Labs" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
             {/* Canonical */}
             <link rel="canonical" href={pageCanonical} />
@@ -84,13 +83,12 @@ function SEOHead({
             <meta name="twitter:creator" content="@aaabulkhair" />
             
             {/* Additional Meta Tags */}
-            <meta name="theme-color" content="#0066cc" />
-            <meta name="msapplication-navbutton-color" content="#0066cc" />
-            <meta name="apple-mobile-web-app-status-bar-style" content="#0066cc" />
-            
+            <meta name="theme-color" content="#0a0a0a" />
+
+            {/* Feeds */}
+            <link rel="alternate" type="application/rss+xml" title="Ahmed Abulkhair — Blog" href="/rss.xml" />
+
             {/* Preconnect for Performance */}
-            <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
             <link rel="preconnect" href="https://www.google-analytics.com" />
             <link rel="preconnect" href="https://img.youtube.com" />
             <link rel="preconnect" href="https://i.ibb.co" />
@@ -104,10 +102,9 @@ function SEOHead({
             
             {/* Favicons */}
             <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-            <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-            <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-            <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-            <link rel="manifest" href="/site.webmanifest" />
+            <link rel="icon" type="image/png" href="/favicon.png" />
+            <link rel="apple-touch-icon" href="/favicon512.png" />
+            <link rel="manifest" href="/manifest.json" />
         </Head>
     );
 }

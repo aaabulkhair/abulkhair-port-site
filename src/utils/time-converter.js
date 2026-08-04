@@ -1,3 +1,17 @@
+// Deterministic, timezone-stable date for SSR/SSG markup. Relative times
+// ("3 months ago") depend on `now`, so the server's render never matches the
+// client's hydration (React errors #418/#425) — never use those in SSR HTML.
+export function formatDate(isoTime) {
+  const date = new Date(isoTime);
+  if (Number.isNaN(date.getTime())) return '';
+  return date.toLocaleDateString('en-US', {
+    timeZone: 'UTC',
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+}
+
 export function timeConverter(isoTime) {
   const currentTime = new Date().getTime();
   const pastTime = new Date(isoTime).getTime();

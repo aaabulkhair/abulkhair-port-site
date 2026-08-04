@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
-import { ThemeContext } from '../../contexts/theme-context';
+import React from 'react';
 import { contactsData } from '../../data/contacts-data';
+import Link from '../link';
+import Reveal from '../ui/reveal';
 
 function WhatIDo() {
-    const { theme } = useContext(ThemeContext);
 
     const services = [
         {
@@ -22,6 +22,7 @@ function WhatIDo() {
                 text: 'Book Your Session',
                 url: `${contactsData.monetizationLinks.primary.url}&utm_campaign=services_consulting`,
             },
+            servicePage: '/services/llm-consulting-egypt',
             pricing: 'Flexible scheduling available'
         },
         {
@@ -39,6 +40,7 @@ function WhatIDo() {
                 text: 'Hire Me Now',
                 url: `${contactsData.monetizationLinks.secondary.url}&utm_campaign=services_development`,
             },
+            servicePage: '/services/machine-learning-development',
             pricing: 'Ready to work on your project directly'
         },
         {
@@ -69,11 +71,12 @@ function WhatIDo() {
                 'Conversational AI & Chatbot Development',
                 'LLM Fine-tuning & Custom Model Training'
             ],
-            socialProof: 'Cutting-edge AI expertise \u2022 ALX Africa Senior Data Scientist',
+            socialProof: 'Cutting-edge AI expertise \u2022 AI Scientist at Incept Labs',
             cta: {
                 text: 'Build AI Agents',
                 url: `${contactsData.monetizationLinks.primary.url}&utm_campaign=services_agentic_ai`,
             },
+            servicePage: '/services/ai-agents-development',
             pricing: 'Enterprise AI solutions available'
         },
         {
@@ -96,11 +99,11 @@ function WhatIDo() {
     ];
 
     return (
-        <section className="border-b border-rule py-16" id="services" style={{ backgroundColor: theme.secondary }}>
+        <section className="border-b border-rule py-24" id="services">
             <div className="max-w-page mx-auto px-6 md:px-12">
                 <p className="section-label">02 / Services</p>
-                <h2 className="text-3xl font-light tracking-tight mb-2">
-                    How I Can Help You <strong className="font-bold">Succeed</strong>
+                <h2 className="display-section font-light mb-2">
+                    How I can help you <strong className="font-serif italic font-medium text-primary">succeed</strong>
                 </h2>
                 <p className="text-sm text-text-secondary mb-8">
                     Five proven ways to accelerate your data science journey and business growth.{' '}
@@ -110,15 +113,28 @@ function WhatIDo() {
                 {/* Top row: 3 cards */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                     {services.slice(0, 3).map((service, index) => (
-                        <ServiceCard key={index} service={service} theme={theme} />
+                        <Reveal key={index} delay={index * 80}>
+                            <ServiceCard service={service} />
+                        </Reveal>
                     ))}
                 </div>
 
                 {/* Bottom row: 2 cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {services.slice(3).map((service, index) => (
-                        <ServiceCard key={index + 3} service={service} theme={theme} />
+                        <Reveal key={index + 3} delay={index * 80}>
+                            <ServiceCard service={service} />
+                        </Reveal>
                     ))}
+                </div>
+
+                <div className="mt-8">
+                    <Link
+                        href="/services"
+                        className="inline-block text-[0.75rem] text-primary border-b border-primary/20 pb-px hover:border-primary/50 transition-colors"
+                    >
+                        Explore all services &rarr;
+                    </Link>
                 </div>
             </div>
         </section>
@@ -126,37 +142,53 @@ function WhatIDo() {
 }
 
 function ServiceCard({ service, theme }) {
-    return (
-        <div className="p-6 bg-bg-surface border-l-2 border-rule rounded-r hover:border-l-primary transition-colors duration-200">
-            <h4 className="text-[0.85rem] font-semibold text-text-primary mb-2">{service.title}</h4>
-            <p className="text-[0.75rem] text-text-secondary leading-relaxed mb-3">{service.description}</p>
+    const visibleFeatures = service.features.slice(0, 3);
+    const hiddenCount = service.features.length - visibleFeatures.length;
 
-            <p className="text-[0.75rem] text-primary/70 font-medium italic mb-3">
+    return (
+        <div className="h-full p-6 bg-bg-surface border-l-2 border-rule rounded-r hover:border-l-primary hover:-translate-y-0.5 transition-all duration-200">
+            <h4 className="text-sm font-semibold text-text-primary mb-2">{service.title}</h4>
+            <p className="text-[0.8rem] text-text-secondary leading-relaxed mb-3">{service.description}</p>
+
+            <p className="text-[0.8rem] text-primary/90 font-medium mb-3">
                 {service.outcome}
             </p>
 
             <ul className="mb-3 space-y-1">
-                {service.features.map((feature, idx) => (
-                    <li key={idx} className="text-[0.7rem] text-text-secondary pl-3 relative before:content-[''] before:absolute before:left-0 before:top-[7px] before:w-1 before:h-1 before:rounded-full before:bg-rule">
+                {visibleFeatures.map((feature, idx) => (
+                    <li key={idx} className="text-[0.7rem] text-text-secondary pl-3 relative before:content-[''] before:absolute before:left-0 before:top-[7px] before:w-1 before:h-1 before:rounded-full before:bg-primary/40">
                         {feature}
                     </li>
                 ))}
+                {hiddenCount > 0 && (
+                    <li className="text-[0.7rem] text-text-muted pl-3">+{hiddenCount} more</li>
+                )}
             </ul>
 
-            <div className="text-[0.65rem] text-primary/50 font-semibold text-center bg-primary-dim rounded py-2 px-3 mb-3">
+            <div className="inline-block text-[0.65rem] text-primary/90 font-medium border border-primary/20 rounded-sm py-1.5 px-3 mb-3">
                 {service.socialProof}
             </div>
 
-            <div className="text-[0.65rem] text-primary/60 mb-3">{service.pricing}</div>
+            <div className="text-[0.65rem] text-text-secondary mb-3">{service.pricing}</div>
 
-            <a
-                href={service.cta.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block text-[0.7rem] text-primary border-b border-primary/20 pb-px hover:border-primary/50 transition-colors"
-            >
-                {service.cta.text} &rarr;
-            </a>
+            <div className="flex items-center gap-4">
+                <a
+                    href={service.cta.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block text-[0.7rem] text-primary border-b border-primary/20 pb-px hover:border-primary/50 transition-colors"
+                >
+                    {service.cta.text} &rarr;
+                </a>
+                {service.servicePage && (
+                    <Link
+                        href={service.servicePage}
+                        className="inline-block text-[0.7rem] text-text-secondary border-b border-rule pb-px hover:text-primary hover:border-primary/50 transition-colors"
+                    >
+                        Learn more
+                    </Link>
+                )}
+            </div>
         </div>
     );
 }

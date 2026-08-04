@@ -3,7 +3,7 @@ import profile from '../assets/png/profile.png';
 export const headerData = {
     name: 'Ahmed Abulkhair',
     title: "AI Scientist @ Incept Labs",
-    description: "Specializing in LLMs, Time-Series Forecasting, and AI Solutions. Book a consultation or hire me for your next project. Available in Arabic and English.",
+    description: "AI Scientist with 7+ years of production ML. I fine-tune and evaluate LLMs — my tuned Arabic models rank top-5 on OALL and Arabic HELM. Book a consultation or hire me for your next project. Available in Arabic and English.",
     image: profile,
     imagebw: profile,
     resumePdf: '',
@@ -32,5 +32,5 @@ export const headerData = {
         }
     ],
     languages: ['Arabic', 'English'],
-    specialties: ['LLMs & AI Agents', 'Time-Series Forecasting', 'Data Science Consulting', 'Educational AI']
+    specialties: ['LLM Fine-Tuning & Evaluation', 'Arabic NLP', 'Time-Series Forecasting', 'AI Agents']
 }

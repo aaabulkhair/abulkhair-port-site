@@ -4,30 +4,6 @@ import { useRouter } from 'next/router';
 // Google Analytics 4 Configuration
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
-// Initialize GA4
-export const initializeGA = () => {
-  if (typeof window !== 'undefined' && GA_MEASUREMENT_ID) {
-    // Load gtag script
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      window.dataLayer.push(arguments);
-    }
-    
-    gtag('js', new Date());
-    gtag('config', GA_MEASUREMENT_ID, {
-      page_title: document.title,
-      page_location: window.location.href,
-    });
-    
-    // Set up enhanced ecommerce tracking
-    gtag('config', GA_MEASUREMENT_ID, {
-      send_page_view: false, // We'll send page views manually
-      allow_google_signals: true,
-      allow_ad_personalization_signals: true,
-    });
-  }
-};
-
 // Track page views
 export const trackPageView = (url, title) => {
   if (typeof window !== 'undefined' && window.gtag) {
@@ -124,10 +100,8 @@ export const useGoogleAnalytics = () => {
   const router = useRouter();
 
   useEffect(() => {
-    // Initialize GA on mount
-    if (GA_MEASUREMENT_ID) {
-      initializeGA();
-    }
+    // Initial page view is sent by the inline config in _document.js;
+    // here we only track client-side navigations.
 
     // Track page views on route change
     const handleRouteChange = (url) => {
