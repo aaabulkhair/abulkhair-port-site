@@ -8,7 +8,7 @@ import { contactsData } from '../../data/contacts-data';
 // inside the dark theme, fires CORS errors, and collapses when blocked.
 function TikTokFeed() {
     return (
-        <section className="border-b border-rule py-16">
+        <section className="border-b border-rule py-24">
             <div className="max-w-page mx-auto px-6 md:px-12">
                 <p className="section-label">07 / TikTok</p>
                 <div className="flex items-center gap-3 mb-8">

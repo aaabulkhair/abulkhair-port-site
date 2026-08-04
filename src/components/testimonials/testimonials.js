@@ -5,11 +5,11 @@ import Rating from '../ui/rating';
 function Testimonials() {
 
     return (
-        <section className="border-b border-rule py-16" id="testimonials">
+        <section className="border-b border-rule py-24" id="testimonials">
             <div className="max-w-page mx-auto px-6 md:px-12">
                 <p className="section-label">05 / Testimonials</p>
-                <h2 className="text-3xl font-light tracking-tight mb-2">
-                    What Clients <strong className="font-bold">Say</strong>
+                <h2 className="display-section font-light mb-2">
+                    What clients <strong className="font-serif italic font-medium text-primary">say</strong>
                 </h2>
                 <p className="text-sm text-text-secondary mb-8">
                     Real results from 100+ consultations and 28+ successful projects

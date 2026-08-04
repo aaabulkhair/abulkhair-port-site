@@ -99,11 +99,11 @@ function WhatIDo() {
     ];
 
     return (
-        <section className="border-b border-rule py-16" id="services">
+        <section className="border-b border-rule py-24" id="services">
             <div className="max-w-page mx-auto px-6 md:px-12">
                 <p className="section-label">02 / Services</p>
-                <h2 className="text-3xl font-light tracking-tight mb-2">
-                    How I Can Help You <strong className="font-bold">Succeed</strong>
+                <h2 className="display-section font-light mb-2">
+                    How I can help you <strong className="font-serif italic font-medium text-primary">succeed</strong>
                 </h2>
                 <p className="text-sm text-text-secondary mb-8">
                     Five proven ways to accelerate your data science journey and business growth.{' '}
@@ -165,7 +165,7 @@ function ServiceCard({ service, theme }) {
                 )}
             </ul>
 
-            <div className="text-[0.65rem] text-primary/80 font-semibold text-center bg-primary-dim rounded py-2 px-3 mb-3">
+            <div className="inline-block text-[0.65rem] text-primary/90 font-medium border border-primary/20 rounded-sm py-1.5 px-3 mb-3">
                 {service.socialProof}
             </div>
 

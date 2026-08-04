@@ -21,9 +21,12 @@ function Experience() {
     const remaining = sortedExperiences.length - visibleCount;
 
     return (
-        <section className="border-b border-rule py-16" id="experience">
+        <section className="border-b border-rule py-24" id="experience">
             <div className="max-w-page mx-auto px-6 md:px-12">
                 <p className="section-label">03 / Experience</p>
+                <h2 className="display-section font-light mb-8">
+                    Where I&apos;ve <strong className="font-serif italic font-medium text-primary">worked</strong>
+                </h2>
 
                 <div className="flex flex-col">
                     {visible.map((exp) => (
@@ -68,6 +71,11 @@ function ExperienceItem({ exp, theme }) {
             <div>
                 <div className="text-[0.85rem] font-semibold text-text-primary">
                     <CompanyTag {...companyProps}>{exp.company}</CompanyTag>
+                    {exp.endYear === 'Present' && (
+                        <span className="ml-2 text-[0.55rem] uppercase tracking-[1px] text-primary border border-primary/30 rounded-sm px-1.5 py-0.5 align-middle">
+                            Current
+                        </span>
+                    )}
                 </div>
                 <div className="text-[0.75rem] text-primary/70 mb-1">{exp.jobtitle}</div>
                 {(exp.location || exp.employmentType) && (

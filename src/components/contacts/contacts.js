@@ -59,13 +59,13 @@ function Contacts() {
     };
 
     return (
-        <section className="border-b border-rule py-16" id="contacts">
+        <section className="border-b border-rule py-24" id="contacts">
             <div className="max-w-page mx-auto px-6 md:px-12">
                 <p className="section-label">09 / Contact</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                     <div>
-                        <h2 className="text-2xl font-light tracking-tight mb-4">
-                            Let&apos;s work <strong className="font-bold">together</strong>
+                        <h2 className="display-section font-light mb-4">
+                            Let&apos;s work <strong className="font-serif italic font-medium text-primary">together</strong>
                         </h2>
                         <p className="text-[0.85rem] text-text-secondary leading-relaxed mb-6">
                             Whether you need a consultation, project development, or just want to connect — I&apos;m here to help.

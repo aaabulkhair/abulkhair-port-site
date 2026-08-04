@@ -8,14 +8,14 @@ function Blog({ blogs }) {
         <>
             {blogs.length > 0 && (
                 <section
-                    className="border-b border-rule py-16"
+                    className="border-b border-rule py-24"
                     id="blog"
                    
                 >
                     <div className="max-w-page mx-auto px-6 md:px-12">
                         <p className="section-label">08 / Blog</p>
-                        <h2 className="text-3xl font-light tracking-tight mb-2">
-                            Notes from <strong className="font-bold">the field</strong>
+                        <h2 className="display-section font-light mb-2">
+                            Notes from <strong className="font-serif italic font-medium text-primary">the field</strong>
                         </h2>
                         <p className="text-sm text-text-secondary mb-8">
                             Technical writing on machine learning, LLMs, and forecasting.

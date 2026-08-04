@@ -113,7 +113,7 @@ function YouTubeFeed({ maxVideos = 3 }) {
     }
 
     return (
-        <section className="border-b border-rule py-16">
+        <section className="border-b border-rule py-24">
             <div className="max-w-page mx-auto px-6 md:px-12">
                 <p className="section-label">06 / YouTube</p>
                 <div className="flex items-center gap-3 mb-8">
@@ -132,14 +132,14 @@ function YouTubeFeed({ maxVideos = 3 }) {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {videos.map((video) => (
-                        <div key={video.id} className="bg-bg-surface rounded overflow-hidden">
+                        <div key={video.id} className="group bg-bg-surface rounded overflow-hidden">
                             <div className="relative aspect-video overflow-hidden">
                                 <Image
                                     src={video.thumbnail}
                                     alt={video.title}
                                     fill
                                     sizes="(max-width: 768px) 100vw, 33vw"
-                                    className="object-cover"
+                                    className="object-cover grayscale-[0.6] opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
                                 />
                             </div>
                             <div className="p-4">

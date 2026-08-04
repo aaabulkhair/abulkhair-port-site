@@ -4,10 +4,13 @@ import { FaGithub, FaLinkedin, FaMediumM, FaYoutube, FaTiktok } from 'react-icon
 import { ThemeContext } from '../../contexts/theme-context';
 import { headerData } from '../../data/header-data';
 import { socialsData } from '../../data/socials-data';
+import { achievementsData } from '../../data/achievements-data';
 import { MonetizationLink } from '../analytics/enhanced-link-tracker';
+import { m, useReducedMotion, fadeUp, EASE } from '../ui/motion';
 
 function Landing() {
-    const { drawerOpen, theme } = useContext(ThemeContext);
+    const { drawerOpen } = useContext(ThemeContext);
+    const reduceMotion = useReducedMotion();
 
     const socials = [
         { icon: FaLinkedin, href: socialsData.linkedIn, label: 'LinkedIn' },
@@ -17,25 +20,68 @@ function Landing() {
         { icon: FaTiktok, href: 'https://www.tiktok.com/@7adid_elsafina', label: 'TikTok' },
     ].filter(s => s.href);
 
+    // Hero credential strip — the four strongest CV proof points.
+    const credentials = [
+        achievementsData.find(a => a.id === 'oall'),
+        achievementsData.find(a => a.id === 'kaggle'),
+        achievementsData.find(a => a.id === 'upwork'),
+        achievementsData.find(a => a.id === 'experience'),
+    ].filter(Boolean);
+
     return (
-        <div className="min-h-screen flex items-center bg-bg pt-16">
-            <div className="max-w-page mx-auto px-6 md:px-12 w-full flex flex-col md:flex-row items-center relative">
+        <div className="relative min-h-screen flex items-center bg-bg hero-backdrop grain overflow-hidden">
+            <div className="max-w-page mx-auto px-6 md:px-12 w-full flex flex-col md:flex-row items-center pt-24 pb-20 relative">
                 {/* Left — Content */}
-                <div className="flex-[1.3] py-12 md:pr-16">
-                    <p className="text-[0.65rem] tracking-[4px] uppercase text-text-muted mb-8">
+                <div className="flex-[1.3] md:pr-16">
+                    <m.p
+                        className="text-[0.65rem] tracking-[4px] uppercase text-text-muted mb-8"
+                        variants={fadeUp}
+                        initial="hidden"
+                        animate="visible"
+                        custom={0}
+                    >
                         {headerData.title}
-                    </p>
-                    <h1 className="text-5xl md:text-7xl font-light leading-[1.05] tracking-tight">
-                        <span className="font-serif italic">{headerData.name.split(' ')[0]}</span>
-                        <br />
-                        <span className="font-extrabold">{headerData.name.split(' ').slice(1).join(' ')}</span>
+                    </m.p>
+
+                    <h1 className="display-hero">
+                        <m.span
+                            className="block font-serif italic font-light text-text-primary"
+                            variants={fadeUp}
+                            initial="hidden"
+                            animate="visible"
+                            custom={1}
+                        >
+                            {headerData.name.split(' ')[0]}
+                        </m.span>
+                        <m.span
+                            className="block font-extrabold text-text-primary"
+                            variants={fadeUp}
+                            initial="hidden"
+                            animate="visible"
+                            custom={2}
+                        >
+                            {headerData.name.split(' ').slice(1).join(' ')}
+                        </m.span>
                     </h1>
-                    <p className="text-base text-text-secondary leading-relaxed mt-6 max-w-md">
+
+                    <m.p
+                        className="text-base text-text-secondary leading-relaxed mt-8 max-w-md"
+                        variants={fadeUp}
+                        initial="hidden"
+                        animate="visible"
+                        custom={3}
+                    >
                         {headerData.description}
-                    </p>
+                    </m.p>
 
                     {/* CTAs */}
-                    <div className="flex flex-wrap gap-3 mt-8">
+                    <m.div
+                        className="flex flex-wrap gap-3 mt-10"
+                        variants={fadeUp}
+                        initial="hidden"
+                        animate="visible"
+                        custom={4}
+                    >
                         {headerData.ctaPrimary && (
                             <MonetizationLink
                                 href={headerData.ctaPrimary.url}
@@ -60,25 +106,42 @@ function Landing() {
                                 </span>
                             </MonetizationLink>
                         )}
-                    </div>
+                    </m.div>
 
-                    {/* Trust badges as subtle metadata */}
-                    <div className="flex gap-8 mt-6 text-[0.7rem] text-text-muted tracking-wide">
-                        {headerData.trustBadges?.map((badge, i) => (
-                            <span key={i}>{badge.platform} {badge.rating} {badge.metric === 'Stars' ? '\u2605' : badge.metric}</span>
+                    {/* Credential strip — CV proof points */}
+                    <m.div
+                        className="flex flex-wrap gap-x-8 gap-y-3 mt-12 pt-6 border-t border-rule"
+                        variants={fadeUp}
+                        initial="hidden"
+                        animate="visible"
+                        custom={5}
+                    >
+                        {credentials.map((c) => (
+                            <div key={c.id} className="max-w-[180px]">
+                                <p className="text-[0.7rem] font-semibold text-primary leading-snug">{c.label}</p>
+                                <p className="text-[0.65rem] text-text-muted leading-snug mt-1">{c.detail}</p>
+                            </div>
                         ))}
-                    </div>
+                    </m.div>
                 </div>
 
                 {/* Right — Photo + Socials */}
-                <div className="flex-[0.7] flex items-center justify-center relative py-12">
-                    <div className={`w-56 h-56 md:w-64 md:h-64 rounded-full overflow-hidden border border-rule transition-opacity duration-300 ${drawerOpen ? 'opacity-0' : 'opacity-100'}`}>
+                <m.div
+                    className="flex-[0.7] flex items-center justify-center relative py-12"
+                    initial={reduceMotion ? false : { opacity: 0, scale: 0.96 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.9, ease: EASE, delay: 0.3 }}
+                >
+                    {/* Gold halo behind the portrait */}
+                    <div className="absolute w-64 h-64 md:w-80 md:h-80 rounded-full bg-primary/10 blur-3xl" aria-hidden="true" />
+                    <div className={`relative w-56 h-56 md:w-72 md:h-72 rounded-full overflow-hidden border border-primary/20 transition-opacity duration-300 ${drawerOpen ? 'opacity-0' : 'opacity-100'}`}>
                         <Image
                             src={headerData.image}
                             alt={headerData.name}
                             fill
+                            sizes="(max-width: 768px) 224px, 288px"
                             style={{ objectFit: 'cover', objectPosition: 'center 20%' }}
-                            className="rounded-full"
+                            priority
                         />
                     </div>
 
@@ -97,10 +160,23 @@ function Landing() {
                             </a>
                         ))}
                     </div>
-                </div>
+                </m.div>
 
-                {/* Subtle vertical divider */}
-                <div className="hidden md:block absolute top-[10%] bottom-[10%] left-[58%] w-px bg-gradient-to-b from-transparent via-rule to-transparent" />
+                {/* Scroll cue */}
+                <m.div
+                    className="absolute bottom-6 left-6 md:left-12 flex items-center gap-3"
+                    initial={reduceMotion ? false : { opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1, delay: 1.2 }}
+                    aria-hidden="true"
+                >
+                    <span className="text-[0.6rem] tracking-[3px] uppercase text-text-muted">Scroll</span>
+                    <m.span
+                        className="block w-10 h-px bg-primary/50 origin-left"
+                        animate={reduceMotion ? {} : { scaleX: [1, 0.4, 1] }}
+                        transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
+                    />
+                </m.div>
             </div>
         </div>
     );

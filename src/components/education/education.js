@@ -8,9 +8,12 @@ function Education() {
     }, []);
 
     return (
-        <section className="border-b border-rule py-16" id="education">
+        <section className="border-b border-rule py-24" id="education">
             <div className="max-w-page mx-auto px-6 md:px-12">
                 <p className="section-label">04 / Education</p>
+                <h2 className="display-section font-light mb-8">
+                    Education &amp; <strong className="font-serif italic font-medium text-primary">credentials</strong>
+                </h2>
 
                 <div className="flex flex-col">
                     {sortedEducation.map((edu) => (
