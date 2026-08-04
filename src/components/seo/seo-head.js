@@ -18,7 +18,7 @@ function SEOHead({
     
     const defaultDescription = locale === 'ar' ?
         "خبير علم البيانات والذكاء الاصطناعي في مصر. متخصص في LLM وأنظمة RAG والعوامل الذكية. استشارات باللغة العربية والإنجليزية. 100+ مشروع ناجح." :
-        "Egypt's leading data scientist specializing in LLMs, AI agents & machine learning. 100+ successful projects. Arabic & English AI consulting. Expert in RAG systems, LangChain, agentic AI.";
+        "AI Scientist with 7+ years of production ML. LLM fine-tuning & evaluation — tuned Arabic models rank top-5 on OALL & Arabic HELM. Arabic & English consulting: RAG systems, AI agents, time-series forecasting.";
 
     const pageTitle = title ? `${title} | Ahmed Abulkhair` : defaultTitle;
     const pageDescription = description || defaultDescription;
