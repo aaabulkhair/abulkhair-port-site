@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@emailjs/browser": "^3.7.0",
+    "framer-motion": "^12.43.0",
     "gray-matter": "^4.0.3",
     "next": "^16.0.0",
     "next-mdx-remote": "^6.0.0",
