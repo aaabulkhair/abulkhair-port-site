@@ -64,7 +64,8 @@ test.describe('abulkhair.ai — homepage functionality', () => {
     await page.goto('/');
     await expect(page.locator('a').filter({ hasText: /Book Consultation/i }).first()).toBeVisible();
     await expect(page.locator('a').filter({ hasText: /Hire on Upwork/i }).first()).toBeVisible();
-    await expect(page.getByText(/Topmate 4\.9/).first()).toBeVisible();
+    // Hero credential strip (replaced the old Topmate/Upwork badge row)
+    await expect(page.getByText(/Upwork Top-Rated/i).first()).toBeVisible();
   });
 
   test('monetization links carry UTM parameters', async ({ page }) => {
