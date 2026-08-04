@@ -15,7 +15,7 @@ function Testimonials() {
                     Real results from 100+ consultations and 28+ successful projects
                 </p>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {featuredTestimonials.map((t) => (
                         <div key={t.id} className="relative p-6 bg-bg-surface rounded">
                             <span className="absolute top-2 left-4 text-5xl text-primary/10 font-serif leading-none select-none">

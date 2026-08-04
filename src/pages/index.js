@@ -24,7 +24,7 @@ function HomePage({ blogs }) {
       <Education />
       <Testimonials />
       <YouTubeFeed maxVideos={3} />
-      <TikTokFeed maxVideos={3} />
+      <TikTokFeed />
       <Blog blogs={blogs} />
       <Contacts />
       <Footer />

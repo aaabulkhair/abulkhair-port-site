@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import NextLink from 'next/link';
 import Reveal from '../../ui/reveal';
-import { timeConverter } from '../../../utils/time-converter';
+import { formatDate } from '../../../utils/time-converter';
 
 function CardBody({ title, desc, date, image }) {
     return (
@@ -17,13 +17,18 @@ function CardBody({ title, desc, date, image }) {
                         className="object-cover"
                     />
                 ) : (
-                    <div className="w-full h-full flex items-center justify-center text-3xl font-serif italic text-primary/20" aria-hidden="true">
-                        Aa
+                    // Intentional monogram tile for posts without a cover image
+                    <div
+                        className="w-full h-full flex flex-col items-center justify-center gap-2 bg-gradient-to-br from-primary/[0.07] via-bg to-bg"
+                        aria-hidden="true"
+                    >
+                        <span className="text-4xl font-serif italic text-primary/40 leading-none">Aa</span>
+                        <span className="text-[0.55rem] uppercase tracking-[3px] text-text-muted">abulkhair.ai</span>
                     </div>
                 )}
             </div>
             <div className="p-4">
-                {date && <p className="text-[0.6rem] uppercase tracking-[2px] text-text-muted mb-1">{timeConverter(date)}</p>}
+                {date && <p className="text-[0.6rem] uppercase tracking-[2px] text-text-muted mb-1">{formatDate(date)}</p>}
                 <h3 className="text-[0.8rem] font-medium text-text-primary leading-snug">{title}</h3>
                 {desc && <p className="text-[0.7rem] text-text-secondary leading-relaxed mt-1 line-clamp-2">{desc}</p>}
             </div>

@@ -7,8 +7,11 @@
   box-sizing: border-box;
 }
 
+/* min-height (not height) keeps the document as the scroll container —
+   a fixed 100% height on body makes body the scroller and window.scrollY
+   never changes, breaking scroll listeners, anchors, and restoration. */
 html, body, #__next {
-  height: 100%;
+  min-height: 100%;
   width: 100%;
   min-width: 320px;
 }

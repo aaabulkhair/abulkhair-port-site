@@ -83,7 +83,7 @@ function Footer() {
 
             <div className="border-t border-rule">
                 <div className="max-w-page mx-auto px-6 md:px-12 py-4 text-[0.65rem] text-text-muted">
-                    &copy; {currentYear} Ahmed Abulkhair. All rights reserved. &bull; Built with Next.js
+                    &copy;{' '}{currentYear}{' '}Ahmed Abulkhair. All rights reserved. &bull; Built with Next.js
                 </div>
             </div>
         </footer>
