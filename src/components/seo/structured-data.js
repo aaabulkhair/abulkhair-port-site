@@ -20,7 +20,7 @@ function StructuredData({ locale = 'en', pageType = 'website', additionalData = 
         ],
         "disambiguatingDescription": "AI Scientist at Incept Labs, known for Arabic language data science content, LLM research, and mentorship",
         "url": baseUrl,
-        "image": `${baseUrl}/images/profile.jpg`,
+        "image": `${baseUrl}/profile.png`,
         "sameAs": [
             contactsData.linkedIn,
             contactsData.github,
@@ -240,11 +240,6 @@ function StructuredData({ locale = 'en', pageType = 'website', additionalData = 
         "author": {
             "@type": "Person",
             "name": "Ahmed Abulkhair"
-        },
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": `${baseUrl}/?q={search_term_string}`,
-            "query-input": "required name=search_term_string"
         }
     };
 

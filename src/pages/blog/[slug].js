@@ -28,6 +28,13 @@ const mdxComponents = {
     em: (props) => <em className="font-serif italic" {...props} />,
     blockquote: (props) => <blockquote className="border-l-2 border-primary/40 pl-5 my-6 font-serif italic text-text-secondary" {...props} />,
     hr: (props) => <hr className="border-rule my-10" {...props} />,
+    img: ({ src, alt, title }) => (
+        // span-based figure so it stays valid inside the surrounding <p>.
+        <span className="block my-8">
+            <img src={src} alt={alt} title={title} loading="lazy" className="w-full rounded border border-rule bg-bg-surface" />
+            {title && <span className="block text-[0.75rem] text-text-muted text-center mt-3">{title}</span>}
+        </span>
+    ),
     code: (props) => <code className="text-[0.85em] text-primary bg-bg-surface border border-rule rounded-sm px-1.5 py-0.5" {...props} />,
     pre: (props) => <pre className="bg-bg-surface border border-rule rounded p-4 overflow-x-auto text-[0.8rem] leading-relaxed mb-5 [&_code]:border-0 [&_code]:bg-transparent [&_code]:p-0 [&_code]:text-text-secondary" {...props} />,
 };

@@ -23,7 +23,9 @@ function SEOHead({
     const pageTitle = title ? `${title} | Ahmed Abulkhair` : defaultTitle;
     const pageDescription = description || defaultDescription;
     const pageCanonical = canonical || baseUrl;
-    const pageOgImage = ogImage || `${baseUrl}/images/logo.png`;
+    const pageOgImage = ogImage
+        ? (ogImage.startsWith('http') ? ogImage : `${baseUrl}${ogImage}`)
+        : `${baseUrl}/images/og-image.png`;
     
     return (
         <Head>

@@ -7,6 +7,13 @@
     <language>en</language>
     <atom:link href="https://abulkhair.ai/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
+      <title>So, Which Machine Learning Algorithm Should You Use?</title>
+      <link>https://abulkhair.ai/blog/how-to-choose-machine-learning-algorithm</link>
+      <guid isPermaLink="true">https://abulkhair.ai/blog/how-to-choose-machine-learning-algorithm</guid>
+      <description>A practical guide to choosing a machine learning algorithm: understand decision boundaries, group algorithms into families, let exploratory data analysis shortlist them, and match feature engineering to the model you pick.</description>
+      <pubDate>Thu, 06 Aug 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>Classical or Deep Learning? How I Choose Time-Series Forecasting Models</title>
       <link>https://abulkhair.ai/blog/choosing-time-series-forecasting-models</link>
       <guid isPermaLink="true">https://abulkhair.ai/blog/choosing-time-series-forecasting-models</guid>
