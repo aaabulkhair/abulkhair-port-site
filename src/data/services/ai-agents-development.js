@@ -1,4 +1,6 @@
 import { contactsData } from '../contacts-data';
+import { metrics, pricing, proof } from '../metrics';
+import { withUtm } from '../../utils/utm';
 
 const { primary, secondary } = contactsData.monetizationLinks;
 
@@ -21,12 +23,12 @@ export const aiAgentsDevelopment = {
             'Cutting-edge agentic AI development: multi-agent architectures, tool-using agents, and intelligent automation that handles complex tasks autonomously — built on LangGraph, CrewAI, and modern function calling.',
         stats: [
             { value: '24/7', label: 'Autonomous operation' },
-            { value: '4.9/5', label: 'Client rating' },
+            { value: proof.rating, label: `Topmate rating (${metrics.topmate.ratingCount})` },
             { value: 'AR / EN', label: 'Bilingual systems' },
         ],
         cta: {
             text: 'Build AI Agents',
-            url: `${primary.url}&utm_campaign=ai_agents_hero`,
+            url: withUtm(primary.url, { campaign: 'ai_agents_hero' }),
             platform: 'topmate',
             position: 'service_hero',
         },
@@ -70,8 +72,8 @@ export const aiAgentsDevelopment = {
     pricing: [
         {
             title: 'Agentic AI Consultation',
-            price: '$50',
-            period: '/hour',
+            price: pricing.consult.price,
+            period: pricing.consult.period,
             description: 'Strategy sessions to scope where agents create real value in your workflows.',
             features: [
                 'Use-case feasibility assessment',
@@ -80,12 +82,12 @@ export const aiAgentsDevelopment = {
                 'Guardrail and safety design',
                 'Implementation roadmap',
             ],
-            cta: { text: 'Book Consultation', url: `${primary.url}&utm_campaign=ai_agents_pricing`, platform: 'topmate' },
+            cta: { text: 'Book Consultation', url: withUtm(primary.url, { campaign: 'ai_agents_pricing' }), platform: 'topmate' },
         },
         {
             title: 'Agent System Development',
-            price: '$60–100',
-            period: '/hour',
+            price: pricing.development.price,
+            period: pricing.development.period,
             description: 'End-to-end agent system development, evaluation, and deployment.',
             features: [
                 'Multi-agent system implementation',
@@ -95,7 +97,7 @@ export const aiAgentsDevelopment = {
                 'Monitoring and iteration',
             ],
             featured: true,
-            cta: { text: 'Hire for Project', url: `${secondary.url}&utm_campaign=ai_agents_dev_pricing`, platform: 'upwork' },
+            cta: { text: 'Hire for Project', url: withUtm(secondary.url, { campaign: 'ai_agents_dev_pricing' }), platform: 'upwork' },
         },
     ],
     faq: [
@@ -125,7 +127,7 @@ export const aiAgentsDevelopment = {
         heading: 'Ready to put agents',
         headingBold: 'to work?',
         sub: 'Start with a scoping session, or bring me in to design and ship your agent system.',
-        primary: { text: 'Book Consultation', url: `${primary.url}&utm_campaign=ai_agents_footer`, platform: 'topmate' },
-        secondary: { text: 'Hire on Upwork', url: `${secondary.url}&utm_campaign=ai_agents_footer`, platform: 'upwork' },
+        primary: { text: 'Book Consultation', url: withUtm(primary.url, { campaign: 'ai_agents_footer' }), platform: 'topmate' },
+        secondary: { text: 'Hire on Upwork', url: withUtm(secondary.url, { campaign: 'ai_agents_footer' }), platform: 'upwork' },
     },
 };

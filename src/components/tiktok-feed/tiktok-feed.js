@@ -37,8 +37,7 @@ function TikTokFeed() {
                     <div className="flex-1">
                         <p className="text-sm font-semibold text-text-primary">@7adid_elsafina</p>
                         <p className="text-[0.8rem] text-text-secondary leading-relaxed mt-1">
-                            Quick data science and machine learning bites in Arabic —
-                            join 2,300+ data scientists learning together.
+                            Quick data science and machine learning bites in Arabic.
                         </p>
                     </div>
                     <span className="inline-flex items-center gap-2 self-start sm:self-center px-5 py-2 text-[0.7rem] text-primary border border-primary/30 rounded group-hover:border-primary/60 transition-colors">

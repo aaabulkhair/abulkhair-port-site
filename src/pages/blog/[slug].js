@@ -1,17 +1,20 @@
 import React from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
 import { serialize } from 'next-mdx-remote/serialize';
 import { MDXRemote } from 'next-mdx-remote';
 import { Navbar, BackToTop, StickyCTA } from '../../components';
 import Footer from '../../components/footer/footer';
 import Link from '../../components/link';
 import SEOHead from '../../components/seo/seo-head';
-import { getAllPosts, getPostBySlug, getPostSlugs } from '../../lib/posts';
+import { getAllPosts, getPostBySlug, getPublishedSlugs } from '../../lib/posts';
+import { getContentImageSizes } from '../../lib/image-size';
+import { jsonLd } from '../../utils/json-ld';
 
 const BASE_URL = 'https://abulkhair.ai';
 
 // Editorial MDX styling — matches the homepage type scale.
-const mdxComponents = {
+const baseMdxComponents = {
     h2: (props) => <h2 className="text-2xl font-light tracking-tight text-text-primary mt-12 mb-4" {...props} />,
     h3: (props) => <h3 className="text-lg font-semibold text-text-primary mt-8 mb-3" {...props} />,
     p: (props) => <p className="text-[0.95rem] text-text-secondary leading-[1.8] mb-5" {...props} />,
@@ -28,22 +31,38 @@ const mdxComponents = {
     em: (props) => <em className="font-serif italic" {...props} />,
     blockquote: (props) => <blockquote className="border-l-2 border-primary/40 pl-5 my-6 font-serif italic text-text-secondary" {...props} />,
     hr: (props) => <hr className="border-rule my-10" {...props} />,
-    img: ({ src, alt, title }) => (
-        // span-based figure so it stays valid inside the surrounding <p>.
-        <span className="block my-8">
-            <img src={src} alt={alt} title={title} loading="lazy" className="w-full rounded border border-rule bg-bg-surface" />
-            {title && <span className="block text-[0.75rem] text-text-muted text-center mt-3">{title}</span>}
-        </span>
-    ),
     code: (props) => <code className="text-[0.85em] text-primary bg-bg-surface border border-rule rounded-sm px-1.5 py-0.5" {...props} />,
     pre: (props) => <pre className="bg-bg-surface border border-rule rounded p-4 overflow-x-auto text-[0.8rem] leading-relaxed mb-5 [&_code]:border-0 [&_code]:bg-transparent [&_code]:p-0 [&_code]:text-text-secondary" {...props} />,
 };
+
+// Images need intrinsic sizes (read at build time) so next/image can reserve
+// space and avoid layout shift; unknown images fall back to a plain <img>.
+function makeMdxComponents(imageSizes) {
+    return {
+        ...baseMdxComponents,
+        img: ({ src, alt, title }) => {
+            const size = imageSizes[src];
+            const className = 'w-full h-auto rounded border border-rule bg-bg-surface';
+            return (
+                // span-based figure so it stays valid inside the surrounding <p>.
+                <span className="block my-8">
+                    {size ? (
+                        <Image src={src} alt={alt || ''} title={title} width={size.width} height={size.height} sizes="(min-width: 768px) 672px, 100vw" className={className} />
+                    ) : (
+                        <img src={src} alt={alt || ''} title={title} loading="lazy" className={className} />
+                    )}
+                    {title && <span className="block text-[0.75rem] text-text-muted text-center mt-3">{title}</span>}
+                </span>
+            );
+        },
+    };
+}
 
 function formatDate(iso) {
     return new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 }
 
-function BlogPost({ post, mdxSource, prev, next }) {
+function BlogPost({ post, mdxSource, imageSizes, prev, next }) {
     const canonical = `${BASE_URL}/blog/${post.slug}`;
 
     const articleSchema = {
@@ -90,8 +109,7 @@ function BlogPost({ post, mdxSource, prev, next }) {
                     <script
                         key={i}
                         type="application/ld+json"
-                        // Static site-owned content only.
-                        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+                        dangerouslySetInnerHTML={{ __html: jsonLd(schema) }}
                     />
                 ))}
             </Head>
@@ -118,7 +136,7 @@ function BlogPost({ post, mdxSource, prev, next }) {
                         </div>
                     </header>
 
-                    <MDXRemote {...mdxSource} components={mdxComponents} />
+                    <MDXRemote {...mdxSource} components={makeMdxComponents(imageSizes)} />
 
                     <nav className="grid grid-cols-2 gap-4 mt-14 pt-8 border-t border-rule" aria-label="More posts">
                         <div>
@@ -148,7 +166,7 @@ function BlogPost({ post, mdxSource, prev, next }) {
 
 export async function getStaticPaths() {
     return {
-        paths: getPostSlugs().map((slug) => ({ params: { slug } })),
+        paths: getPublishedSlugs().map((slug) => ({ params: { slug } })),
         fallback: false,
     };
 }
@@ -166,6 +184,7 @@ export async function getStaticProps({ params }) {
         props: {
             post: meta,
             mdxSource,
+            imageSizes: getContentImageSizes(post.content),
             prev: pick(all[index + 1]),
             next: pick(all[index - 1]),
         },

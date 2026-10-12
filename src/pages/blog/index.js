@@ -1,4 +1,5 @@
 import React from 'react';
+import { jsonLd } from '../../utils/json-ld';
 import Head from 'next/head';
 import { Navbar, BackToTop, StickyCTA } from '../../components';
 import Footer from '../../components/footer/footer';
@@ -41,7 +42,7 @@ function BlogIndex({ posts }) {
                 <script
                     type="application/ld+json"
                     // Static site-owned content only.
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
+                    dangerouslySetInnerHTML={{ __html: jsonLd(blogSchema) }}
                 />
             </Head>
 

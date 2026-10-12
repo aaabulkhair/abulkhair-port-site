@@ -1,24 +1,30 @@
 import Head from 'next/head';
+import { jsonLd } from '../../utils/json-ld';
 import { contactsData } from '../../data/contacts-data';
 import { headerData } from '../../data/header-data';
+import { pricing } from '../../data/metrics';
 
-function StructuredData({ locale = 'en', pageType = 'website', additionalData = {} }) {
-    const baseUrl = 'https://abulkhair.ai';
-    
+const baseUrl = 'https://abulkhair.ai';
+const personId = `${baseUrl}/#person`;
+
+// Profile URLs without tracking params — sameAs must identify the profile itself.
+const cleanUrl = (url) => (url ? url.split('?')[0] : url);
+
+function StructuredData() {
     const personSchema = {
         "@context": "https://schema.org",
         "@type": "Person",
-        "name": locale === 'ar' ? "أحمد أبو الخير" : "Ahmed Abulkhair",
-        "givenName": locale === 'ar' ? "أحمد" : "Ahmed",
-        "familyName": locale === 'ar' ? "أبو الخير" : "Abulkhair", 
+        "@id": personId,
+        "name": "Ahmed Abulkhair",
+        "givenName": "Ahmed",
+        "familyName": "Abulkhair",
         "alternateName": [
-            "Ahmed Abulkhair",
             "أحمد أبو الخير",
             "Ahmed Abu AlKhair",
-            "Ahmed Abul Khair",
-            "Dr. Ahmed Abulkhair"
+            "Ahmed Abul Khair"
         ],
         "disambiguatingDescription": "AI Scientist at Incept Labs, known for Arabic language data science content, LLM research, and mentorship",
+        "description": "Ahmed Abulkhair - AI Scientist at Incept Labs specializing in Large Language Models and Time-Series Analysis",
         "url": baseUrl,
         "image": `${baseUrl}/profile.png`,
         "sameAs": [
@@ -29,8 +35,8 @@ function StructuredData({ locale = 'en', pageType = 'website', additionalData = 
             contactsData.tiktok,
             contactsData.topmate,
             contactsData.upwork
-        ].filter(Boolean),
-        "jobTitle": locale === 'ar' ? "عالم ذكاء اصطناعي" : "AI Scientist",
+        ].filter(Boolean).map(cleanUrl),
+        "jobTitle": "AI Scientist",
         "worksFor": {
             "@type": "Organization",
             "name": "Incept Labs",
@@ -50,6 +56,7 @@ function StructuredData({ locale = 'en', pageType = 'website', additionalData = 
             "Agentic AI",
             "Vector Databases"
         ],
+        "knowsLanguage": ["Arabic", "English"],
         "contactPoint": {
             "@type": "ContactPoint",
             "telephone": contactsData.phone,
@@ -65,66 +72,21 @@ function StructuredData({ locale = 'en', pageType = 'website', additionalData = 
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": baseUrl
-        },
-        "description": locale === 'ar' ?
-            "أحمد أبو الخير - عالم ذكاء اصطناعي في Incept Labs متخصص في نماذج اللغة الكبيرة وتحليل السلاسل الزمنية" :
-            "Ahmed Abulkhair - AI Scientist at Incept Labs specializing in Large Language Models and Time-Series Analysis",
-        "knowsLanguage": [
-            {
-                "@type": "Language",
-                "name": "Arabic",
-                "alternateName": "ar"
-            },
-            {
-                "@type": "Language", 
-                "name": "English",
-                "alternateName": "en"
-            }
-        ],
-        "hasOccupation": {
-            "@type": "Occupation",
-            "name": locale === 'ar' ? "عالم ذكاء اصطناعي" : "AI Scientist",
-            "occupationLocation": {
-                "@type": "City",
-                "name": "Cairo"
-            },
-            "skills": [
-                "Machine Learning",
-                "Large Language Models",
-                "AI Agents Development",
-                "RAG Systems",
-                "LangChain",
-                "Time Series Forecasting",
-                "Python Programming",
-                "Agentic AI",
-                "Vector Databases",
-                "Artificial Intelligence"
-            ]
-        },
-        "award": [
-            "4.9/5 Star Rating on Topmate (100+ consultations)",
-            "100% Job Success Rate on Upwork",
-            "Top Rated Plus Freelancer",
-            "Featured Arabic Data Science Educator"
-        ]
+        }
     };
 
     const organizationSchema = {
         "@context": "https://schema.org",
         "@type": "ProfessionalService",
-        "name": locale === 'ar' ? "أحمد أبو الخير - خدمات علم البيانات" : "Ahmed Abulkhair - Data Science Services",
+        "@id": `${baseUrl}/#service`,
+        "name": "Ahmed Abulkhair - Data Science Services",
         "url": baseUrl,
         "logo": `${baseUrl}/images/logo.png`,
-        "description": locale === 'ar' ? 
-            "خدمات علم البيانات والذكاء الاصطناعي متخصصة في نماذج اللغة الكبيرة وتحليل السلاسل الزمنية" :
-            "Data Science and AI services specializing in Large Language Models and Time-Series Analysis",
-        "founder": {
-            "@type": "Person",
-            "name": "Ahmed Abulkhair"
-        },
+        "description": "Data Science and AI services specializing in Large Language Models and Time-Series Analysis",
+        "founder": { "@id": personId },
         "areaServed": "Worldwide",
         "serviceType": "Data Science Consulting",
-        "priceRange": "$35-$100",
+        "priceRange": `$${pricing.consult.min}-$${pricing.development.max}`,
         "telephone": contactsData.phone,
         "email": contactsData.email,
         "address": {
@@ -132,86 +94,38 @@ function StructuredData({ locale = 'en', pageType = 'website', additionalData = 
             "addressLocality": "Cairo",
             "addressCountry": "EG"
         },
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "bestRating": "5",
-            "ratingCount": "13",
-            "reviewCount": "13"
-        },
         "offers": [
             {
                 "@type": "Offer",
-                "name": locale === 'ar' ? "استشارة فردية" : "1-on-1 Consulting",
-                "description": locale === 'ar' ? "استشارات في LLM والعوامل الذكية وأنظمة RAG مع خبير 4.9/5 نجوم" : "LLM, AI Agents & RAG systems consulting from a 4.9/5★ rated expert",
-                "price": "35",
+                "name": "1-on-1 Consulting",
+                "description": "LLM, AI agents, RAG systems, machine learning and data science consulting",
+                "price": String(pricing.consult.min),
                 "priceCurrency": "USD",
                 "category": "Consulting",
                 "availability": "https://schema.org/InStock",
-                "url": contactsData.topmate,
+                "url": cleanUrl(contactsData.topmate),
                 "priceSpecification": {
-                    "@type": "PriceSpecification",
-                    "price": "35",
+                    "@type": "UnitPriceSpecification",
+                    "price": String(pricing.consult.min),
                     "priceCurrency": "USD",
                     "unitText": "per session"
                 }
             },
             {
                 "@type": "Offer",
-                "name": locale === 'ar' ? "تطوير المشاريع" : "Project Development",
-                "description": locale === 'ar' ? "حلول علم البيانات شاملة من مطور بمعدل نجاح 100%" : "Complete data science solutions from a Top Rated freelancer",
-                "price": "35",
+                "name": "Project Development",
+                "description": "End-to-end machine learning, data science, LLM and AI agent development",
                 "priceCurrency": "USD",
                 "category": "Development",
+                "availability": "https://schema.org/InStock",
+                "url": cleanUrl(contactsData.upwork),
                 "priceSpecification": {
-                    "@type": "PriceSpecification",
-                    "minPrice": "35",
-                    "maxPrice": "45",
+                    "@type": "UnitPriceSpecification",
+                    "minPrice": String(pricing.development.min),
+                    "maxPrice": String(pricing.development.max),
                     "priceCurrency": "USD",
                     "unitCode": "HUR"
-                },
-                "availability": "https://schema.org/InStock",
-                "url": contactsData.upwork
-            },
-            {
-                "@type": "Offer",
-                "name": locale === 'ar' ? "التعليم باللغة العربية" : "Arabic Data Science Education",
-                "description": locale === 'ar' ? "محتوى تعليمي مجاني في علم البيانات باللغة العربية" : "Free data science education content in Arabic",
-                "price": "0",
-                "priceCurrency": "USD",
-                "category": "Education",
-                "availability": "https://schema.org/InStock",
-                "url": contactsData.youtube,
-                "educationalUse": "Data Science Training",
-                "teaches": ["Machine Learning", "Data Analysis", "Career Development"]
-            },
-            {
-                "@type": "Offer",
-                "name": locale === 'ar' ? "حلول الذكاء الاصطناعي والعوامل الذكية" : "Agentic AI & RAG Solutions",
-                "description": locale === 'ar' ? "تطوير عوامل ذكية متقدمة وأنظمة RAG باستخدام LangChain والتقنيات الحديثة" : "Advanced AI agent development and RAG system implementation using LangChain",
-                "price": "50",
-                "priceCurrency": "USD",
-                "category": "AI Development",
-                "availability": "https://schema.org/InStock",
-                "url": contactsData.topmate,
-                "priceSpecification": {
-                    "@type": "PriceSpecification",
-                    "minPrice": "50",
-                    "maxPrice": "100",
-                    "priceCurrency": "USD",
-                    "unitText": "per hour"
                 }
-            },
-            {
-                "@type": "Offer",
-                "name": locale === 'ar' ? "المحتوى التقني والقيادة الفكرية" : "Technical Content & Thought Leadership",
-                "description": locale === 'ar' ? "مقالات تقنية متعمقة ورؤى صناعية" : "In-depth technical articles and industry insights",
-                "price": "0",
-                "priceCurrency": "USD",
-                "category": "Content",
-                "availability": "https://schema.org/InStock",
-                "url": contactsData.medium,
-                "educationalUse": "Professional Development"
             }
         ]
     };
@@ -219,174 +133,16 @@ function StructuredData({ locale = 'en', pageType = 'website', additionalData = 
     const websiteSchema = {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "name": locale === 'ar' ? "أحمد أبو الخير" : "Ahmed Abulkhair",
+        "@id": `${baseUrl}/#website`,
+        "name": "Ahmed Abulkhair",
         "alternateName": "abulkhair.ai",
         "url": baseUrl,
-        "description": locale === 'ar' ? 
-            headerData.description.replace(/Book a consultation or hire me for your next project\. Available in Arabic and English\./, "احجز استشارة أو وظفني لمشروعك القادم. متوفر باللغتين العربية والإنجليزية.") :
-            headerData.description,
-        "inLanguage": [
-            {
-                "@type": "Language",
-                "name": "English",
-                "alternateName": "en"
-            },
-            {
-                "@type": "Language",
-                "name": "Arabic", 
-                "alternateName": "ar"
-            }
-        ],
-        "author": {
-            "@type": "Person",
-            "name": "Ahmed Abulkhair"
-        }
+        "description": headerData.description,
+        "inLanguage": "en",
+        "author": { "@id": personId }
     };
 
-    const breadcrumbSchema = {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "name": locale === 'ar' ? "الرئيسية" : "Home",
-                "item": baseUrl
-            }
-        ]
-    };
-
-    // Additional schemas based on page type
-    const getPageSpecificSchema = () => {
-        switch (pageType) {
-            case 'services':
-                return {
-                    "@context": "https://schema.org",
-                    "@type": "Service",
-                    "serviceType": "Data Science Consulting & Development",
-                    "provider": {
-                        "@type": "Person",
-                        "name": "Ahmed Abulkhair"
-                    },
-                    "areaServed": "Worldwide",
-                    "hasOfferCatalog": {
-                        "@type": "OfferCatalog",
-                        "name": "Data Science & AI Services",
-                        "itemListElement": [
-                            {
-                                "@type": "Offer",
-                                "itemOffered": {
-                                    "@type": "Service",
-                                    "name": "1-on-1 Consulting",
-                                    "description": "Time-Series Forecasting (ARIMA/SARIMA/Prophet/TFT), LLM Integration & RAG Systems (LangChain/LangGraph), Career Mentorship & Interview Prep",
-                                    "provider": {
-                                        "@type": "Person",
-                                        "name": "Ahmed Abulkhair"
-                                    }
-                                },
-                                "price": "35",
-                                "priceCurrency": "USD"
-                            },
-                            {
-                                "@type": "Offer",
-                                "itemOffered": {
-                                    "@type": "Service",
-                                    "name": "Project Development",
-                                    "description": "End-to-End ML Pipelines (Scikit-learn/TensorFlow/PyTorch), LLM & AI Agents Development (LangChain/RAG Systems), Real-time Data Processing & Model Deployment, API Development & Containerization (FastAPI/Docker)",
-                                    "provider": {
-                                        "@type": "Person",
-                                        "name": "Ahmed Abulkhair"
-                                    }
-                                },
-                                "price": "35",
-                                "priceCurrency": "USD"
-                            },
-                            {
-                                "@type": "Offer",
-                                "itemOffered": {
-                                    "@type": "EducationEvent",
-                                    "name": "Arabic Data Science Education",
-                                    "description": "YouTube Deep-dive Tutorials (Arabic), TikTok Quick Learning Bites, Real-world Case Studies & Projects",
-                                    "provider": {
-                                        "@type": "Person",
-                                        "name": "Ahmed Abulkhair"
-                                    }
-                                },
-                                "price": "0",
-                                "priceCurrency": "USD"
-                            },
-                            {
-                                "@type": "Offer",
-                                "itemOffered": {
-                                    "@type": "Article",
-                                    "name": "Technical Content & Thought Leadership",
-                                    "description": "Deep Technical Tutorials & Walkthroughs, Industry Trend Analysis & Predictions, Case Studies from Real Projects",
-                                    "author": {
-                                        "@type": "Person",
-                                        "name": "Ahmed Abulkhair"
-                                    }
-                                },
-                                "price": "0",
-                                "priceCurrency": "USD"
-                            }
-                        ]
-                    }
-                };
-            case 'blog':
-                return additionalData.articles ? {
-                    "@context": "https://schema.org",
-                    "@type": "Blog",
-                    "name": locale === 'ar' ? "مدونة أحمد أبو الخير" : "Ahmed Abulkhair Blog",
-                    "description": locale === 'ar' ? "مقالات في علم البيانات والذكاء الاصطناعي" : "Articles about Data Science and AI",
-                    "url": `${baseUrl}/blog`,
-                    "author": {
-                        "@type": "Person",
-                        "name": "Ahmed Abulkhair"
-                    },
-                    "blogPost": additionalData.articles.map(article => ({
-                        "@type": "BlogPosting",
-                        "headline": article.title,
-                        "description": article.description,
-                        "url": article.url,
-                        "datePublished": article.published_at,
-                        "author": {
-                            "@type": "Person",
-                            "name": "Ahmed Abulkhair"
-                        }
-                    }))
-                } : null;
-            default:
-                return null;
-        }
-    };
-
-    const pageSchema = getPageSpecificSchema();
-    
-    // Add a priority name schema to reinforce correct name ordering
-    const nameAuthoritySchema = {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "@id": `${baseUrl}#person`,
-        "name": "Ahmed Abulkhair",
-        "givenName": "Ahmed",
-        "familyName": "Abulkhair",
-        "alternateName": "Ahmed Abu AlKhair",
-        "url": baseUrl,
-        "sameAs": baseUrl,
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": baseUrl
-        }
-    };
-
-    const allSchemas = [
-        nameAuthoritySchema, // First for priority
-        personSchema,
-        organizationSchema, 
-        websiteSchema,
-        breadcrumbSchema,
-        ...(pageSchema ? [pageSchema] : [])
-    ];
+    const allSchemas = [personSchema, organizationSchema, websiteSchema];
 
     return (
         <Head>
@@ -395,7 +151,7 @@ function StructuredData({ locale = 'en', pageType = 'website', additionalData = 
                     key={index}
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{
-                        __html: JSON.stringify(schema)
+                        __html: jsonLd(schema)
                     }}
                 />
             ))}

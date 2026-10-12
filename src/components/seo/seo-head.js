@@ -1,26 +1,23 @@
 import Head from 'next/head';
-import { headerData } from '../../data/header-data';
+import { metrics } from '../../data/metrics';
 
 function SEOHead({ 
     title,
     description, 
     canonical,
-    locale = 'en',
     ogImage,
     ogType = 'website',
     articleData,
     noIndex = false 
 }) {
     const baseUrl = 'https://abulkhair.ai';
-    const defaultTitle = locale === 'ar' ?
-        "أحمد أبو الخير - عالم بيانات كبير وخبير LLM | استشارات الذكاء الاصطناعي مصر" :
-        "Ahmed Abulkhair - AI Scientist & LLM Expert Egypt | AI Consultant";
-    
-    const defaultDescription = locale === 'ar' ?
-        "خبير علم البيانات والذكاء الاصطناعي في مصر. متخصص في LLM وأنظمة RAG والعوامل الذكية. استشارات باللغة العربية والإنجليزية. 100+ مشروع ناجح." :
-        "AI Scientist with 7+ years of production ML. LLM fine-tuning & evaluation — tuned Arabic models rank top-5 on OALL & Arabic HELM. Arabic & English consulting: RAG systems, AI agents, time-series forecasting.";
+    const defaultTitle = "Ahmed Abulkhair - AI Scientist & LLM Expert Egypt | AI Consultant";
+    const defaultDescription = `AI Scientist with ${metrics.yearsExperience} years of production ML. LLM fine-tuning & evaluation — tuned Arabic models rank top-5 on OALL & Arabic HELM. Arabic & English consulting: RAG systems, AI agents, time-series forecasting.`;
 
-    const pageTitle = title ? `${title} | Ahmed Abulkhair` : defaultTitle;
+    // Append the brand once; skip it if the caller already included it.
+    const pageTitle = !title
+        ? defaultTitle
+        : title.includes('Ahmed Abulkhair') ? title : `${title} | Ahmed Abulkhair`;
     const pageDescription = description || defaultDescription;
     const pageCanonical = canonical || baseUrl;
     const pageOgImage = ogImage
@@ -81,8 +78,6 @@ function SEOHead({
             <meta name="twitter:description" content={pageDescription} />
             <meta name="twitter:image" content={pageOgImage} />
             <meta name="twitter:image:alt" content={pageTitle} />
-            <meta name="twitter:site" content="@aaabulkhair" />
-            <meta name="twitter:creator" content="@aaabulkhair" />
             
             {/* Additional Meta Tags */}
             <meta name="theme-color" content="#0a0a0a" />

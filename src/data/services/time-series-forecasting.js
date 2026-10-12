@@ -1,4 +1,6 @@
 import { contactsData } from '../contacts-data';
+import { metrics, pricing, proof } from '../metrics';
+import { withUtm } from '../../utils/utm';
 
 const { primary, secondary } = contactsData.monetizationLinks;
 
@@ -20,13 +22,13 @@ export const timeSeriesForecasting = {
         description:
             'Demand prediction, sales forecasting, and trend analysis built with the right tool for the job — from classical statistics to Temporal Fusion Transformers — with honest uncertainty estimates, not just point predictions.',
         stats: [
-            { value: '5+', label: 'Years forecasting' },
-            { value: '100%', label: 'Upwork job success' },
+            { value: metrics.yearsExperience, label: 'Years in production ML' },
+            { value: proof.jobSuccess, label: 'Upwork job success' },
             { value: 'P10–P90', label: 'Uncertainty bands' },
         ],
         cta: {
             text: 'Start Forecasting Project',
-            url: `${secondary.url}&utm_campaign=tsf_hero`,
+            url: withUtm(secondary.url, { campaign: 'tsf_hero' }),
             platform: 'upwork',
             position: 'service_hero',
         },
@@ -76,8 +78,8 @@ export const timeSeriesForecasting = {
     pricing: [
         {
             title: 'Forecasting Consultation',
-            price: '$45',
-            period: '/hour',
+            price: pricing.consult.price,
+            period: pricing.consult.period,
             description: 'Assess your forecasting setup and chart the highest-impact improvements.',
             features: [
                 'Data readiness assessment',
@@ -85,12 +87,12 @@ export const timeSeriesForecasting = {
                 'Model approach recommendation',
                 'Accuracy improvement roadmap',
             ],
-            cta: { text: 'Book Consultation', url: `${primary.url}&utm_campaign=tsf_pricing`, platform: 'topmate' },
+            cta: { text: 'Book Consultation', url: withUtm(primary.url, { campaign: 'tsf_pricing' }), platform: 'topmate' },
         },
         {
             title: 'Forecasting System Development',
-            price: '$60–90',
-            period: '/hour',
+            price: pricing.development.price,
+            period: pricing.development.period,
             description: 'Complete forecasting solution from data pipeline to production API.',
             features: [
                 'Feature engineering and modeling',
@@ -100,7 +102,7 @@ export const timeSeriesForecasting = {
                 'Retraining automation',
             ],
             featured: true,
-            cta: { text: 'Hire for Project', url: `${secondary.url}&utm_campaign=tsf_dev_pricing`, platform: 'upwork' },
+            cta: { text: 'Hire for Project', url: withUtm(secondary.url, { campaign: 'tsf_dev_pricing' }), platform: 'upwork' },
         },
     ],
     faq: [
@@ -130,7 +132,7 @@ export const timeSeriesForecasting = {
         heading: 'Stop planning on',
         headingBold: 'guesswork',
         sub: 'Get forecasts with honest uncertainty — built, validated, and deployed for your business.',
-        primary: { text: 'Hire on Upwork', url: `${secondary.url}&utm_campaign=tsf_footer`, platform: 'upwork' },
-        secondary: { text: 'Book Consultation', url: `${primary.url}&utm_campaign=tsf_footer`, platform: 'topmate' },
+        primary: { text: 'Hire on Upwork', url: withUtm(secondary.url, { campaign: 'tsf_footer' }), platform: 'upwork' },
+        secondary: { text: 'Book Consultation', url: withUtm(primary.url, { campaign: 'tsf_footer' }), platform: 'topmate' },
     },
 };

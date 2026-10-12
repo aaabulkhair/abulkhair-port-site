@@ -7,6 +7,7 @@ import { socialsData } from '../../data/socials-data';
 import { achievementsData } from '../../data/achievements-data';
 import { MonetizationLink } from '../analytics/enhanced-link-tracker';
 import { m, useReducedMotion, fadeUp, EASE } from '../ui/motion';
+import { withUtm } from '../../utils/utm';
 
 function Landing() {
     const { drawerOpen } = useContext(ThemeContext);
@@ -18,7 +19,9 @@ function Landing() {
         { icon: FaMediumM, href: socialsData.medium, label: 'Medium' },
         { icon: FaYoutube, href: 'https://www.youtube.com/@7adid_elsafina', label: 'YouTube' },
         { icon: FaTiktok, href: 'https://www.tiktok.com/@7adid_elsafina', label: 'TikTok' },
-    ].filter(s => s.href);
+    ]
+        .filter(s => s.href)
+        .map(s => ({ ...s, href: withUtm(s.href, { medium: 'social', campaign: `hero_${s.label.toLowerCase()}` }) }));
 
     // Hero credential strip — the four strongest CV proof points.
     const credentials = [

@@ -1,4 +1,6 @@
 import { contactsData } from '../contacts-data';
+import { metrics, pricing, proof } from '../metrics';
+import { withUtm } from '../../utils/utm';
 
 const { primary, secondary } = contactsData.monetizationLinks;
 
@@ -11,22 +13,22 @@ export const llmConsultingEgypt = {
     seo: {
         title: 'LLM Consulting Egypt | Large Language Models Expert',
         description:
-            'Expert LLM consulting in Egypt. Specializing in RAG systems, LangChain, AI agents, and Arabic NLP. 100+ successful projects. Book consultation with Ahmed Abulkhair.',
+            `Expert LLM consulting in Egypt. Specializing in RAG systems, LangChain, AI agents, and Arabic NLP. Rated ${proof.rating} by clients. Book a consultation with Ahmed Abulkhair.`,
     },
     hero: {
         label: 'Services / LLM Consulting',
-        title: "Egypt's leading",
-        titleBold: 'LLM consultant',
+        title: 'LLM consulting',
+        titleBold: 'in Arabic & English',
         description:
             'Specializing in Large Language Models, RAG systems, and AI agents development. Helping businesses harness the power of conversational AI and intelligent automation — in Arabic and English.',
         stats: [
-            { value: '100+', label: 'LLM projects' },
-            { value: '4.9/5', label: 'Client rating' },
+            { value: metrics.yearsExperience, label: 'Years in production ML' },
+            { value: proof.rating, label: `Topmate rating (${metrics.topmate.ratingCount})` },
             { value: 'AR / EN', label: 'Bilingual delivery' },
         ],
         cta: {
             text: 'Book LLM Consultation',
-            url: `${primary.url}&utm_campaign=llm_consulting_egypt_hero`,
+            url: withUtm(primary.url, { campaign: 'llm_consulting_egypt_hero' }),
             platform: 'topmate',
             position: 'service_hero',
         },
@@ -64,8 +66,8 @@ export const llmConsultingEgypt = {
     pricing: [
         {
             title: 'LLM Strategy Consultation',
-            price: '$50',
-            period: '/hour',
+            price: pricing.consult.price,
+            period: pricing.consult.period,
             description: '1-on-1 sessions to plan your LLM implementation strategy.',
             features: [
                 'LLM architecture design',
@@ -74,12 +76,12 @@ export const llmConsultingEgypt = {
                 'Cost optimization strategies',
                 'Arabic NLP guidance',
             ],
-            cta: { text: 'Book Consultation', url: `${primary.url}&utm_campaign=llm_consulting_pricing`, platform: 'topmate' },
+            cta: { text: 'Book Consultation', url: withUtm(primary.url, { campaign: 'llm_consulting_pricing' }), platform: 'topmate' },
         },
         {
             title: 'LLM Development Projects',
-            price: '$60–100',
-            period: '/hour',
+            price: pricing.development.price,
+            period: pricing.development.period,
             description: 'End-to-end LLM system development and deployment.',
             features: [
                 'RAG system implementation',
@@ -89,7 +91,7 @@ export const llmConsultingEgypt = {
                 'Ongoing maintenance',
             ],
             featured: true,
-            cta: { text: 'Hire for Project', url: `${secondary.url}&utm_campaign=llm_development_pricing`, platform: 'upwork' },
+            cta: { text: 'Hire for Project', url: withUtm(secondary.url, { campaign: 'llm_development_pricing' }), platform: 'upwork' },
         },
     ],
     faq: [
@@ -119,7 +121,7 @@ export const llmConsultingEgypt = {
         heading: 'Ready to build with',
         headingBold: 'language models?',
         sub: 'Book a strategy session or bring me in to ship your RAG or LLM project end to end.',
-        primary: { text: 'Book Consultation', url: `${primary.url}&utm_campaign=llm_consulting_egypt_footer`, platform: 'topmate' },
-        secondary: { text: 'Hire on Upwork', url: `${secondary.url}&utm_campaign=llm_consulting_egypt_footer`, platform: 'upwork' },
+        primary: { text: 'Book Consultation', url: withUtm(primary.url, { campaign: 'llm_consulting_egypt_footer' }), platform: 'topmate' },
+        secondary: { text: 'Hire on Upwork', url: withUtm(secondary.url, { campaign: 'llm_consulting_egypt_footer' }), platform: 'upwork' },
     },
 };

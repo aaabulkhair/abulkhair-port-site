@@ -1,6 +1,6 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import { Inter, Fraunces } from 'next/font/google';
-import ThemeContextProvider, { ThemeContext } from '../contexts/theme-context';
+import ThemeContextProvider from '../contexts/theme-context';
 import { MotionProvider } from '../components/ui/motion';
 import { useGoogleAnalytics } from '../components/analytics/google-analytics';
 import '../styles/globals.css';
@@ -18,19 +18,12 @@ const fraunces = Fraunces({
   display: 'swap',
 });
 
+// Page background lives in globals.css (body), so there's no flash before hydration.
 const ThemedWrapper = ({ children }) => {
-  const { theme } = useContext(ThemeContext);
-
   useGoogleAnalytics();
 
-  useEffect(() => {
-    if (typeof document !== 'undefined') {
-      document.documentElement.style.backgroundColor = theme.secondary;
-      document.body.style.backgroundColor = theme.secondary;
-    }
-  }, [theme.secondary]);
   return (
-    <div className={`${inter.variable} ${fraunces.variable} font-sans`} style={{ backgroundColor: theme.secondary, minHeight: '100vh' }}>
+    <div className={`${inter.variable} ${fraunces.variable} font-sans min-h-screen`}>
       {children}
     </div>
   );

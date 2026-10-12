@@ -1,4 +1,6 @@
 import { contactsData } from '../contacts-data';
+import { metrics, pricing, proof } from '../metrics';
+import { withUtm } from '../../utils/utm';
 
 const { primary, secondary } = contactsData.monetizationLinks;
 
@@ -11,22 +13,22 @@ export const machineLearningDevelopment = {
     seo: {
         title: 'Machine Learning Development Egypt | ML Expert Services',
         description:
-            'Expert machine learning development in Egypt. End-to-end ML pipelines, time-series forecasting, computer vision, NLP. 100+ successful ML projects. Hire Ahmed Abulkhair.',
+            `Machine learning and data science development in Egypt: classical ML (regression, classification, forecasting), analytics, NLP and LLM systems, from pipelines to production. ${proof.jobSuccess} Upwork Job Success. Hire Ahmed Abulkhair.`,
     },
     hero: {
         label: 'Services / ML Development',
         title: 'Production-ready',
         titleBold: 'machine learning',
         description:
-            'Building ML systems that drive real business value. From proof-of-concept to scalable deployment, I deliver complete solutions — data, models, APIs, and monitoring.',
+            'Building ML systems that drive real business value — classical machine learning (regression, classification, forecasting), data science and analytics, through to NLP and LLMs. From proof-of-concept to scalable deployment, I deliver complete solutions — data, models, APIs, and monitoring.',
         stats: [
-            { value: '100+', label: 'ML projects' },
-            { value: '100%', label: 'Upwork job success' },
-            { value: '5+', label: 'Years experience' },
+            { value: String(metrics.upwork.jobs), label: 'Upwork jobs' },
+            { value: proof.jobSuccess, label: 'Upwork job success' },
+            { value: metrics.yearsExperience, label: 'Years experience' },
         ],
         cta: {
             text: 'Start ML Project',
-            url: `${secondary.url}&utm_campaign=ml_development_egypt_hero`,
+            url: withUtm(secondary.url, { campaign: 'ml_development_egypt_hero' }),
             platform: 'upwork',
             position: 'service_hero',
         },
@@ -76,8 +78,8 @@ export const machineLearningDevelopment = {
     pricing: [
         {
             title: 'ML Strategy Consultation',
-            price: '$45',
-            period: '/hour',
+            price: pricing.consult.price,
+            period: pricing.consult.period,
             description: 'Expert guidance on ML strategy and implementation planning.',
             features: [
                 'Problem definition and scoping',
@@ -86,12 +88,12 @@ export const machineLearningDevelopment = {
                 'Architecture and infrastructure planning',
                 'ROI estimation and timeline planning',
             ],
-            cta: { text: 'Book Consultation', url: `${primary.url}&utm_campaign=ml_consulting_pricing`, platform: 'topmate' },
+            cta: { text: 'Book Consultation', url: withUtm(primary.url, { campaign: 'ml_consulting_pricing' }), platform: 'topmate' },
         },
         {
             title: 'Full ML Development',
-            price: '$60–90',
-            period: '/hour',
+            price: pricing.development.price,
+            period: pricing.development.period,
             description: 'Complete ML solution development from concept to deployment.',
             features: [
                 'End-to-end pipeline development',
@@ -101,7 +103,7 @@ export const machineLearningDevelopment = {
                 'Documentation and knowledge transfer',
             ],
             featured: true,
-            cta: { text: 'Hire for Project', url: `${secondary.url}&utm_campaign=ml_development_pricing`, platform: 'upwork' },
+            cta: { text: 'Hire for Project', url: withUtm(secondary.url, { campaign: 'ml_development_pricing' }), platform: 'upwork' },
         },
     ],
     faq: [
@@ -131,7 +133,7 @@ export const machineLearningDevelopment = {
         heading: 'Have a model that needs to',
         headingBold: 'reach production?',
         sub: 'From scoping to deployment — let’s ship an ML system your business can rely on.',
-        primary: { text: 'Hire on Upwork', url: `${secondary.url}&utm_campaign=ml_development_footer`, platform: 'upwork' },
-        secondary: { text: 'Book Consultation', url: `${primary.url}&utm_campaign=ml_development_footer`, platform: 'topmate' },
+        primary: { text: 'Hire on Upwork', url: withUtm(secondary.url, { campaign: 'ml_development_footer' }), platform: 'upwork' },
+        secondary: { text: 'Book Consultation', url: withUtm(primary.url, { campaign: 'ml_development_footer' }), platform: 'topmate' },
     },
 };
