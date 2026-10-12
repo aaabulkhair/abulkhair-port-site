@@ -1,4 +1,5 @@
 import React from 'react';
+import { jsonLd } from '../../utils/json-ld';
 import Head from 'next/head';
 import Link from '../../components/link';
 import { Navbar, BackToTop, StickyCTA } from '../../components';
@@ -30,7 +31,7 @@ function ServicesHub() {
                 <script
                     type="application/ld+json"
                     // Static site-owned data only.
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+                    dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbSchema) }}
                 />
             </Head>
 

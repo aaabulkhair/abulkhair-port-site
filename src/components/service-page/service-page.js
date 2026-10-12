@@ -1,4 +1,5 @@
 import React from 'react';
+import { jsonLd } from '../../utils/json-ld';
 import Head from 'next/head';
 import { Navbar, BackToTop, StickyCTA } from '../index';
 import Footer from '../footer/footer';
@@ -74,7 +75,7 @@ function ServicePage({ service }) {
                         key={i}
                         type="application/ld+json"
                         // Static site-owned data only — never user input.
-                        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+                        dangerouslySetInnerHTML={{ __html: jsonLd(schema) }}
                     />
                 ))}
             </Head>

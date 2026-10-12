@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { jsonLd } from '../../utils/json-ld';
 import { contactsData } from '../../data/contacts-data';
 import { headerData } from '../../data/header-data';
 
@@ -149,7 +150,7 @@ function StructuredData() {
                     key={index}
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{
-                        __html: JSON.stringify(schema)
+                        __html: jsonLd(schema)
                     }}
                 />
             ))}
