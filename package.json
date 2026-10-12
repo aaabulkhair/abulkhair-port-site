@@ -13,7 +13,6 @@
     "react-dom": "^19.3.0",
     "react-icons": "^4.2.0",
     "reading-time": "^1.5.0",
-    "rss-parser": "^3.13.0",
     "validator": "^13.15.21",
     "xml2js": "^0.6.2"
   },

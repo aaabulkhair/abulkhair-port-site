@@ -1,117 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { FiPlay } from 'react-icons/fi';
-import { contactsData } from '../../data/contacts-data';
 import { withUtm } from '../../utils/utm';
 
-function SkeletonCard() {
-    return (
-        <div className="bg-bg-surface rounded overflow-hidden animate-pulse" aria-hidden="true">
-            <div className="aspect-video bg-rule" />
-            <div className="p-4 space-y-2">
-                <div className="h-3 bg-rule rounded w-3/4" />
-                <div className="h-2.5 bg-rule rounded w-full" />
-                <div className="h-2.5 bg-rule rounded w-1/3" />
-            </div>
-        </div>
-    );
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    if (!dateString || Number.isNaN(date.getTime())) return '';
+    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
 }
 
-function YouTubeFeed({ maxVideos = 3 }) {
-    const [videos, setVideos] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-
-    // YouTube channel handle for RSS feed
-    const CHANNEL_HANDLE = '7adid_elsafina';
-
-    useEffect(() => {
-        // Load Google Platform JavaScript for YouTube subscribe button
-        if (!document.querySelector('script[src="https://apis.google.com/js/platform.js"]')) {
-            const script = document.createElement('script');
-            script.src = 'https://apis.google.com/js/platform.js';
-            script.async = true;
-            document.head.appendChild(script);
-        }
-
-        const fetchYouTubeVideos = async () => {
-            try {
-                setLoading(true);
-                setError(null);
-
-                // Use our Next.js API route
-                const response = await fetch('/api/youtube-feed');
-
-                if (!response.ok) {
-                    throw new Error('Failed to fetch from API');
-                }
-
-                const data = await response.json();
-
-                if (data.videos && data.videos.length > 0) {
-                    setVideos(data.videos.slice(0, maxVideos));
-                } else {
-                    throw new Error('No videos in API response');
-                }
-
-            } catch (err) {
-                console.error('YouTube API fetch error:', err);
-                setError('Unable to load latest videos');
-
-                // Fallback to static data if API fails
-                const fallbackVideos = [
-                    {
-                        id: 'lE1vA0sQMzA',
-                        title: '3 Resources to Prepare for Data Science Interview | In Arabic',
-                        thumbnail: 'https://img.youtube.com/vi/lE1vA0sQMzA/mqdefault.jpg',
-                        publishedAt: '2024-12-15',
-                        description: 'Three essential resources to help you prepare for data science interviews in Arabic.',
-                        url: 'https://www.youtube.com/watch?v=lE1vA0sQMzA'
-                    }
-                ];
-                setVideos(fallbackVideos.slice(0, maxVideos));
-
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchYouTubeVideos();
-    }, [maxVideos]);
-
-    const formatDate = (dateString) => {
-        return new Date(dateString).toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric'
-        });
-    };
-
-    if (loading) {
-        return (
-            <section className="border-b border-rule py-16">
-                <div className="max-w-page mx-auto px-6 md:px-12">
-                    <p className="section-label">06 / YouTube</p>
-                    <p className="sr-only" role="status">Loading latest videos</p>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <SkeletonCard />
-                        <SkeletonCard />
-                        <SkeletonCard />
-                    </div>
-                </div>
-            </section>
-        );
-    }
-
-    if (error && videos.length === 0) {
-        return (
-            <section className="border-b border-rule py-16">
-                <div className="max-w-page mx-auto px-6 md:px-12">
-                    <p className="text-text-secondary text-sm">{error}</p>
-                </div>
-            </section>
-        );
-    }
+// Videos come from getStaticProps (src/lib/feeds.js); hide the section if the feed was empty.
+function YouTubeFeed({ videos = [] }) {
+    if (videos.length === 0) return null;
 
     return (
         <section className="border-b border-rule py-24">
