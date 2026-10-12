@@ -1,4 +1,5 @@
 import { contactsData } from '../contacts-data';
+import { metrics, pricing, proof } from '../metrics';
 
 const { primary, secondary } = contactsData.monetizationLinks;
 
@@ -21,7 +22,7 @@ export const aiAgentsDevelopment = {
             'Cutting-edge agentic AI development: multi-agent architectures, tool-using agents, and intelligent automation that handles complex tasks autonomously — built on LangGraph, CrewAI, and modern function calling.',
         stats: [
             { value: '24/7', label: 'Autonomous operation' },
-            { value: '4.9/5', label: 'Client rating' },
+            { value: proof.rating, label: `Topmate rating (${metrics.topmate.ratingCount})` },
             { value: 'AR / EN', label: 'Bilingual systems' },
         ],
         cta: {
@@ -70,8 +71,8 @@ export const aiAgentsDevelopment = {
     pricing: [
         {
             title: 'Agentic AI Consultation',
-            price: '$50',
-            period: '/hour',
+            price: pricing.consult.price,
+            period: pricing.consult.period,
             description: 'Strategy sessions to scope where agents create real value in your workflows.',
             features: [
                 'Use-case feasibility assessment',
@@ -84,8 +85,8 @@ export const aiAgentsDevelopment = {
         },
         {
             title: 'Agent System Development',
-            price: '$60–100',
-            period: '/hour',
+            price: pricing.development.price,
+            period: pricing.development.period,
             description: 'End-to-end agent system development, evaluation, and deployment.',
             features: [
                 'Multi-agent system implementation',

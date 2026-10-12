@@ -1,4 +1,5 @@
 import { contactsData } from '../contacts-data';
+import { metrics, pricing, proof } from '../metrics';
 
 const { primary, secondary } = contactsData.monetizationLinks;
 
@@ -11,17 +12,17 @@ export const llmConsultingEgypt = {
     seo: {
         title: 'LLM Consulting Egypt | Large Language Models Expert',
         description:
-            'Expert LLM consulting in Egypt. Specializing in RAG systems, LangChain, AI agents, and Arabic NLP. 100+ successful projects. Book consultation with Ahmed Abulkhair.',
+            `Expert LLM consulting in Egypt. Specializing in RAG systems, LangChain, AI agents, and Arabic NLP. Rated ${proof.rating} by clients. Book a consultation with Ahmed Abulkhair.`,
     },
     hero: {
         label: 'Services / LLM Consulting',
-        title: "Egypt's leading",
-        titleBold: 'LLM consultant',
+        title: 'LLM consulting',
+        titleBold: 'in Arabic & English',
         description:
             'Specializing in Large Language Models, RAG systems, and AI agents development. Helping businesses harness the power of conversational AI and intelligent automation — in Arabic and English.',
         stats: [
-            { value: '100+', label: 'LLM projects' },
-            { value: '4.9/5', label: 'Client rating' },
+            { value: metrics.yearsExperience, label: 'Years in production ML' },
+            { value: proof.rating, label: `Topmate rating (${metrics.topmate.ratingCount})` },
             { value: 'AR / EN', label: 'Bilingual delivery' },
         ],
         cta: {
@@ -64,8 +65,8 @@ export const llmConsultingEgypt = {
     pricing: [
         {
             title: 'LLM Strategy Consultation',
-            price: '$50',
-            period: '/hour',
+            price: pricing.consult.price,
+            period: pricing.consult.period,
             description: '1-on-1 sessions to plan your LLM implementation strategy.',
             features: [
                 'LLM architecture design',
@@ -78,8 +79,8 @@ export const llmConsultingEgypt = {
         },
         {
             title: 'LLM Development Projects',
-            price: '$60–100',
-            period: '/hour',
+            price: pricing.development.price,
+            period: pricing.development.period,
             description: 'End-to-end LLM system development and deployment.',
             features: [
                 'RAG system implementation',

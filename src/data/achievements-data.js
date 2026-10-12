@@ -1,4 +1,6 @@
 // Credentials aligned with Ahmed_Abulkhair_CV.pdf — keep these factual.
+import { metrics } from './metrics';
+
 export const achievementsData = [
     {
         id: 'oall',
@@ -17,8 +19,8 @@ export const achievementsData = [
     },
     {
         id: 'upwork',
-        label: 'Upwork Top-Rated',
-        detail: '100% Job Success Score',
+        label: `Upwork ${metrics.upwork.badge}`,
+        detail: `${metrics.upwork.jobSuccess}% Job Success Score`,
     },
     {
         id: 'kagglex',
@@ -27,7 +29,7 @@ export const achievementsData = [
     },
     {
         id: 'experience',
-        label: '7+ Years in Production ML',
+        label: `${metrics.yearsExperience} Years in Production ML`,
         detail: 'EdTech, e-commerce, fintech, and maritime',
     },
 ];

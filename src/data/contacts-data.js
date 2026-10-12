@@ -22,26 +22,5 @@ export const contactsData = {
             url: 'https://www.upwork.com/freelancers/~01e8b690de797b2ecf?utm_source=abulkhair.ai&utm_medium=cta&utm_campaign=upwork_secondary',
             description: 'Hire me for your data science projects'
         }
-    },
-    socialProof: {
-        topmate: {
-            rating: 4.9,
-            reviews: 13,
-            url: 'https://topmate.io/abulkhair'
-        },
-        upwork: {
-            jobSuccessRate: 100,
-            totalJobs: 28,
-            totalHours: 105,
-            url: 'https://www.upwork.com/freelancers/~01e8b690de797b2ecf'
-        },
-        youtube: {
-            subscriber_count_estimate: '1K+',
-            content_language: 'Arabic'
-        },
-        tiktok: {
-            follower_count_estimate: '500+',
-            content_language: 'Arabic'
-        }
     }
 }

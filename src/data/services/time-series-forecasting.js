@@ -1,4 +1,5 @@
 import { contactsData } from '../contacts-data';
+import { metrics, pricing, proof } from '../metrics';
 
 const { primary, secondary } = contactsData.monetizationLinks;
 
@@ -20,8 +21,8 @@ export const timeSeriesForecasting = {
         description:
             'Demand prediction, sales forecasting, and trend analysis built with the right tool for the job — from classical statistics to Temporal Fusion Transformers — with honest uncertainty estimates, not just point predictions.',
         stats: [
-            { value: '5+', label: 'Years forecasting' },
-            { value: '100%', label: 'Upwork job success' },
+            { value: metrics.yearsExperience, label: 'Years in production ML' },
+            { value: proof.jobSuccess, label: 'Upwork job success' },
             { value: 'P10–P90', label: 'Uncertainty bands' },
         ],
         cta: {
@@ -76,8 +77,8 @@ export const timeSeriesForecasting = {
     pricing: [
         {
             title: 'Forecasting Consultation',
-            price: '$45',
-            period: '/hour',
+            price: pricing.consult.price,
+            period: pricing.consult.period,
             description: 'Assess your forecasting setup and chart the highest-impact improvements.',
             features: [
                 'Data readiness assessment',
@@ -89,8 +90,8 @@ export const timeSeriesForecasting = {
         },
         {
             title: 'Forecasting System Development',
-            price: '$60–90',
-            period: '/hour',
+            price: pricing.development.price,
+            period: pricing.development.period,
             description: 'Complete forecasting solution from data pipeline to production API.',
             features: [
                 'Feature engineering and modeling',

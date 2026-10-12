@@ -1,4 +1,5 @@
 import React from 'react';
+import { metrics, proof } from '../../data/metrics';
 import { featuredTestimonials } from '../../data/testimonials-data';
 import Rating from '../ui/rating';
 
@@ -12,7 +13,7 @@ function Testimonials() {
                     What clients <strong className="font-serif italic font-medium text-primary">say</strong>
                 </h2>
                 <p className="text-sm text-text-secondary mb-8">
-                    Real results from 100+ consultations and 28+ successful projects
+                    From {metrics.topmate.bookings} Topmate sessions and {metrics.upwork.jobs} Upwork jobs
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -41,16 +42,16 @@ function Testimonials() {
 
                 <div className="flex justify-center gap-12 mt-8 p-6 bg-bg-surface rounded">
                     <div className="text-center">
-                        <div className="text-2xl font-bold text-primary">4.9</div>
-                        <div className="text-[0.65rem] text-text-muted mt-1">&#9733; Average Rating</div>
+                        <div className="text-2xl font-bold text-primary">{metrics.topmate.rating}</div>
+                        <div className="text-[0.65rem] text-text-muted mt-1">&#9733; from {metrics.topmate.ratingCount} Topmate ratings</div>
                     </div>
                     <div className="text-center">
-                        <div className="text-2xl font-bold text-primary">100+</div>
-                        <div className="text-[0.65rem] text-text-muted mt-1">Hours of Consultations</div>
+                        <div className="text-2xl font-bold text-primary">{metrics.upwork.jobs}</div>
+                        <div className="text-[0.65rem] text-text-muted mt-1">Upwork Jobs Completed</div>
                     </div>
                     <div className="text-center">
-                        <div className="text-2xl font-bold text-primary">100%</div>
-                        <div className="text-[0.65rem] text-text-muted mt-1">Job Success Rate</div>
+                        <div className="text-2xl font-bold text-primary">{proof.jobSuccess}</div>
+                        <div className="text-[0.65rem] text-text-muted mt-1">Upwork Job Success</div>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { metrics, pricing, proof } from '../../data/metrics';
 import { contactsData } from '../../data/contacts-data';
 import Link from '../link';
 import Reveal from '../ui/reveal';
@@ -8,7 +9,7 @@ function WhatIDo() {
     const services = [
         {
             title: '1-on-1 Consulting',
-            description: 'Get personalized guidance from a Top 1% Topmate mentor. 100+ hours of successful consultations delivered.',
+            description: `Personalized guidance from a mentor rated ${proof.ratingLong}.`,
             outcome: 'Transform your career or solve complex ML and data challenges with expert guidance.',
             features: [
                 'Machine Learning (Scikit-learn/TensorFlow/PyTorch)',
@@ -17,7 +18,7 @@ function WhatIDo() {
                 'Career Mentorship & Interview Prep',
                 'Project Architecture & Best Practices'
             ],
-            socialProof: 'Top 1% on Topmate \u2022 4.9/5\u2605 rating \u2022 100+ consultation hours',
+            socialProof: `${proof.rating}\u2605 on Topmate \u2022 ${metrics.topmate.ratingCount} ratings \u2022 ${pricing.consult.price}${pricing.consult.period}`,
             cta: {
                 text: 'Book Your Session',
                 url: `${contactsData.monetizationLinks.primary.url}&utm_campaign=services_consulting`,
@@ -27,7 +28,7 @@ function WhatIDo() {
         },
         {
             title: 'Project Development',
-            description: 'Complete data science solutions delivered by a Top Rated Upwork freelancer with 100% Job Success Rate.',
+            description: `Complete machine learning and data science solutions from a ${metrics.upwork.badge} Upwork freelancer with ${proof.jobSuccess} Job Success.`,
             outcome: 'Launch production-ready ML systems that drive measurable business results.',
             features: [
                 'End-to-End ML Pipelines (Scikit-learn/TensorFlow/PyTorch)',
@@ -35,7 +36,7 @@ function WhatIDo() {
                 'Real-time Data Processing & Model Deployment',
                 'API Development & Containerization (FastAPI/Docker)'
             ],
-            socialProof: 'Top Rated Upwork Freelancer \u2022 100% Job Success Rate',
+            socialProof: `${proof.upworkLong} \u2022 ${pricing.development.price}${pricing.development.period}`,
             cta: {
                 text: 'Hire Me Now',
                 url: `${contactsData.monetizationLinks.secondary.url}&utm_campaign=services_development`,
@@ -107,7 +108,7 @@ function WhatIDo() {
                 </h2>
                 <p className="text-sm text-text-secondary mb-8">
                     Five proven ways to accelerate your data science journey and business growth.{' '}
-                    <strong className="text-text-primary">Trusted by 100+ clients with 4.9/5&#9733; rating.</strong>
+                    <strong className="text-text-primary">Rated {proof.rating}&#9733; across {metrics.topmate.ratingCount} Topmate reviews.</strong>
                 </p>
 
                 {/* Top row: 3 cards */}
