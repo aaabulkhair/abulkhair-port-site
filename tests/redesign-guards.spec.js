@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 // Guards for the elevated-editorial redesign: the regressions we fixed must
-// never come back. Run against the dev server (playwright.config webServer).
+// never come back. Run against the production build (playwright.config webServer).
 
 const pages = ['/', '/blog', '/services'];
 
@@ -25,7 +25,7 @@ test.describe('redesign guards', () => {
   }
 
   test('window is the scroll container (scroll model regression guard)', async ({ page }) => {
-    await page.goto('/', { waitUntil: 'domcontentloaded' });
+    await page.goto('/', { waitUntil: 'load' });
     await page.evaluate(() => window.scrollTo(0, 1500));
     const scrollY = await page.evaluate(() => window.scrollY);
     // If body becomes the scroller again, window.scrollY stays 0.
@@ -33,7 +33,7 @@ test.describe('redesign guards', () => {
   });
 
   test('navbar gains backdrop after scrolling', async ({ page }) => {
-    await page.goto('/', { waitUntil: 'domcontentloaded' });
+    await page.goto('/', { waitUntil: 'load' });
     await page.evaluate(() => window.scrollTo(0, 800));
     await page.waitForTimeout(400);
     const navClass = await page.locator('nav').first().getAttribute('class');

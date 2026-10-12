@@ -9,6 +9,7 @@ const indexablePages = [
   '/services/time-series-forecasting',
   '/blog',
   '/blog/choosing-time-series-forecasting-models',
+  '/blog/how-to-choose-machine-learning-algorithm',
 ];
 
 test.describe('abulkhair.ai — pages & SEO', () => {
@@ -85,7 +86,8 @@ test.describe('abulkhair.ai — homepage functionality', () => {
 
   test('service pages are internally linked from homepage and footer', async ({ page }) => {
     await page.goto('/');
-    await expect(page.locator('a[href="/services"]').first()).toBeVisible();
+    // :visible — on mobile the desktop nav copy of this link is hidden by design.
+    await expect(page.locator('a[href="/services"]:visible').first()).toBeVisible();
     await expect(page.locator('a[href="/services/llm-consulting-egypt"]').first()).toBeAttached();
     await expect(page.locator('a[href="/services/ai-agents-development"]').first()).toBeAttached();
     await expect(page.locator('a[href="/blog"]').first()).toBeAttached();
