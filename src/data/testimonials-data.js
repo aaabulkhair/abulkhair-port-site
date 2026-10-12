@@ -1,73 +1,64 @@
+import { metrics } from './metrics';
+
+// Verbatim public reviews from topmate.io/abulkhair (copied 2026-10-12).
+// Only add reviews that are publicly visible on the linked source — never paraphrase.
+const topmate = { platform: 'Topmate', sourceUrl: `${metrics.topmate.url}?utm_source=abulkhair.ai&utm_medium=testimonial&utm_campaign=topmate_reviews`, service: '1-on-1 Mentoring' };
+
 export const testimonialsData = [
     {
-        id: 1,
-        name: "Sarah M.",
-        role: "Data Analyst, Tech Startup",
-        service: "1-on-1 Consulting",
-        testimonial: "Ahmed helped me transition from Excel analyst to Python data scientist in 3 months. His Arabic explanations made complex ML concepts finally click for me.",
+        id: 'topmate-moustafa-2024-01',
+        name: 'Moustafa I.',
+        date: '2024-01-04',
+        testimonial: "Ahmed is an exceptional mentor – friendly, deeply knowledgeable, and adept at solving core problems. His insights are instrumental for personal growth. I highly recommend Ahmed to anyone seeking effective solutions in data science. Thank you, Ahmed, for your outstanding support!",
         rating: 5,
-        platform: "Topmate",
-        featured: true
+        featured: true,
+        ...topmate,
     },
     {
-        id: 2,
-        name: "Khalid A.",
-        role: "Software Engineer, Fintech",
-        service: "Project Development",
-        testimonial: "Built our predictive analytics system from scratch. Clean code, proper documentation, and delivered 2 weeks ahead of schedule. Will hire again!",
+        id: 'topmate-ahmed-a-2024-05',
+        name: 'Ahmed A.',
+        date: '2024-05-04',
+        testimonial: "Ahmed heard my questions and all my doubts towards the career clearly and gave me insightful to the point advices on how to improve, develop and present my skills.",
         rating: 5,
-        platform: "Upwork",
-        featured: true
+        featured: true,
+        ...topmate,
     },
     {
-        id: 3,
-        name: "Fatima H.",
-        role: "CS Graduate, Cairo University",
-        service: "1-on-1 Consulting",
-        testimonial: "Passed my Google data science interview thanks to Ahmed's mock interviews and technical guidance. His career roadmap was spot-on.",
+        id: 'topmate-ahmed-f-2026-04',
+        name: 'Ahmed F.',
+        date: '2026-04-26',
+        testimonial: "Had a great session. He was honest, genuine, and very clear in delivering the information. I really appreciated how transparent and helpful he was throughout the call. One of the best mentors I’ve worked with",
         rating: 5,
-        platform: "Topmate",
-        featured: true
+        featured: true,
+        ...topmate,
     },
     {
-        id: 4,
-        name: "Omar K.",
-        role: "Business Analyst, E-commerce",
-        service: "Arabic Education",
-        testimonial: "Finally found data science content in Arabic that actually makes sense! Ahmed's YouTube tutorials helped me land my first ML project at work.",
+        id: 'topmate-mohamed-r-2025-11',
+        name: 'Mohamed R.',
+        date: '2025-11-24',
+        testimonial: "Ahmed is an exceptionally friendly and supportive expert. He helped me clearly identify my areas for improvement and provided a comprehensive overview of the data analysis career path. He was incredibly patient throughout our sessions and answered all of my questions thoroughly.",
         rating: 5,
-        platform: "YouTube",
-        featured: false
+        featured: true,
+        ...topmate,
     },
     {
-        id: 5,
-        name: "Mariam S.",
-        role: "PhD Researcher, NLP",
-        service: "Project Development", 
-        testimonial: "Implemented our Arabic sentiment analysis model with transformer architecture. Excellent code quality and deep understanding of NLP workflows.",
+        id: 'topmate-mohamed-t-2023-12',
+        name: 'Mohamed T.',
+        date: '2023-12-28',
+        testimonial: "Ahmed's session was outstanding-practical, deeply knowledgeable, and strategic. his insights have been instrumental in my growth and I'm grateful for the invaluable support he provided. Thank you Ahmed.",
         rating: 5,
-        platform: "Upwork",
-        featured: false
+        featured: true,
+        ...topmate,
     },
     {
-        id: 6,
-        name: "Hassan F.",
-        role: "Marketing Manager, Healthcare",
-        service: "1-on-1 Consulting",
-        testimonial: "Ahmed taught me to build customer segmentation models that increased our campaign ROI by 40%. Clear explanations and practical examples.",
+        id: 'topmate-fatima-a-2024-05',
+        name: 'Fatima A.',
+        date: '2024-05-03',
+        testimonial: "This call helped me pave the way for a better career opportunity. Engineer Ahmed helped me understand what I should focus on in terms of career goals.",
         rating: 5,
-        platform: "Topmate",
-        featured: false
-    }
+        featured: true,
+        ...topmate,
+    },
 ];
 
-// Testimonials by service type for easy filtering
-export const testimonialsByService = {
-    consulting: testimonialsData.filter(t => t.service === "1-on-1 Consulting"),
-    development: testimonialsData.filter(t => t.service === "Project Development"),
-    education: testimonialsData.filter(t => t.service === "Arabic Education"),
-    all: testimonialsData
-};
-
-// Featured testimonials (shown by default)
 export const featuredTestimonials = testimonialsData.filter(t => t.featured);

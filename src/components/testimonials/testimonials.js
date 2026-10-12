@@ -26,12 +26,19 @@ function Testimonials() {
                                 {t.testimonial}
                             </p>
                             <div className="text-[0.75rem] font-semibold text-text-primary">{t.name}</div>
-                            <div className="text-[0.65rem] text-text-muted mb-3">{t.role}</div>
+                            <div className="text-[0.65rem] text-text-muted mb-3">
+                                {new Date(t.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' })}
+                            </div>
                             <div className="flex items-center gap-3 flex-wrap">
                                 <Rating value={t.rating} className="text-[0.65rem] text-primary" />
-                                <span className="text-[0.6rem] text-text-muted px-2 py-0.5 border border-rule rounded-sm">
-                                    {t.platform}
-                                </span>
+                                <a
+                                    href={t.sourceUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-[0.6rem] text-text-muted px-2 py-0.5 border border-rule rounded-sm hover:text-primary"
+                                >
+                                    Verified on {t.platform}
+                                </a>
                                 <span className="text-[0.6rem] text-primary/50 px-2 py-0.5 border border-primary/15 rounded-sm">
                                     {t.service}
                                 </span>
