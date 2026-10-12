@@ -3,6 +3,7 @@ import { metrics, pricing, proof } from '../../data/metrics';
 import { contactsData } from '../../data/contacts-data';
 import Link from '../link';
 import Reveal from '../ui/reveal';
+import { withUtm } from '../../utils/utm';
 
 function WhatIDo() {
 
@@ -21,7 +22,7 @@ function WhatIDo() {
             socialProof: `${proof.rating}\u2605 on Topmate \u2022 ${metrics.topmate.ratingCount} ratings \u2022 ${pricing.consult.price}${pricing.consult.period}`,
             cta: {
                 text: 'Book Your Session',
-                url: `${contactsData.monetizationLinks.primary.url}&utm_campaign=services_consulting`,
+                url: withUtm(contactsData.monetizationLinks.primary.url, { campaign: 'services_consulting' }),
             },
             servicePage: '/services/llm-consulting-egypt',
             pricing: 'Flexible scheduling available'
@@ -39,7 +40,7 @@ function WhatIDo() {
             socialProof: `${proof.upworkLong} \u2022 ${pricing.development.price}${pricing.development.period}`,
             cta: {
                 text: 'Hire Me Now',
-                url: `${contactsData.monetizationLinks.secondary.url}&utm_campaign=services_development`,
+                url: withUtm(contactsData.monetizationLinks.secondary.url, { campaign: 'services_development' }),
             },
             servicePage: '/services/machine-learning-development',
             pricing: 'Ready to work on your project directly'
@@ -57,7 +58,7 @@ function WhatIDo() {
             socialProof: 'Growing Arabic DS community',
             cta: {
                 text: 'Subscribe Now',
-                url: `${contactsData.youtube}?utm_source=abulkhair.ai&utm_campaign=services_education`,
+                url: withUtm(contactsData.youtube, { medium: 'cta', campaign: 'services_education' }),
             },
             pricing: 'Free content \u2022 Premium courses coming soon'
         },
@@ -75,7 +76,7 @@ function WhatIDo() {
             socialProof: 'Cutting-edge AI expertise \u2022 AI Scientist at Incept Labs',
             cta: {
                 text: 'Build AI Agents',
-                url: `${contactsData.monetizationLinks.primary.url}&utm_campaign=services_agentic_ai`,
+                url: withUtm(contactsData.monetizationLinks.primary.url, { campaign: 'services_agentic_ai' }),
             },
             servicePage: '/services/ai-agents-development',
             pricing: 'Enterprise AI solutions available'
@@ -93,7 +94,7 @@ function WhatIDo() {
             socialProof: 'Featured technical writer',
             cta: {
                 text: 'Read Latest Articles',
-                url: `${contactsData.medium}?utm_source=abulkhair.ai&utm_campaign=services_writing`,
+                url: withUtm(contactsData.medium, { medium: 'cta', campaign: 'services_writing' }),
             },
             pricing: 'Free insights \u2022 Sponsor content available'
         }

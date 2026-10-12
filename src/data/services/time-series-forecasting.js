@@ -1,5 +1,6 @@
 import { contactsData } from '../contacts-data';
 import { metrics, pricing, proof } from '../metrics';
+import { withUtm } from '../../utils/utm';
 
 const { primary, secondary } = contactsData.monetizationLinks;
 
@@ -27,7 +28,7 @@ export const timeSeriesForecasting = {
         ],
         cta: {
             text: 'Start Forecasting Project',
-            url: `${secondary.url}&utm_campaign=tsf_hero`,
+            url: withUtm(secondary.url, { campaign: 'tsf_hero' }),
             platform: 'upwork',
             position: 'service_hero',
         },
@@ -86,7 +87,7 @@ export const timeSeriesForecasting = {
                 'Model approach recommendation',
                 'Accuracy improvement roadmap',
             ],
-            cta: { text: 'Book Consultation', url: `${primary.url}&utm_campaign=tsf_pricing`, platform: 'topmate' },
+            cta: { text: 'Book Consultation', url: withUtm(primary.url, { campaign: 'tsf_pricing' }), platform: 'topmate' },
         },
         {
             title: 'Forecasting System Development',
@@ -101,7 +102,7 @@ export const timeSeriesForecasting = {
                 'Retraining automation',
             ],
             featured: true,
-            cta: { text: 'Hire for Project', url: `${secondary.url}&utm_campaign=tsf_dev_pricing`, platform: 'upwork' },
+            cta: { text: 'Hire for Project', url: withUtm(secondary.url, { campaign: 'tsf_dev_pricing' }), platform: 'upwork' },
         },
     ],
     faq: [
@@ -131,7 +132,7 @@ export const timeSeriesForecasting = {
         heading: 'Stop planning on',
         headingBold: 'guesswork',
         sub: 'Get forecasts with honest uncertainty — built, validated, and deployed for your business.',
-        primary: { text: 'Hire on Upwork', url: `${secondary.url}&utm_campaign=tsf_footer`, platform: 'upwork' },
-        secondary: { text: 'Book Consultation', url: `${primary.url}&utm_campaign=tsf_footer`, platform: 'topmate' },
+        primary: { text: 'Hire on Upwork', url: withUtm(secondary.url, { campaign: 'tsf_footer' }), platform: 'upwork' },
+        secondary: { text: 'Book Consultation', url: withUtm(primary.url, { campaign: 'tsf_footer' }), platform: 'topmate' },
     },
 };

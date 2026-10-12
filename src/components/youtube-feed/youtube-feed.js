@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { FiPlay } from 'react-icons/fi';
 import { contactsData } from '../../data/contacts-data';
+import { withUtm } from '../../utils/utm';
 
 function SkeletonCard() {
     return (
@@ -154,7 +155,7 @@ function YouTubeFeed({ maxVideos = 3 }) {
                                         {formatDate(video.publishedAt)}
                                     </span>
                                     <a
-                                        href={`${video.url}?utm_source=abulkhair.ai&utm_medium=widget&utm_campaign=youtube_feed`}
+                                        href={withUtm(video.url, { medium: 'widget', campaign: 'youtube_feed' })}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="text-[0.65rem] text-primary border-b border-primary/20 pb-px"
@@ -172,7 +173,7 @@ function YouTubeFeed({ maxVideos = 3 }) {
                         Love the content? Subscribe for more data science tutorials in Arabic!
                     </p>
                     <a
-                        href="https://www.youtube.com/@7adid_elsafina?sub_confirmation=1"
+                        href={withUtm('https://www.youtube.com/@7adid_elsafina?sub_confirmation=1', { medium: 'widget', campaign: 'youtube_subscribe' })}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-5 py-2 text-[0.7rem] text-primary border border-primary/30 rounded hover:border-primary/60 transition-colors"

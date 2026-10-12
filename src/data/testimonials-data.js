@@ -1,8 +1,9 @@
 import { metrics } from './metrics';
+import { withUtm } from '../utils/utm';
 
 // Verbatim public reviews from topmate.io/abulkhair (copied 2026-10-12).
 // Only add reviews that are publicly visible on the linked source — never paraphrase.
-const topmate = { platform: 'Topmate', sourceUrl: `${metrics.topmate.url}?utm_source=abulkhair.ai&utm_medium=testimonial&utm_campaign=topmate_reviews`, service: '1-on-1 Mentoring' };
+const topmate = { platform: 'Topmate', sourceUrl: withUtm(metrics.topmate.url, { medium: 'testimonial', campaign: 'topmate_reviews' }), service: '1-on-1 Mentoring' };
 
 export const testimonialsData = [
     {

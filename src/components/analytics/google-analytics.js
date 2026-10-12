@@ -17,12 +17,15 @@ export const trackPageView = (url, title) => {
 // Track events
 export const trackEvent = (action, parameters = {}) => {
   if (typeof window !== 'undefined' && window.gtag) {
+    // GA4 ignores nested objects, so custom_parameters are sent as top-level params.
+    const { category, label, custom_parameters: customParameters = {}, ...rest } = parameters;
     window.gtag('event', action, {
-      event_category: parameters.category || 'engagement',
-      event_label: parameters.label || '',
+      event_category: category || 'engagement',
+      event_label: label || '',
       value: parameters.value || 0,
       currency: parameters.currency || 'USD',
-      ...parameters
+      ...rest,
+      ...customParameters
     });
   }
 };

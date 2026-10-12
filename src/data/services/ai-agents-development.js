@@ -1,5 +1,6 @@
 import { contactsData } from '../contacts-data';
 import { metrics, pricing, proof } from '../metrics';
+import { withUtm } from '../../utils/utm';
 
 const { primary, secondary } = contactsData.monetizationLinks;
 
@@ -27,7 +28,7 @@ export const aiAgentsDevelopment = {
         ],
         cta: {
             text: 'Build AI Agents',
-            url: `${primary.url}&utm_campaign=ai_agents_hero`,
+            url: withUtm(primary.url, { campaign: 'ai_agents_hero' }),
             platform: 'topmate',
             position: 'service_hero',
         },
@@ -81,7 +82,7 @@ export const aiAgentsDevelopment = {
                 'Guardrail and safety design',
                 'Implementation roadmap',
             ],
-            cta: { text: 'Book Consultation', url: `${primary.url}&utm_campaign=ai_agents_pricing`, platform: 'topmate' },
+            cta: { text: 'Book Consultation', url: withUtm(primary.url, { campaign: 'ai_agents_pricing' }), platform: 'topmate' },
         },
         {
             title: 'Agent System Development',
@@ -96,7 +97,7 @@ export const aiAgentsDevelopment = {
                 'Monitoring and iteration',
             ],
             featured: true,
-            cta: { text: 'Hire for Project', url: `${secondary.url}&utm_campaign=ai_agents_dev_pricing`, platform: 'upwork' },
+            cta: { text: 'Hire for Project', url: withUtm(secondary.url, { campaign: 'ai_agents_dev_pricing' }), platform: 'upwork' },
         },
     ],
     faq: [
@@ -126,7 +127,7 @@ export const aiAgentsDevelopment = {
         heading: 'Ready to put agents',
         headingBold: 'to work?',
         sub: 'Start with a scoping session, or bring me in to design and ship your agent system.',
-        primary: { text: 'Book Consultation', url: `${primary.url}&utm_campaign=ai_agents_footer`, platform: 'topmate' },
-        secondary: { text: 'Hire on Upwork', url: `${secondary.url}&utm_campaign=ai_agents_footer`, platform: 'upwork' },
+        primary: { text: 'Book Consultation', url: withUtm(primary.url, { campaign: 'ai_agents_footer' }), platform: 'topmate' },
+        secondary: { text: 'Hire on Upwork', url: withUtm(secondary.url, { campaign: 'ai_agents_footer' }), platform: 'upwork' },
     },
 };

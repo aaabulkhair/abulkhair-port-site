@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import Link from 'next/link';
-import { trackCTAClick, trackSocialClick, trackMonetization } from './google-analytics';
+import { trackCTAClick, trackSocialClick, trackMonetization, trackContentEngagement, trackEvent } from './google-analytics';
 
 /**
  * Enhanced Link component with automatic UTM and analytics tracking
@@ -17,12 +17,14 @@ const EnhancedLink = forwardRef(({
   className = '',
   external = false,
   monetizationValue = 0,
+  onClick,
   ...props
 }, ref) => {
   
   const addUTMParameters = (url) => {
-    if (!url || url.startsWith('/') || url.startsWith('#')) {
-      return url; // Internal links don't need UTM
+    // Only http(s) links get UTM — internal, anchor, mailto: and tel: stay as-is.
+    if (!url || !/^https?:\/\//.test(url)) {
+      return url;
     }
 
     const urlObj = new URL(url);
@@ -39,12 +41,13 @@ const EnhancedLink = forwardRef(({
 
   const handleClick = (event) => {
     // Track the click based on type
-    const destination = href.includes('topmate') ? 'topmate' :
-                      href.includes('upwork') ? 'upwork' :
-                      href.includes('youtube') ? 'youtube' :
-                      href.includes('tiktok') ? 'tiktok' :
-                      href.includes('medium') ? 'medium' :
-                      href.includes('linkedin') ? 'linkedin' :
+    const target = href || '';
+    const destination = target.includes('topmate') ? 'topmate' :
+                      target.includes('upwork') ? 'upwork' :
+                      target.includes('youtube') ? 'youtube' :
+                      target.includes('tiktok') ? 'tiktok' :
+                      target.includes('medium') ? 'medium' :
+                      target.includes('linkedin') ? 'linkedin' :
                       'other';
 
     switch (trackingType) {
@@ -57,23 +60,23 @@ const EnhancedLink = forwardRef(({
       case 'cta':
         trackCTAClick(trackingLabel || 'button', destination, trackingPosition);
         break;
+      case 'content':
+        trackContentEngagement(destination, trackingLabel, 'click');
+        break;
       default:
-        // General click tracking
-        if (window.gtag) {
-          window.gtag('event', 'click', {
-            event_category: 'link',
-            event_label: trackingLabel || href,
-            custom_parameters: {
-              destination: destination,
-              position: trackingPosition
-            }
-          });
-        }
+        trackEvent('click', {
+          category: 'link',
+          label: trackingLabel || href,
+          custom_parameters: {
+            destination: destination,
+            position: trackingPosition
+          }
+        });
     }
 
-    // Call original onClick if provided
-    if (props.onClick) {
-      props.onClick(event);
+    // Compose with the caller's handler instead of letting it replace tracking.
+    if (onClick) {
+      onClick(event);
     }
   };
 
@@ -83,13 +86,13 @@ const EnhancedLink = forwardRef(({
   if (external || (href && (href.startsWith('http') || href.startsWith('mailto:')))) {
     return (
       <a
+        {...props}
         ref={ref}
         href={enhancedHref}
         className={className}
         target="_blank"
         rel="noopener noreferrer"
         onClick={handleClick}
-        {...props}
       >
         {children}
       </a>
@@ -99,11 +102,11 @@ const EnhancedLink = forwardRef(({
   // Internal Next.js links
   return (
     <Link
+      {...props}
       href={enhancedHref}
       ref={ref}
       className={className}
       onClick={handleClick}
-      {...props}
     >
       {children}
     </Link>
