@@ -21,5 +21,5 @@ export { default as SEOHead } from './seo/seo-head'
 
 // Analytics components  
 export { GoogleAnalyticsScript, useGoogleAnalytics } from './analytics/google-analytics'
-export { default as EnhancedLink, MonetizationLink, SocialLink, CTALink, ContentLink } from './analytics/enhanced-link-tracker'
+export { default as EnhancedLink, MonetizationLink } from './analytics/enhanced-link-tracker'
 
