@@ -46,7 +46,13 @@ export async function getStaticProps() {
     internal: true,
   }));
 
-  const [articles, videos] = await Promise.all([fetchMediumArticles(), fetchYouTubeVideos(3)]);
+  // Tolerate feed outages during `next build`; on ISR revalidation, throw so the
+  // last good page keeps being served instead of one with empty feeds.
+  const throwOnError = process.env.NEXT_PHASE !== 'phase-production-build';
+  const [articles, videos] = await Promise.all([
+    fetchMediumArticles({ throwOnError }),
+    fetchYouTubeVideos(3, { throwOnError }),
+  ]);
 
   return {
     props: {

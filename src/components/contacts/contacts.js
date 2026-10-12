@@ -134,8 +134,8 @@ function Contacts() {
                             </div>
                             {/* Honeypot: hidden from people and assistive tech, filled by bots. */}
                             <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
-                                <label htmlFor="contact-website">Website</label>
-                                <input id="contact-website" type="text" name="website" tabIndex={-1} autoComplete="off" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
+                                <label htmlFor="contact-hp">Leave this field empty</label>
+                                <input id="contact-hp" type="text" name="hp_field" tabIndex={-1} autoComplete="off" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
                             </div>
                             <button type="submit" disabled={sending} className="self-start px-6 py-2.5 bg-primary text-bg rounded text-sm font-semibold hover:opacity-90 transition-opacity flex items-center gap-2 disabled:opacity-60 disabled:cursor-wait">
                                 {sending ? 'Sending…' : !success ? 'Send' : 'Sent'}

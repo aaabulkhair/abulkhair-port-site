@@ -1,7 +1,7 @@
 // Single source of truth for every public number on the site.
 // Only verified values belong here — update them when the source changes.
 //   years:   Ahmed_Abulkhair_CV.pdf ("7+ years of production ML")
-//   topmate: topmate.io/abulkhair (checked 2026-10-12)
+//   topmate: topmate.io/abulkhair profile — rating, rating count and bookings badge (checked 2026-10-12)
 //   upwork:  Upwork dashboard, confirmed by Ahmed; badge per CV ("Upwork Top-Rated")
 export const metrics = {
     yearsExperience: '7+',

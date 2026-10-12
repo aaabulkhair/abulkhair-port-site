@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { jsonLd } from '../../utils/json-ld';
 import { contactsData } from '../../data/contacts-data';
 import { headerData } from '../../data/header-data';
+import { pricing } from '../../data/metrics';
 
 const baseUrl = 'https://abulkhair.ai';
 const personId = `${baseUrl}/#person`;
@@ -85,7 +86,7 @@ function StructuredData() {
         "founder": { "@id": personId },
         "areaServed": "Worldwide",
         "serviceType": "Data Science Consulting",
-        "priceRange": "$50-$100",
+        "priceRange": `$${pricing.consult.min}-$${pricing.development.max}`,
         "telephone": contactsData.phone,
         "email": contactsData.email,
         "address": {
@@ -98,14 +99,14 @@ function StructuredData() {
                 "@type": "Offer",
                 "name": "1-on-1 Consulting",
                 "description": "LLM, AI agents, RAG systems, machine learning and data science consulting",
-                "price": "50",
+                "price": String(pricing.consult.min),
                 "priceCurrency": "USD",
                 "category": "Consulting",
                 "availability": "https://schema.org/InStock",
                 "url": cleanUrl(contactsData.topmate),
                 "priceSpecification": {
                     "@type": "UnitPriceSpecification",
-                    "price": "50",
+                    "price": String(pricing.consult.min),
                     "priceCurrency": "USD",
                     "unitText": "per session"
                 }
@@ -120,8 +121,8 @@ function StructuredData() {
                 "url": cleanUrl(contactsData.upwork),
                 "priceSpecification": {
                     "@type": "UnitPriceSpecification",
-                    "minPrice": "60",
-                    "maxPrice": "100",
+                    "minPrice": String(pricing.development.min),
+                    "maxPrice": String(pricing.development.max),
                     "priceCurrency": "USD",
                     "unitCode": "HUR"
                 }

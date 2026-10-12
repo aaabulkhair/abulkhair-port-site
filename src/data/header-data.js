@@ -1,9 +1,10 @@
 import profile from '../assets/png/profile.png';
+import { metrics } from './metrics';
 
 export const headerData = {
     name: 'Ahmed Abulkhair',
     title: "AI Scientist @ Incept Labs",
-    description: "AI Scientist with 7+ years of production ML. I fine-tune and evaluate LLMs — my tuned Arabic models rank top-5 on OALL and Arabic HELM. Book a consultation or hire me for your next project. Available in Arabic and English.",
+    description: `AI Scientist with ${metrics.yearsExperience} years of production ML. I fine-tune and evaluate LLMs — my tuned Arabic models rank top-5 on OALL and Arabic HELM. Book a consultation or hire me for your next project. Available in Arabic and English.`,
     image: profile,
     imagebw: profile,
     resumePdf: '',

@@ -13,7 +13,7 @@ function Testimonials() {
                     What clients <strong className="font-serif italic font-medium text-primary">say</strong>
                 </h2>
                 <p className="text-sm text-text-secondary mb-8">
-                    From {metrics.topmate.bookings} Topmate sessions and {metrics.upwork.jobs} Upwork jobs
+                    From {metrics.topmate.bookings} Topmate bookings and {metrics.upwork.jobs} Upwork jobs
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

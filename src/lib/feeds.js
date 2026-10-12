@@ -1,7 +1,9 @@
 import { parseStringPromise } from 'xml2js';
 
-// Build-time (ISR) fetchers for the homepage widgets. Both return [] on any
-// failure so a feed outage never breaks the page build.
+// Build-time (ISR) fetchers for the homepage widgets. By default they return []
+// on failure so a feed outage never breaks the initial build. Pass
+// { throwOnError: true } during ISR revalidation instead: a thrown error makes
+// Next keep serving the last good page rather than caching an empty feed.
 
 const YOUTUBE_CHANNEL_ID = 'UC27eutkOJU045MWeoFlzGYw';
 const MEDIUM_USERNAME = 'aaabulkhair';
@@ -22,7 +24,7 @@ function toIsoDate(value) {
     return Number.isNaN(date.getTime()) ? null : date.toISOString();
 }
 
-export async function fetchYouTubeVideos(max = 3) {
+export async function fetchYouTubeVideos(max = 3, { throwOnError = false } = {}) {
     try {
         const xml = await fetchXml(`https://www.youtube.com/feeds/videos.xml?channel_id=${YOUTUBE_CHANNEL_ID}`);
         const entries = xml?.feed?.entry || [];
@@ -42,30 +44,31 @@ export async function fetchYouTubeVideos(max = 3) {
             .filter(Boolean)
             .slice(0, max);
     } catch (error) {
+        if (throwOnError) throw error;
         console.warn(`YouTube feed unavailable: ${error.message}`);
         return [];
     }
 }
 
-// Only hosts allowed by images.remotePatterns in next.config.js can go through next/image.
-function safeCoverImage(src) {
-    try {
-        const { protocol, hostname } = new URL(src);
-        return protocol === 'https:' && (hostname === 'medium.com' || hostname.endsWith('.medium.com'))
-            ? src
-            : MEDIUM_FALLBACK_COVER;
-    } catch {
-        return MEDIUM_FALLBACK_COVER;
+// First real image in a Medium post. Only subdomains match images.remotePatterns
+// ('**.medium.com'); bare medium.com is the 1x1 tracking pixel every item ends with.
+export function pickMediumCover(html) {
+    for (const [, src] of (html || '').matchAll(/<img[^>]+src="([^"]+)"/g)) {
+        try {
+            const { protocol, hostname } = new URL(src);
+            if (protocol === 'https:' && hostname.endsWith('.medium.com')) return src;
+        } catch {
+            // not a URL — keep looking
+        }
     }
+    return MEDIUM_FALLBACK_COVER;
 }
 
-export async function fetchMediumArticles() {
+export async function fetchMediumArticles({ throwOnError = false } = {}) {
     try {
         const xml = await fetchXml(`https://medium.com/@${MEDIUM_USERNAME}/feed`);
         const items = xml?.rss?.channel?.[0]?.item || [];
         return items.map((item) => {
-            const html = first(item['content:encoded']) || '';
-            const imgMatch = html.match(/<img[^>]+src="([^"]+)"/);
             const description = (first(item.description) || '').replace(/<[^>]*>/g, '');
             const link = first(item.link) || '';
             return {
@@ -73,12 +76,13 @@ export async function fetchMediumArticles() {
                 title: first(item.title) || 'Untitled',
                 description: description ? `${description.substring(0, 150)}...` : '',
                 published_at: toIsoDate(first(item.pubDate)),
-                cover_image: imgMatch ? safeCoverImage(imgMatch[1]) : MEDIUM_FALLBACK_COVER,
+                cover_image: pickMediumCover(first(item['content:encoded'])),
                 url: link || `https://medium.com/@${MEDIUM_USERNAME}`,
                 internal: false,
             };
         });
     } catch (error) {
+        if (throwOnError) throw error;
         console.warn(`Medium feed unavailable: ${error.message}`);
         return [];
     }

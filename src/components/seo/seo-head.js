@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { metrics } from '../../data/metrics';
 
 function SEOHead({ 
     title,
@@ -11,7 +12,7 @@ function SEOHead({
 }) {
     const baseUrl = 'https://abulkhair.ai';
     const defaultTitle = "Ahmed Abulkhair - AI Scientist & LLM Expert Egypt | AI Consultant";
-    const defaultDescription = "AI Scientist with 7+ years of production ML. LLM fine-tuning & evaluation — tuned Arabic models rank top-5 on OALL & Arabic HELM. Arabic & English consulting: RAG systems, AI agents, time-series forecasting.";
+    const defaultDescription = `AI Scientist with ${metrics.yearsExperience} years of production ML. LLM fine-tuning & evaluation — tuned Arabic models rank top-5 on OALL & Arabic HELM. Arabic & English consulting: RAG systems, AI agents, time-series forecasting.`;
 
     // Append the brand once; skip it if the caller already included it.
     const pageTitle = !title
