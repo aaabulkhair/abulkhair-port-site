@@ -16,13 +16,26 @@ function Contacts() {
     const [sending, setSending] = useState(false);
     const [errMsg, setErrMsg] = useState('');
     const [fieldErrors, setFieldErrors] = useState({});
+    const [honeypot, setHoneypot] = useState('');
     const form = useRef();
+
+    const emailjsConfig = {
+        serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+        publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
+    };
 
     const handleClose = () => setOpen(false);
 
     const handleContactForm = (e) => {
         e.preventDefault();
         if (sending) return;
+
+        // Bots fill every field, including the hidden one; pretend it worked.
+        if (honeypot) {
+            setSuccess(true);
+            return;
+        }
 
         const errors = {};
         if (!name) errors.name = 'Please enter your name';
@@ -37,12 +50,18 @@ function Contacts() {
             return;
         }
 
+        if (!emailjsConfig.serviceId || !emailjsConfig.templateId || !emailjsConfig.publicKey) {
+            setErrMsg(`The contact form isn't configured yet — please email ${contactsData.email} directly.`);
+            setOpen(true);
+            return;
+        }
+
         setSending(true);
         emailjs.sendForm(
-            process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-            process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+            emailjsConfig.serviceId,
+            emailjsConfig.templateId,
             form.current,
-            process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY)
+            emailjsConfig.publicKey)
             .then(() => {
                 setSuccess(true);
                 setErrMsg('');
@@ -50,8 +69,7 @@ function Contacts() {
                 setEmail('');
                 setMessage('');
                 setOpen(false);
-            }, (error) => {
-                console.log(error.text);
+            }, () => {
                 setErrMsg('Something went wrong — please email me directly.');
                 setOpen(true);
             })
@@ -100,19 +118,24 @@ function Contacts() {
                     <div>
                         <form ref={form} onSubmit={handleContactForm} className="flex flex-col gap-4">
                             <div>
-                                <label className="text-[0.7rem] text-text-muted uppercase tracking-wider mb-1 block">Name</label>
-                                <input placeholder="John Doe" value={name} onChange={(e) => setName(e.target.value)} type="text" name="user_name" aria-invalid={!!fieldErrors.name} className="w-full bg-bg-surface border border-rule rounded px-4 py-3 text-sm text-text-primary placeholder:text-text-muted focus:border-primary/50 focus:outline-none transition-colors" />
-                                {fieldErrors.name && <p className="text-[0.7rem] text-primary mt-1">{fieldErrors.name}</p>}
+                                <label htmlFor="contact-name" className="text-[0.7rem] text-text-muted uppercase tracking-wider mb-1 block">Name</label>
+                                <input id="contact-name" autoComplete="name" aria-describedby={fieldErrors.name ? 'contact-name-error' : undefined} placeholder="John Doe" value={name} onChange={(e) => setName(e.target.value)} type="text" name="user_name" aria-invalid={!!fieldErrors.name} className="w-full bg-bg-surface border border-rule rounded px-4 py-3 text-sm text-text-primary placeholder:text-text-muted focus:border-primary/50 focus:outline-none transition-colors" />
+                                {fieldErrors.name && <p id="contact-name-error" className="text-[0.7rem] text-primary mt-1">{fieldErrors.name}</p>}
                             </div>
                             <div>
-                                <label className="text-[0.7rem] text-text-muted uppercase tracking-wider mb-1 block">Email</label>
-                                <input placeholder="john@doe.com" value={email} onChange={(e) => setEmail(e.target.value)} type="email" name="user_email" aria-invalid={!!fieldErrors.email} className="w-full bg-bg-surface border border-rule rounded px-4 py-3 text-sm text-text-primary placeholder:text-text-muted focus:border-primary/50 focus:outline-none transition-colors" />
-                                {fieldErrors.email && <p className="text-[0.7rem] text-primary mt-1">{fieldErrors.email}</p>}
+                                <label htmlFor="contact-email" className="text-[0.7rem] text-text-muted uppercase tracking-wider mb-1 block">Email</label>
+                                <input id="contact-email" autoComplete="email" aria-describedby={fieldErrors.email ? 'contact-email-error' : undefined} placeholder="john@doe.com" value={email} onChange={(e) => setEmail(e.target.value)} type="email" name="user_email" aria-invalid={!!fieldErrors.email} className="w-full bg-bg-surface border border-rule rounded px-4 py-3 text-sm text-text-primary placeholder:text-text-muted focus:border-primary/50 focus:outline-none transition-colors" />
+                                {fieldErrors.email && <p id="contact-email-error" className="text-[0.7rem] text-primary mt-1">{fieldErrors.email}</p>}
                             </div>
                             <div>
-                                <label className="text-[0.7rem] text-text-muted uppercase tracking-wider mb-1 block">Message</label>
-                                <textarea placeholder="Type your message..." value={message} onChange={(e) => setMessage(e.target.value)} name="message" rows={5} aria-invalid={!!fieldErrors.message} className="w-full bg-bg-surface border border-rule rounded px-4 py-3 text-sm text-text-primary placeholder:text-text-muted focus:border-primary/50 focus:outline-none transition-colors resize-none" />
-                                {fieldErrors.message && <p className="text-[0.7rem] text-primary mt-1">{fieldErrors.message}</p>}
+                                <label htmlFor="contact-message" className="text-[0.7rem] text-text-muted uppercase tracking-wider mb-1 block">Message</label>
+                                <textarea id="contact-message" aria-describedby={fieldErrors.message ? 'contact-message-error' : undefined} placeholder="Type your message..." value={message} onChange={(e) => setMessage(e.target.value)} name="message" rows={5} aria-invalid={!!fieldErrors.message} className="w-full bg-bg-surface border border-rule rounded px-4 py-3 text-sm text-text-primary placeholder:text-text-muted focus:border-primary/50 focus:outline-none transition-colors resize-none" />
+                                {fieldErrors.message && <p id="contact-message-error" className="text-[0.7rem] text-primary mt-1">{fieldErrors.message}</p>}
+                            </div>
+                            {/* Honeypot: hidden from people and assistive tech, filled by bots. */}
+                            <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
+                                <label htmlFor="contact-website">Website</label>
+                                <input id="contact-website" type="text" name="website" tabIndex={-1} autoComplete="off" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
                             </div>
                             <button type="submit" disabled={sending} className="self-start px-6 py-2.5 bg-primary text-bg rounded text-sm font-semibold hover:opacity-90 transition-opacity flex items-center gap-2 disabled:opacity-60 disabled:cursor-wait">
                                 {sending ? 'Sending…' : !success ? 'Send' : 'Sent'}
