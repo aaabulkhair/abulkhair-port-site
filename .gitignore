@@ -40,11 +40,24 @@ jspm_packages
 .superpowers/
 
 # Environment files (use .env.example as template)
-.env
-.env*.local
+.env*
+!.env.example
 
 # Test artifacts
 .playwright-mcp/
 playwright-report/
 test-results/
 .playwright/
+
+# Generated at build time by postbuild (scripts/generate-rss.mjs, next-sitemap)
+public/rss.xml
+public/sitemap*.xml
+
+# Local tooling / private files
+.claude/settings.local.json
+.claude/skills/
+.agents/
+skills-lock.json
+.venv/
+.ruff_cache/
+/*.pdf
