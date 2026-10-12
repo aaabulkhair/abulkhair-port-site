@@ -2,9 +2,7 @@
 
 User-agent: *
 Allow: /
-Disallow: /_next/static/
 Disallow: /api/
-Disallow: /*.json$
 Disallow: /node_modules/
 Disallow: /.git/
 Disallow: /playwright-report/
